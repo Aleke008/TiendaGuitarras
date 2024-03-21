@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -29,8 +31,8 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
     _model.txtContrasenaController ??= TextEditingController();
     _model.txtContrasenaFocusNode ??= FocusNode();
 
-    _model.btnContrasena2Controller ??= TextEditingController();
-    _model.btnContrasena2FocusNode ??= FocusNode();
+    _model.txtContrasena2Controller ??= TextEditingController();
+    _model.txtContrasena2FocusNode ??= FocusNode();
   }
 
   @override
@@ -213,7 +215,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: const Color(0xFFA4A4A4),
+                                  color: Colors.black,
                                   fontSize: 16.0,
                                 ),
                             validator: _model.txtCorreoControllerValidator
@@ -304,7 +306,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: const Color(0xFFA4A4A4),
+                                  color: Colors.black,
                                   fontSize: 16.0,
                                 ),
                             validator: _model.txtContrasenaControllerValidator
@@ -327,10 +329,10 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                         child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           child: TextFormField(
-                            controller: _model.btnContrasena2Controller,
-                            focusNode: _model.btnContrasena2FocusNode,
+                            controller: _model.txtContrasena2Controller,
+                            focusNode: _model.txtContrasena2FocusNode,
                             autofocus: true,
-                            obscureText: !_model.btnContrasena2Visibility,
+                            obscureText: !_model.txtContrasena2Visibility,
                             decoration: InputDecoration(
                               labelText: 'Confirmar contraseña...',
                               labelStyle: FlutterFlowTheme.of(context)
@@ -378,12 +380,12 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                               ),
                               suffixIcon: InkWell(
                                 onTap: () => setState(
-                                  () => _model.btnContrasena2Visibility =
-                                      !_model.btnContrasena2Visibility,
+                                  () => _model.txtContrasena2Visibility =
+                                      !_model.txtContrasena2Visibility,
                                 ),
                                 focusNode: FocusNode(skipTraversal: true),
                                 child: Icon(
-                                  _model.btnContrasena2Visibility
+                                  _model.txtContrasena2Visibility
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
                                   color: const Color(0xFF707070),
@@ -395,10 +397,10 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: const Color(0xFFA4A4A4),
+                                  color: Colors.black,
                                   fontSize: 16.0,
                                 ),
-                            validator: _model.btnContrasena2ControllerValidator
+                            validator: _model.txtContrasena2ControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -415,8 +417,36 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                   children: [
                     Expanded(
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('btnIniciarSesion pressed ...');
+                        onPressed: () async {
+                          GoRouter.of(context).prepareAuthEvent();
+                          if (_model.txtContrasenaController.text !=
+                              _model.txtContrasena2Controller.text) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Passwords don\'t match!',
+                                ),
+                              ),
+                            );
+                            return;
+                          }
+
+                          final user = await authManager.createAccountWithEmail(
+                            context,
+                            _model.txtCorreoController.text,
+                            _model.txtContrasenaController.text,
+                          );
+                          if (user == null) {
+                            return;
+                          }
+
+                          await UsersRecord.collection
+                              .doc(user.uid)
+                              .update(createUsersRecordData(
+                                email: _model.txtCorreoController.text,
+                              ));
+
+                          context.goNamedAuth('paginaIniciar', context.mounted);
                         },
                         text: 'Crear Cuenta',
                         icon: const Icon(
@@ -510,7 +540,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                   children: [
                     FFButtonWidget(
                       onPressed: () {
-                        print('Button pressed ...');
+                        print('btnGoogle pressed ...');
                       },
                       text: 'Continuar con Google',
                       icon: const FaIcon(
@@ -550,7 +580,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                 children: [
                   FFButtonWidget(
                     onPressed: () {
-                      print('Button pressed ...');
+                      print('btnApple pressed ...');
                     },
                     text: 'Continuar con Apple',
                     icon: const FaIcon(

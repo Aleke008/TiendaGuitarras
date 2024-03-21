@@ -524,6 +524,7 @@ class _PaginaInformacionVendedorWidgetState
                         decoration: const BoxDecoration(),
                         child: ListView(
                           padding: EdgeInsets.zero,
+                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           children: [
@@ -776,6 +777,7 @@ class _PaginaInformacionVendedorWidgetState
                         decoration: const BoxDecoration(),
                         child: ListView(
                           padding: EdgeInsets.zero,
+                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           children: [

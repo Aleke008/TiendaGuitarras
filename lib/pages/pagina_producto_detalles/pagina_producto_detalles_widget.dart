@@ -161,6 +161,7 @@ class _PaginaProductoDetallesWidgetState
                 ),
                 ListView(
                   padding: EdgeInsets.zero,
+                  primary: false,
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   children: [

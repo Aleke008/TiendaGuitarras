@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -212,7 +213,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: const Color(0xFFA4A4A4),
+                                  color: Colors.black,
                                   fontSize: 16.0,
                                 ),
                             validator: _model.txtCorreoControllerValidator
@@ -303,7 +304,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: const Color(0xFFA4A4A4),
+                                  color: Colors.black,
                                   fontSize: 16.0,
                                 ),
                             validator: _model.txtContrasenaControllerValidator
@@ -324,7 +325,18 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                     Expanded(
                       child: FFButtonWidget(
                         onPressed: () async {
-                          context.pushNamed('paginaIniciar');
+                          GoRouter.of(context).prepareAuthEvent();
+
+                          final user = await authManager.signInWithEmail(
+                            context,
+                            _model.txtCorreoController.text,
+                            _model.txtContrasenaController.text,
+                          );
+                          if (user == null) {
+                            return;
+                          }
+
+                          context.goNamedAuth('paginaIniciar', context.mounted);
                         },
                         text: 'Iniciar sesión',
                         icon: const Icon(

@@ -73,14 +73,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
           ? const PaginaIniciarWidget()
-          : const LoginUsuariosWidget(),
+          : const RegisterUsuariosWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
               ? const PaginaIniciarWidget()
-              : const LoginUsuariosWidget(),
+              : const RegisterUsuariosWidget(),
         ),
         FFRoute(
           name: 'paginaCerrar',
@@ -438,7 +438,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/loginUsuarios';
+            return '/registerUsuarios';
           }
           return null;
         },

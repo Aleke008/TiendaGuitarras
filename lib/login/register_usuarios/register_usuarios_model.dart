@@ -15,18 +15,18 @@ class RegisterUsuariosModel extends FlutterFlowModel<RegisterUsuariosWidget> {
   TextEditingController? txtContrasenaController;
   late bool txtContrasenaVisibility;
   String? Function(BuildContext, String?)? txtContrasenaControllerValidator;
-  // State field(s) for btnContrasena2 widget.
-  FocusNode? btnContrasena2FocusNode;
-  TextEditingController? btnContrasena2Controller;
-  late bool btnContrasena2Visibility;
-  String? Function(BuildContext, String?)? btnContrasena2ControllerValidator;
+  // State field(s) for txtContrasena2 widget.
+  FocusNode? txtContrasena2FocusNode;
+  TextEditingController? txtContrasena2Controller;
+  late bool txtContrasena2Visibility;
+  String? Function(BuildContext, String?)? txtContrasena2ControllerValidator;
 
   /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
     txtContrasenaVisibility = false;
-    btnContrasena2Visibility = false;
+    txtContrasena2Visibility = false;
   }
 
   @override
@@ -38,8 +38,8 @@ class RegisterUsuariosModel extends FlutterFlowModel<RegisterUsuariosWidget> {
     txtContrasenaFocusNode?.dispose();
     txtContrasenaController?.dispose();
 
-    btnContrasena2FocusNode?.dispose();
-    btnContrasena2Controller?.dispose();
+    txtContrasena2FocusNode?.dispose();
+    txtContrasena2Controller?.dispose();
   }
 
   /// Action blocks are added here.

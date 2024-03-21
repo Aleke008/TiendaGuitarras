@@ -525,6 +525,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                       decoration: const BoxDecoration(),
                       child: ListView(
                         padding: EdgeInsets.zero,
+                        primary: false,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         children: [
@@ -779,6 +780,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                       decoration: const BoxDecoration(),
                       child: ListView(
                         padding: EdgeInsets.zero,
+                        primary: false,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         children: [
