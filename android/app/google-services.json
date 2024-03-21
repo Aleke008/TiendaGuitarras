@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "29686641880",
+    "project_id": "tiendaguitarras",
+    "storage_bucket": "tiendaguitarras.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29686641880:android:e2ab03de652e535933d3ad",
+        "android_client_info": {
+          "package_name": "com.mycompany.tiendavirtualdeguitarras"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrfFZtJdjJWjmURLzLNRDGsbimoZSn2Zc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
