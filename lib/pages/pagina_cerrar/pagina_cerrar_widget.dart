@@ -120,6 +120,7 @@ class _PaginaCerrarWidgetState extends State<PaginaCerrarWidget> {
                                 .override(
                                   fontFamily: 'Open Sans',
                                   fontSize: 26.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           tileColor: const Color(0x00FFFFFF),
@@ -142,6 +143,7 @@ class _PaginaCerrarWidgetState extends State<PaginaCerrarWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -163,6 +165,7 @@ class _PaginaCerrarWidgetState extends State<PaginaCerrarWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -184,6 +187,7 @@ class _PaginaCerrarWidgetState extends State<PaginaCerrarWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -205,6 +209,7 @@ class _PaginaCerrarWidgetState extends State<PaginaCerrarWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -226,6 +231,7 @@ class _PaginaCerrarWidgetState extends State<PaginaCerrarWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -247,6 +253,7 @@ class _PaginaCerrarWidgetState extends State<PaginaCerrarWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -305,6 +312,7 @@ class _PaginaCerrarWidgetState extends State<PaginaCerrarWidget> {
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 0.0,
                                     borderSide: const BorderSide(
@@ -368,6 +376,7 @@ class _PaginaCerrarWidgetState extends State<PaginaCerrarWidget> {
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 0.0,
                                     borderSide: const BorderSide(

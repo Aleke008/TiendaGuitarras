@@ -17,8 +17,6 @@ class MiPerfilVendedorModel extends FlutterFlowModel<MiPerfilVendedorWidget> {
   String? dropDownValue3;
   FormFieldController<String>? dropDownValueController3;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -26,8 +24,4 @@ class MiPerfilVendedorModel extends FlutterFlowModel<MiPerfilVendedorWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

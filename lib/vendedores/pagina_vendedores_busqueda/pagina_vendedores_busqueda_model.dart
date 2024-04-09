@@ -13,8 +13,6 @@ class PaginaVendedoresBusquedaModel
   TextEditingController? txtBuscadorController;
   String? Function(BuildContext, String?)? txtBuscadorControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -24,8 +22,4 @@ class PaginaVendedoresBusquedaModel
     txtBuscadorFocusNode?.dispose();
     txtBuscadorController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

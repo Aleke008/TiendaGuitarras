@@ -92,6 +92,7 @@ class _PaginaVendedoresBusquedaWidgetState
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 0.0,
                                   borderSide: const BorderSide(
@@ -118,6 +119,7 @@ class _PaginaVendedoresBusquedaWidgetState
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 22.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ],
@@ -147,11 +149,13 @@ class _PaginaVendedoresBusquedaWidgetState
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFF707070),
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                           alignLabelWithHint: false,
                           hintStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
                                     fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
                                     lineHeight: 2.0,
                                   ),
                           enabledBorder: OutlineInputBorder(
@@ -191,7 +195,9 @@ class _PaginaVendedoresBusquedaWidgetState
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               color: Colors.black,
+                              letterSpacing: 0.0,
                             ),
+                        minLines: null,
                         validator: _model.txtBuscadorControllerValidator
                             .asValidator(context),
                       ),
@@ -222,6 +228,7 @@ class _PaginaVendedoresBusquedaWidgetState
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               fontSize: 20.0,
+                              letterSpacing: 0.0,
                             ),
                       ),
                     ],
@@ -338,6 +345,7 @@ class _PaginaVendedoresBusquedaWidgetState
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -352,6 +360,7 @@ class _PaginaVendedoresBusquedaWidgetState
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                             ),
@@ -378,6 +387,7 @@ class _PaginaVendedoresBusquedaWidgetState
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -418,6 +428,7 @@ class _PaginaVendedoresBusquedaWidgetState
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
+                                                            letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                           ),
@@ -439,6 +450,7 @@ class _PaginaVendedoresBusquedaWidgetState
                                                             'Readex Pro',
                                                         color:
                                                             const Color(0xFF8A8A8A),
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -456,6 +468,7 @@ class _PaginaVendedoresBusquedaWidgetState
                                                       .override(
                                                         fontFamily:
                                                             'Readex Pro',
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -471,6 +484,7 @@ class _PaginaVendedoresBusquedaWidgetState
                                                             'Readex Pro',
                                                         color:
                                                             const Color(0xFF8A8A8A),
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -488,6 +502,7 @@ class _PaginaVendedoresBusquedaWidgetState
                                                       .override(
                                                         fontFamily:
                                                             'Readex Pro',
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -502,6 +517,7 @@ class _PaginaVendedoresBusquedaWidgetState
                                                             'Readex Pro',
                                                         color:
                                                             const Color(0xFF8A8A8A),
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),

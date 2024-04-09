@@ -92,6 +92,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 0.0,
                                     borderSide: const BorderSide(
@@ -119,6 +120,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 22.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ],
@@ -171,6 +173,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFFA4A4A4),
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                               alignLabelWithHint: false,
                               hintStyle: FlutterFlowTheme.of(context)
@@ -179,6 +182,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFF515151),
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -215,7 +219,9 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                   fontFamily: 'Readex Pro',
                                   color: Colors.black,
                                   fontSize: 16.0,
+                                  letterSpacing: 0.0,
                                 ),
+                            minLines: null,
                             validator: _model.txtCorreoControllerValidator
                                 .asValidator(context),
                           ),
@@ -248,6 +254,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFFA4A4A4),
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                               alignLabelWithHint: false,
                               hintStyle: FlutterFlowTheme.of(context)
@@ -256,6 +263,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFF515151),
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -306,7 +314,9 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                   fontFamily: 'Readex Pro',
                                   color: Colors.black,
                                   fontSize: 16.0,
+                                  letterSpacing: 0.0,
                                 ),
+                            minLines: null,
                             validator: _model.txtContrasenaControllerValidator
                                 .asValidator(context),
                           ),
@@ -357,6 +367,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: Colors.white,
                                     fontSize: 18.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
                                   ),
                           elevation: 0.0,
@@ -380,6 +391,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Readex Pro',
                           fontSize: 16.0,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
                         ),
                   ),
@@ -410,6 +422,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                 fontFamily: 'Readex Pro',
                                 color: const Color(0xFF882E7F),
                                 fontSize: 18.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w600,
                               ),
                       elevation: 0.0,
@@ -451,6 +464,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
                                   fontSize: 18.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                         elevation: 0.0,
@@ -491,6 +505,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                 fontFamily: 'Readex Pro',
                                 color: Colors.white,
                                 fontSize: 18.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
                               ),
                       elevation: 0.0,
@@ -502,6 +517,11 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                     ),
                   ),
                 ],
+              ),
+              const Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [],
               ),
             ],
           ),

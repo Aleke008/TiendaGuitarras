@@ -11,8 +11,6 @@ class BuscarProductosModel extends FlutterFlowModel<BuscarProductosWidget> {
   TextEditingController? txtBuscadorController;
   String? Function(BuildContext, String?)? txtBuscadorControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -22,8 +20,4 @@ class BuscarProductosModel extends FlutterFlowModel<BuscarProductosWidget> {
     txtBuscadorFocusNode?.dispose();
     txtBuscadorController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

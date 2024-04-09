@@ -86,6 +86,7 @@ class _PaginaCalendarioFechaMinWidgetState
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 0.0,
                                   borderSide: const BorderSide(
@@ -112,6 +113,7 @@ class _PaginaCalendarioFechaMinWidgetState
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 22.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ],
@@ -132,6 +134,7 @@ class _PaginaCalendarioFechaMinWidgetState
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
                             fontSize: 20.0,
+                            letterSpacing: 0.0,
                           ),
                     ),
                   ],
@@ -146,11 +149,29 @@ class _PaginaCalendarioFechaMinWidgetState
                 onChange: (DateTimeRange? newSelectedDate) {
                   setState(() => _model.calendarSelectedDay = newSelectedDate);
                 },
-                titleStyle: FlutterFlowTheme.of(context).headlineSmall,
-                dayOfWeekStyle: FlutterFlowTheme.of(context).labelLarge,
-                dateStyle: FlutterFlowTheme.of(context).bodyMedium,
-                selectedDateStyle: FlutterFlowTheme.of(context).titleSmall,
-                inactiveDateStyle: FlutterFlowTheme.of(context).labelMedium,
+                titleStyle: FlutterFlowTheme.of(context).headlineSmall.override(
+                      fontFamily: 'Outfit',
+                      letterSpacing: 0.0,
+                    ),
+                dayOfWeekStyle:
+                    FlutterFlowTheme.of(context).labelLarge.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
+                dateStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Readex Pro',
+                      letterSpacing: 0.0,
+                    ),
+                selectedDateStyle:
+                    FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
+                inactiveDateStyle:
+                    FlutterFlowTheme.of(context).labelMedium.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
               ),
             ],
           ),

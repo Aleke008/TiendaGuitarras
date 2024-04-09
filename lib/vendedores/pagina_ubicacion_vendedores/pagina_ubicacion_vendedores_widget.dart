@@ -88,6 +88,7 @@ class _PaginaUbicacionVendedoresWidgetState
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 0.0,
                                   borderSide: const BorderSide(
@@ -114,6 +115,7 @@ class _PaginaUbicacionVendedoresWidgetState
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 22.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ],
@@ -134,6 +136,7 @@ class _PaginaUbicacionVendedoresWidgetState
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
                             fontSize: 20.0,
+                            letterSpacing: 0.0,
                           ),
                     ),
                   ],
@@ -155,13 +158,20 @@ class _PaginaUbicacionVendedoresWidgetState
                         width: 300.0,
                         height: 50.0,
                         searchHintTextStyle:
-                            FlutterFlowTheme.of(context).labelMedium,
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                         searchTextStyle:
-                            FlutterFlowTheme.of(context).bodyMedium,
+                            FlutterFlowTheme.of(context).bodyMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                         textStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                         hintText: 'Please select...',
                         searchHintText: 'Search for an item...',
@@ -201,6 +211,7 @@ class _PaginaUbicacionVendedoresWidgetState
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
                             fontSize: 20.0,
+                            letterSpacing: 0.0,
                           ),
                     ),
                   ],
@@ -222,13 +233,20 @@ class _PaginaUbicacionVendedoresWidgetState
                         width: 300.0,
                         height: 50.0,
                         searchHintTextStyle:
-                            FlutterFlowTheme.of(context).labelMedium,
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                         searchTextStyle:
-                            FlutterFlowTheme.of(context).bodyMedium,
+                            FlutterFlowTheme.of(context).bodyMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                         textStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                         hintText: 'Please select...',
                         searchHintText: 'Search for an item...',
@@ -268,6 +286,7 @@ class _PaginaUbicacionVendedoresWidgetState
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
                             fontSize: 20.0,
+                            letterSpacing: 0.0,
                           ),
                     ),
                   ],
@@ -289,13 +308,20 @@ class _PaginaUbicacionVendedoresWidgetState
                         width: 300.0,
                         height: 50.0,
                         searchHintTextStyle:
-                            FlutterFlowTheme.of(context).labelMedium,
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                         searchTextStyle:
-                            FlutterFlowTheme.of(context).bodyMedium,
+                            FlutterFlowTheme.of(context).bodyMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                         textStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                         hintText: 'Please select...',
                         searchHintText: 'Search for an item...',
@@ -385,6 +411,7 @@ class _PaginaUbicacionVendedoresWidgetState
                                                   .override(
                                                     fontFamily: 'Readex Pro',
                                                     color: const Color(0xFF096241),
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                               elevation: 3.0,
@@ -447,6 +474,7 @@ class _PaginaUbicacionVendedoresWidgetState
                                                     .override(
                                                       fontFamily: 'Readex Pro',
                                                       color: const Color(0xFF620909),
+                                                      letterSpacing: 0.0,
                                                     ),
                                                 elevation: 3.0,
                                                 borderSide: const BorderSide(

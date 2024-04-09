@@ -127,6 +127,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                 .override(
                                   fontFamily: 'Open Sans',
                                   fontSize: 26.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           tileColor: const Color(0x00FFFFFF),
@@ -149,6 +150,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -170,6 +172,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -191,6 +194,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -212,6 +216,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -233,6 +238,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -254,6 +260,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -311,6 +318,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 0.0,
                                     borderSide: const BorderSide(
@@ -360,6 +368,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBackground,
                                                 fontSize: 22.0,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),
@@ -385,6 +394,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                                           context)
                                                       .primaryBackground,
                                                   fontSize: 16.0,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
@@ -467,6 +477,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ],
@@ -551,10 +562,20 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                               labelText: 'Mensaje...',
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: const BorderSide(
                                                   color: Color(0xFF882E7F),
@@ -604,7 +625,12 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                               ),
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                            minLines: null,
                                             validator: _model
                                                 .textController1Validator
                                                 .asValidator(context),
@@ -624,9 +650,17 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                       decoration: InputDecoration(
                                         labelText: 'Mensaje...',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium,
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium,
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
                                             color: Color(0xFF882E7F),
@@ -671,7 +705,12 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      minLines: null,
                                       validator: _model.textController2Validator
                                           .asValidator(context),
                                     ),
@@ -705,6 +744,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                                     .override(
                                                       fontFamily: 'Readex Pro',
                                                       color: Colors.white,
+                                                      letterSpacing: 0.0,
                                                     ),
                                             borderSide: const BorderSide(
                                               color: Colors.transparent,

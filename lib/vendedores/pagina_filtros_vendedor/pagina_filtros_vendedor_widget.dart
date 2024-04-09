@@ -110,6 +110,7 @@ class _PaginaFiltrosVendedorWidgetState
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 0.0,
                                   borderSide: const BorderSide(
@@ -136,6 +137,7 @@ class _PaginaFiltrosVendedorWidgetState
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 22.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ],
@@ -156,6 +158,7 @@ class _PaginaFiltrosVendedorWidgetState
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
                             fontSize: 20.0,
+                            letterSpacing: 0.0,
                           ),
                     ),
                   ],
@@ -182,12 +185,14 @@ class _PaginaFiltrosVendedorWidgetState
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -222,7 +227,9 @@ class _PaginaFiltrosVendedorWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 17.0,
+                                    letterSpacing: 0.0,
                                   ),
+                          minLines: null,
                           keyboardType: TextInputType.number,
                           validator: _model.textController1Validator
                               .asValidator(context),
@@ -237,6 +244,7 @@ class _PaginaFiltrosVendedorWidgetState
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               fontSize: 20.0,
+                              letterSpacing: 0.0,
                             ),
                       ),
                     ),
@@ -256,12 +264,14 @@ class _PaginaFiltrosVendedorWidgetState
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -296,7 +306,9 @@ class _PaginaFiltrosVendedorWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 17.0,
+                                    letterSpacing: 0.0,
                                   ),
+                          minLines: null,
                           keyboardType: TextInputType.number,
                           validator: _model.textController2Validator
                               .asValidator(context),
@@ -320,6 +332,7 @@ class _PaginaFiltrosVendedorWidgetState
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
                             fontSize: 20.0,
+                            letterSpacing: 0.0,
                           ),
                     ),
                   ],
@@ -346,12 +359,14 @@ class _PaginaFiltrosVendedorWidgetState
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -386,7 +401,9 @@ class _PaginaFiltrosVendedorWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 17.0,
+                                    letterSpacing: 0.0,
                                   ),
+                          minLines: null,
                           keyboardType: TextInputType.number,
                           validator: _model.textController3Validator
                               .asValidator(context),
@@ -401,6 +418,7 @@ class _PaginaFiltrosVendedorWidgetState
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               fontSize: 20.0,
+                              letterSpacing: 0.0,
                             ),
                       ),
                     ),
@@ -420,12 +438,14 @@ class _PaginaFiltrosVendedorWidgetState
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -460,7 +480,9 @@ class _PaginaFiltrosVendedorWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 17.0,
+                                    letterSpacing: 0.0,
                                   ),
+                          minLines: null,
                           keyboardType: TextInputType.number,
                           validator: _model.textController4Validator
                               .asValidator(context),
@@ -484,6 +506,7 @@ class _PaginaFiltrosVendedorWidgetState
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
                             fontSize: 20.0,
+                            letterSpacing: 0.0,
                           ),
                     ),
                   ],
@@ -510,12 +533,14 @@ class _PaginaFiltrosVendedorWidgetState
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -550,7 +575,9 @@ class _PaginaFiltrosVendedorWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 17.0,
+                                    letterSpacing: 0.0,
                                   ),
+                          minLines: null,
                           keyboardType: TextInputType.number,
                           validator: _model.textController5Validator
                               .asValidator(context),
@@ -565,6 +592,7 @@ class _PaginaFiltrosVendedorWidgetState
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               fontSize: 20.0,
+                              letterSpacing: 0.0,
                             ),
                       ),
                     ),
@@ -584,12 +612,14 @@ class _PaginaFiltrosVendedorWidgetState
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -624,7 +654,9 @@ class _PaginaFiltrosVendedorWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 17.0,
+                                    letterSpacing: 0.0,
                                   ),
+                          minLines: null,
                           keyboardType: TextInputType.number,
                           validator: _model.textController6Validator
                               .asValidator(context),
@@ -648,6 +680,7 @@ class _PaginaFiltrosVendedorWidgetState
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
                             fontSize: 20.0,
+                            letterSpacing: 0.0,
                           ),
                     ),
                   ],
@@ -674,12 +707,14 @@ class _PaginaFiltrosVendedorWidgetState
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -714,7 +749,9 @@ class _PaginaFiltrosVendedorWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 17.0,
+                                    letterSpacing: 0.0,
                                   ),
+                          minLines: null,
                           keyboardType: TextInputType.number,
                           validator: _model.textController7Validator
                               .asValidator(context),
@@ -729,6 +766,7 @@ class _PaginaFiltrosVendedorWidgetState
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               fontSize: 20.0,
+                              letterSpacing: 0.0,
                             ),
                       ),
                     ),
@@ -748,12 +786,14 @@ class _PaginaFiltrosVendedorWidgetState
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                 ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -788,7 +828,9 @@ class _PaginaFiltrosVendedorWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 17.0,
+                                    letterSpacing: 0.0,
                                   ),
+                          minLines: null,
                           keyboardType: TextInputType.number,
                           validator: _model.textController8Validator
                               .asValidator(context),
@@ -858,6 +900,7 @@ class _PaginaFiltrosVendedorWidgetState
                                                   .override(
                                                     fontFamily: 'Readex Pro',
                                                     color: const Color(0xFF096241),
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                               elevation: 3.0,
@@ -920,6 +963,7 @@ class _PaginaFiltrosVendedorWidgetState
                                                     .override(
                                                       fontFamily: 'Readex Pro',
                                                       color: const Color(0xFF620909),
+                                                      letterSpacing: 0.0,
                                                     ),
                                                 elevation: 3.0,
                                                 borderSide: const BorderSide(

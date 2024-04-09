@@ -123,6 +123,7 @@ class _MensajeSinInformacionWidgetState
                                 .override(
                                   fontFamily: 'Open Sans',
                                   fontSize: 26.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           tileColor: const Color(0x00FFFFFF),
@@ -145,6 +146,7 @@ class _MensajeSinInformacionWidgetState
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -166,6 +168,7 @@ class _MensajeSinInformacionWidgetState
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -187,6 +190,7 @@ class _MensajeSinInformacionWidgetState
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -208,6 +212,7 @@ class _MensajeSinInformacionWidgetState
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -229,6 +234,7 @@ class _MensajeSinInformacionWidgetState
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -250,6 +256,7 @@ class _MensajeSinInformacionWidgetState
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -307,6 +314,7 @@ class _MensajeSinInformacionWidgetState
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 0.0,
                                     borderSide: const BorderSide(
@@ -334,6 +342,7 @@ class _MensajeSinInformacionWidgetState
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 22.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ],
@@ -364,6 +373,7 @@ class _MensajeSinInformacionWidgetState
                                   fontFamily: 'Open Sans',
                                   color: const Color(0xFF882E7F),
                                   fontSize: 30.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                           ),
@@ -423,6 +433,7 @@ class _MensajeSinInformacionWidgetState
                                       fontFamily: 'Open Sans',
                                       color: const Color(0xFFD49ED2),
                                       fontSize: 18.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),

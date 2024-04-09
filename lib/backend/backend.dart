@@ -5,12 +5,16 @@ import '../auth/firebase_auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/util/firestore_util.dart';
 
-import 'schema/users_record.dart';
 import 'schema/productos_record.dart';
 import 'schema/ventas_record.dart';
 import 'schema/notificaciones_record.dart';
 import 'schema/calificaciones_record.dart';
 import 'schema/compras_record.dart';
+import 'schema/rol_record.dart';
+import 'schema/users_record.dart';
+import 'schema/provincia_record.dart';
+import 'schema/canton_record.dart';
+import 'schema/distrito_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,49 +22,16 @@ export 'schema/index.dart';
 export 'schema/util/firestore_util.dart';
 export 'schema/util/schema_util.dart';
 
-export 'schema/users_record.dart';
 export 'schema/productos_record.dart';
 export 'schema/ventas_record.dart';
 export 'schema/notificaciones_record.dart';
 export 'schema/calificaciones_record.dart';
 export 'schema/compras_record.dart';
-
-/// Functions to query UsersRecords (as a Stream and as a Future).
-Future<int> queryUsersRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      UsersRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<UsersRecord>> queryUsersRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      UsersRecord.collection,
-      UsersRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<UsersRecord>> queryUsersRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      UsersRecord.collection,
-      UsersRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
+export 'schema/rol_record.dart';
+export 'schema/users_record.dart';
+export 'schema/provincia_record.dart';
+export 'schema/canton_record.dart';
+export 'schema/distrito_record.dart';
 
 /// Functions to query ProductosRecords (as a Stream and as a Future).
 Future<int> queryProductosRecordCount({
@@ -247,6 +218,191 @@ Future<List<ComprasRecord>> queryComprasRecordOnce({
       singleRecord: singleRecord,
     );
 
+/// Functions to query RolRecords (as a Stream and as a Future).
+Future<int> queryRolRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      RolRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<RolRecord>> queryRolRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      RolRecord.collection,
+      RolRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<RolRecord>> queryRolRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      RolRecord.collection,
+      RolRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query UsersRecords (as a Stream and as a Future).
+Future<int> queryUsersRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      UsersRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<UsersRecord>> queryUsersRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      UsersRecord.collection,
+      UsersRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<UsersRecord>> queryUsersRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      UsersRecord.collection,
+      UsersRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ProvinciaRecords (as a Stream and as a Future).
+Future<int> queryProvinciaRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ProvinciaRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ProvinciaRecord>> queryProvinciaRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ProvinciaRecord.collection,
+      ProvinciaRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ProvinciaRecord>> queryProvinciaRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ProvinciaRecord.collection,
+      ProvinciaRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query CantonRecords (as a Stream and as a Future).
+Future<int> queryCantonRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      CantonRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<CantonRecord>> queryCantonRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      CantonRecord.collection,
+      CantonRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<CantonRecord>> queryCantonRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      CantonRecord.collection,
+      CantonRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query DistritoRecords (as a Stream and as a Future).
+Future<int> queryDistritoRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      DistritoRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<DistritoRecord>> queryDistritoRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      DistritoRecord.collection,
+      DistritoRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<DistritoRecord>> queryDistritoRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      DistritoRecord.collection,
+      DistritoRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
 Future<int> queryCollectionCount(
   Query collection, {
   Query Function(Query)? queryBuilder,
@@ -311,6 +467,21 @@ Future<List<T>> queryCollectionOnce<T>(
       .where((d) => d != null)
       .map((d) => d!)
       .toList());
+}
+
+extension FilterExtension on Filter {
+  Filter filterIn(String field, List? list) => (list?.isEmpty ?? true)
+      ? Filter(field, whereIn: null)
+      : Filter(field, whereIn: list);
+
+  Filter filterNotIn(String field, List? list) => (list?.isEmpty ?? true)
+      ? Filter(field, whereNotIn: null)
+      : Filter(field, whereNotIn: list);
+
+  Filter filterArrayContainsAny(String field, List? list) =>
+      (list?.isEmpty ?? true)
+          ? Filter(field, arrayContainsAny: null)
+          : Filter(field, arrayContainsAny: list);
 }
 
 extension QueryExtension on Query {

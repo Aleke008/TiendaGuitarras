@@ -40,8 +40,6 @@ class PaginaFiltrosVendedorModel
   TextEditingController? textController8;
   String? Function(BuildContext, String?)? textController8Validator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -72,8 +70,4 @@ class PaginaFiltrosVendedorModel
     textFieldFocusNode8?.dispose();
     textController8?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

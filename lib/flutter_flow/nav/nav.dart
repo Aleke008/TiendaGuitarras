@@ -404,8 +404,12 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+    );
   }
 }
 

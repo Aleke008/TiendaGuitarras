@@ -118,6 +118,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -139,6 +140,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -160,6 +162,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -181,6 +184,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -202,6 +206,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -223,6 +228,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -253,6 +259,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                 .override(
                                   fontFamily: 'Open Sans',
                                   fontSize: 26.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           tileColor: const Color(0x00FFFFFF),
@@ -314,6 +321,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             color: Colors.white,
+                                            letterSpacing: 0.0,
                                           ),
                                       elevation: 0.0,
                                       borderSide: const BorderSide(
@@ -378,6 +386,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             color: Colors.white,
+                                            letterSpacing: 0.0,
                                           ),
                                       elevation: 0.0,
                                       borderSide: const BorderSide(
@@ -416,11 +425,13 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFF707070),
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                           alignLabelWithHint: false,
                           hintStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
                                     fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
                                     lineHeight: 2.0,
                                   ),
                           enabledBorder: OutlineInputBorder(
@@ -460,7 +471,9 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               color: Colors.black,
+                              letterSpacing: 0.0,
                             ),
+                        minLines: null,
                         validator: _model.txtBuscadorControllerValidator
                             .asValidator(context),
                       ),
@@ -491,6 +504,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               fontSize: 20.0,
+                              letterSpacing: 0.0,
                             ),
                       ),
                     ],
@@ -512,6 +526,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 20.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                       ],
@@ -647,6 +662,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
+                                                            letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                           ),
@@ -660,10 +676,14 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                                   Flexible(
                                                     child: Text(
                                                       'Estado: Nueva',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -674,10 +694,14 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                                   Flexible(
                                                     child: Text(
                                                       'Categoría:',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -688,10 +712,14 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                                   Flexible(
                                                     child: Text(
                                                       'Modelo:',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -702,10 +730,14 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                                   Flexible(
                                                     child: Text(
                                                       'Vendedor:',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -728,6 +760,8 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -767,6 +801,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 20.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                       ],
@@ -895,6 +930,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -910,7 +946,12 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                                     'Estado: Nueva',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                               ],
@@ -923,7 +964,12 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                                     'Categoría:',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                               ],
@@ -936,7 +982,12 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                                     'Modelo:',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                               ],
@@ -949,7 +1000,12 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                                     'Vendedor:',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                               ],
@@ -970,6 +1026,7 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
+                                                            letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                           ),

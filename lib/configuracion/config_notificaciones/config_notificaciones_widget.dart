@@ -86,6 +86,7 @@ class _ConfigNotificacionesWidgetState
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 0.0,
                                     borderSide: const BorderSide(
@@ -113,6 +114,7 @@ class _ConfigNotificacionesWidgetState
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 22.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ],
@@ -147,6 +149,7 @@ class _ConfigNotificacionesWidgetState
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           fontSize: 20.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
@@ -162,6 +165,7 @@ class _ConfigNotificacionesWidgetState
                                           fontFamily: 'Readex Pro',
                                           color: const Color(0xFF707070),
                                           fontSize: 16.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
@@ -183,7 +187,7 @@ class _ConfigNotificacionesWidgetState
                                 setState(() => _model.switchValue1 = newValue);
                               },
                               activeColor: const Color(0xFF882E7F),
-                              activeTrackColor: const Color(0xFF882E7F),
+                              activeTrackColor: const Color(0xFFD49ED2),
                               inactiveTrackColor:
                                   FlutterFlowTheme.of(context).alternate,
                               inactiveThumbColor: const Color(0xFFD49ED2),
@@ -225,6 +229,7 @@ class _ConfigNotificacionesWidgetState
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           fontSize: 20.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
@@ -241,6 +246,7 @@ class _ConfigNotificacionesWidgetState
                                             fontFamily: 'Readex Pro',
                                             color: const Color(0xFF707070),
                                             fontSize: 16.0,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),
@@ -267,7 +273,7 @@ class _ConfigNotificacionesWidgetState
                                       () => _model.switchValue2 = newValue);
                                 },
                                 activeColor: const Color(0xFF882E7F),
-                                activeTrackColor: const Color(0xFF882E7F),
+                                activeTrackColor: const Color(0xFFD49ED2),
                                 inactiveTrackColor:
                                     FlutterFlowTheme.of(context).alternate,
                                 inactiveThumbColor: const Color(0xFFD49ED2),
@@ -310,6 +316,7 @@ class _ConfigNotificacionesWidgetState
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           fontSize: 20.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
@@ -326,6 +333,7 @@ class _ConfigNotificacionesWidgetState
                                             fontFamily: 'Readex Pro',
                                             color: const Color(0xFF707070),
                                             fontSize: 16.0,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),
@@ -352,7 +360,7 @@ class _ConfigNotificacionesWidgetState
                                       () => _model.switchValue3 = newValue);
                                 },
                                 activeColor: const Color(0xFF882E7F),
-                                activeTrackColor: const Color(0xFF882E7F),
+                                activeTrackColor: const Color(0xFFD49ED2),
                                 inactiveTrackColor:
                                     FlutterFlowTheme.of(context).alternate,
                                 inactiveThumbColor: const Color(0xFFD49ED2),

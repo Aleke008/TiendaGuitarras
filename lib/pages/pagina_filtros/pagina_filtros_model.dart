@@ -36,8 +36,6 @@ class PaginaFiltrosModel extends FlutterFlowModel<PaginaFiltrosWidget> {
   List<String>? dropDownValue4;
   FormFieldController<List<String>>? dropDownValueController4;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -56,8 +54,4 @@ class PaginaFiltrosModel extends FlutterFlowModel<PaginaFiltrosWidget> {
     textFieldFocusNode2?.dispose();
     textController4?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

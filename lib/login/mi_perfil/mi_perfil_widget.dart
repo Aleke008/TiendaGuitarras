@@ -121,6 +121,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                                 .override(
                                   fontFamily: 'Open Sans',
                                   fontSize: 26.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           tileColor: const Color(0x00FFFFFF),
@@ -143,6 +144,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -164,6 +166,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -185,6 +188,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -206,6 +210,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -227,6 +232,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -248,6 +254,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -304,6 +311,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 0.0,
                                   borderSide: const BorderSide(
@@ -330,6 +338,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 22.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ],
@@ -381,6 +390,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             fontSize: 18.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                           ),
                                     ),
@@ -402,6 +412,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                                           fontFamily: 'Readex Pro',
                                           color: const Color(0xFF707070),
                                           fontSize: 16.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
@@ -467,6 +478,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                                                     fontFamily: 'Readex Pro',
                                                     color: Colors.white,
                                                     fontSize: 18.0,
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                               elevation: 0.0,
@@ -508,6 +520,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                                                     fontFamily: 'Readex Pro',
                                                     color: Colors.white,
                                                     fontSize: 18.0,
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                               elevation: 0.0,
@@ -559,6 +572,7 @@ class _MiPerfilWidgetState extends State<MiPerfilWidget> {
                                             fontFamily: 'Readex Pro',
                                             color: Colors.white,
                                             fontSize: 18.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                           ),
                                       elevation: 0.0,

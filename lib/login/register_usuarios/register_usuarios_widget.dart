@@ -95,6 +95,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 0.0,
                                   borderSide: const BorderSide(
@@ -121,6 +122,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 22.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ],
@@ -173,6 +175,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFFA4A4A4),
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                               alignLabelWithHint: false,
                               hintStyle: FlutterFlowTheme.of(context)
@@ -181,6 +184,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFF515151),
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -217,7 +221,9 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                   fontFamily: 'Readex Pro',
                                   color: Colors.black,
                                   fontSize: 16.0,
+                                  letterSpacing: 0.0,
                                 ),
+                            minLines: null,
                             validator: _model.txtCorreoControllerValidator
                                 .asValidator(context),
                           ),
@@ -250,6 +256,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFFA4A4A4),
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                               alignLabelWithHint: false,
                               hintStyle: FlutterFlowTheme.of(context)
@@ -258,6 +265,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFF515151),
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -308,7 +316,9 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                   fontFamily: 'Readex Pro',
                                   color: Colors.black,
                                   fontSize: 16.0,
+                                  letterSpacing: 0.0,
                                 ),
+                            minLines: null,
                             validator: _model.txtContrasenaControllerValidator
                                 .asValidator(context),
                           ),
@@ -341,6 +351,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFFA4A4A4),
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                               alignLabelWithHint: false,
                               hintStyle: FlutterFlowTheme.of(context)
@@ -349,6 +360,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFF515151),
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -399,7 +411,9 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                   fontFamily: 'Readex Pro',
                                   color: Colors.black,
                                   fontSize: 16.0,
+                                  letterSpacing: 0.0,
                                 ),
+                            minLines: null,
                             validator: _model.txtContrasena2ControllerValidator
                                 .asValidator(context),
                           ),
@@ -416,65 +430,74 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          GoRouter.of(context).prepareAuthEvent();
-                          if (_model.txtContrasenaController.text !=
-                              _model.txtContrasena2Controller.text) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  'Passwords don\'t match!',
-                                ),
-                              ),
-                            );
-                            return;
-                          }
-
-                          final user = await authManager.createAccountWithEmail(
-                            context,
-                            _model.txtCorreoController.text,
-                            _model.txtContrasenaController.text,
-                          );
-                          if (user == null) {
-                            return;
-                          }
-
-                          await UsersRecord.collection
-                              .doc(user.uid)
-                              .update(createUsersRecordData(
-                                email: _model.txtCorreoController.text,
-                              ));
-
-                          context.goNamedAuth('paginaIniciar', context.mounted);
-                        },
-                        text: 'Crear Cuenta',
-                        icon: const Icon(
-                          Icons.person_add_alt_rounded,
-                          color: Color(0xFF882E7F),
-                          size: 35.0,
-                        ),
-                        options: FFButtonOptions(
-                          width: 300.0,
-                          height: 45.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: const Color(0xFFD49ED2),
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w600,
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            GoRouter.of(context).prepareAuthEvent();
+                            if (_model.txtContrasenaController.text !=
+                                _model.txtContrasena2Controller.text) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Passwords don\'t match!',
                                   ),
-                          elevation: 0.0,
-                          borderSide: const BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                                ),
+                              );
+                              return;
+                            }
+
+                            final user =
+                                await authManager.createAccountWithEmail(
+                              context,
+                              _model.txtCorreoController.text,
+                              _model.txtContrasenaController.text,
+                            );
+                            if (user == null) {
+                              return;
+                            }
+
+                            await UsersRecord.collection
+                                .doc(user.uid)
+                                .update(createUsersRecordData(
+                                  email: _model.txtCorreoController.text,
+                                  rol: 'usuario',
+                                ));
+
+                            context.goNamedAuth(
+                                'paginaIniciar', context.mounted);
+                          },
+                          text: 'Crear cuenta',
+                          icon: const Icon(
+                            Icons.person_add_alt_rounded,
+                            color: Color(0xFF882E7F),
+                            size: 35.0,
                           ),
-                          borderRadius: BorderRadius.circular(10.0),
+                          options: FFButtonOptions(
+                            width: 300.0,
+                            height: 45.0,
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: const Color(0xFFD49ED2),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  fontSize: 18.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                            elevation: 0.0,
+                            borderSide: const BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
                         ),
                       ),
                     ),
@@ -490,6 +513,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Readex Pro',
                           fontSize: 16.0,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
                         ),
                   ),
@@ -520,6 +544,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                 fontFamily: 'Readex Pro',
                                 color: const Color(0xFF882E7F),
                                 fontSize: 18.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w600,
                               ),
                       elevation: 0.0,
@@ -561,6 +586,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
                                   fontSize: 18.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                         elevation: 0.0,
@@ -601,6 +627,7 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                 fontFamily: 'Readex Pro',
                                 color: Colors.white,
                                 fontSize: 18.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
                               ),
                       elevation: 0.0,
@@ -612,6 +639,14 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                     ),
                   ),
                 ],
+              ),
+              const Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [],
+                ),
               ),
             ],
           ),

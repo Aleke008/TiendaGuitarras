@@ -93,6 +93,7 @@ class _PaginaProductoDetallesWidgetState
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             color: Colors.white,
+                                            letterSpacing: 0.0,
                                           ),
                                       elevation: 0.0,
                                       borderSide: const BorderSide(
@@ -119,6 +120,7 @@ class _PaginaProductoDetallesWidgetState
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
                                           fontSize: 22.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
@@ -287,6 +289,7 @@ class _PaginaProductoDetallesWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 25.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),
@@ -307,6 +310,7 @@ class _PaginaProductoDetallesWidgetState
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFF8A8A8A),
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                       ),
@@ -326,6 +330,7 @@ class _PaginaProductoDetallesWidgetState
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFF8A8A8A),
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                       ),
@@ -345,6 +350,7 @@ class _PaginaProductoDetallesWidgetState
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFF8A8A8A),
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                       ),
@@ -363,6 +369,7 @@ class _PaginaProductoDetallesWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 20.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),
@@ -383,6 +390,7 @@ class _PaginaProductoDetallesWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),
@@ -406,6 +414,7 @@ class _PaginaProductoDetallesWidgetState
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 15.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                           ),
@@ -426,6 +435,7 @@ class _PaginaProductoDetallesWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 25.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),
@@ -565,6 +575,8 @@ class _PaginaProductoDetallesWidgetState
                                                                 .override(
                                                                   fontFamily:
                                                                       'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -581,6 +593,7 @@ class _PaginaProductoDetallesWidgetState
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
+                                                            letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                           ),
@@ -612,6 +625,8 @@ class _PaginaProductoDetallesWidgetState
                                                                 .override(
                                                                   fontFamily:
                                                                       'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -657,6 +672,8 @@ class _PaginaProductoDetallesWidgetState
                                                                   .override(
                                                                     fontFamily:
                                                                         'Readex Pro',
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
@@ -680,6 +697,8 @@ class _PaginaProductoDetallesWidgetState
                                                                     'Readex Pro',
                                                                 color: const Color(
                                                                     0xFF8A8A8A),
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
@@ -699,6 +718,8 @@ class _PaginaProductoDetallesWidgetState
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
@@ -716,6 +737,8 @@ class _PaginaProductoDetallesWidgetState
                                                                     'Readex Pro',
                                                                 color: const Color(
                                                                     0xFF8A8A8A),
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
@@ -735,6 +758,8 @@ class _PaginaProductoDetallesWidgetState
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
@@ -750,6 +775,8 @@ class _PaginaProductoDetallesWidgetState
                                                                     'Readex Pro',
                                                                 color: const Color(
                                                                     0xFF8A8A8A),
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
@@ -804,6 +831,7 @@ class _PaginaProductoDetallesWidgetState
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                             elevation: 3.0,
                             borderSide: const BorderSide(

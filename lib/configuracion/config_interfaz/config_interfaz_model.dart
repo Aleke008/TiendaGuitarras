@@ -9,8 +9,6 @@ class ConfigInterfazModel extends FlutterFlowModel<ConfigInterfazWidget> {
   // State field(s) for Switch widget.
   bool? switchValue;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -18,8 +16,4 @@ class ConfigInterfazModel extends FlutterFlowModel<ConfigInterfazWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

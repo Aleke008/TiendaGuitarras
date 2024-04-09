@@ -123,6 +123,7 @@ class _MensajesConfirmacionWidgetState
                                 .override(
                                   fontFamily: 'Open Sans',
                                   fontSize: 26.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           tileColor: const Color(0x00FFFFFF),
@@ -145,6 +146,7 @@ class _MensajesConfirmacionWidgetState
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -166,6 +168,7 @@ class _MensajesConfirmacionWidgetState
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -187,6 +190,7 @@ class _MensajesConfirmacionWidgetState
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -208,6 +212,7 @@ class _MensajesConfirmacionWidgetState
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -229,6 +234,7 @@ class _MensajesConfirmacionWidgetState
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -250,6 +256,7 @@ class _MensajesConfirmacionWidgetState
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -307,6 +314,7 @@ class _MensajesConfirmacionWidgetState
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 0.0,
                                     borderSide: const BorderSide(
@@ -334,6 +342,7 @@ class _MensajesConfirmacionWidgetState
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 22.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ],
@@ -399,7 +408,11 @@ class _MensajesConfirmacionWidgetState
                                       Text(
                                         'Juan Perez Gómez',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                     ],
                                   ),
@@ -410,9 +423,13 @@ class _MensajesConfirmacionWidgetState
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'Hola Byron, gracias por el interes en el producto...',
+                                          'Hola Byron, gracias por el interés en el producto...',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
                                       ),
                                     ],
@@ -440,6 +457,7 @@ class _MensajesConfirmacionWidgetState
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],

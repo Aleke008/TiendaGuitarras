@@ -46,11 +46,6 @@ class ProductosRecord extends FirestoreRecord {
   DateTime? get fechaPublicacion => _fechaPublicacion;
   bool hasFechaPublicacion() => _fechaPublicacion != null;
 
-  // "categoria" field.
-  String? _categoria;
-  String get categoria => _categoria ?? '';
-  bool hasCategoria() => _categoria != null;
-
   // "marca" field.
   String? _marca;
   String get marca => _marca ?? '';
@@ -61,6 +56,16 @@ class ProductosRecord extends FirestoreRecord {
   String get modelo => _modelo ?? '';
   bool hasModelo() => _modelo != null;
 
+  // "categorias" field.
+  List<String>? _categorias;
+  List<String> get categorias => _categorias ?? const [];
+  bool hasCategorias() => _categorias != null;
+
+  // "precioOferta" field.
+  double? _precioOferta;
+  double get precioOferta => _precioOferta ?? 0.0;
+  bool hasPrecioOferta() => _precioOferta != null;
+
   void _initializeFields() {
     _nombre = snapshotData['nombre'] as String?;
     _descripcion = snapshotData['descripcion'] as String?;
@@ -68,9 +73,10 @@ class ProductosRecord extends FirestoreRecord {
     _imagen = snapshotData['imagen'] as String?;
     _estado = snapshotData['estado'] as String?;
     _fechaPublicacion = snapshotData['fechaPublicacion'] as DateTime?;
-    _categoria = snapshotData['categoria'] as String?;
     _marca = snapshotData['marca'] as String?;
     _modelo = snapshotData['modelo'] as String?;
+    _categorias = getDataList(snapshotData['categorias']);
+    _precioOferta = castToType<double>(snapshotData['precioOferta']);
   }
 
   static CollectionReference get collection =>
@@ -114,9 +120,9 @@ Map<String, dynamic> createProductosRecordData({
   String? imagen,
   String? estado,
   DateTime? fechaPublicacion,
-  String? categoria,
   String? marca,
   String? modelo,
+  double? precioOferta,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -126,9 +132,9 @@ Map<String, dynamic> createProductosRecordData({
       'imagen': imagen,
       'estado': estado,
       'fechaPublicacion': fechaPublicacion,
-      'categoria': categoria,
       'marca': marca,
       'modelo': modelo,
+      'precioOferta': precioOferta,
     }.withoutNulls,
   );
 
@@ -140,15 +146,17 @@ class ProductosRecordDocumentEquality implements Equality<ProductosRecord> {
 
   @override
   bool equals(ProductosRecord? e1, ProductosRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.nombre == e2?.nombre &&
         e1?.descripcion == e2?.descripcion &&
         e1?.precio == e2?.precio &&
         e1?.imagen == e2?.imagen &&
         e1?.estado == e2?.estado &&
         e1?.fechaPublicacion == e2?.fechaPublicacion &&
-        e1?.categoria == e2?.categoria &&
         e1?.marca == e2?.marca &&
-        e1?.modelo == e2?.modelo;
+        e1?.modelo == e2?.modelo &&
+        listEquality.equals(e1?.categorias, e2?.categorias) &&
+        e1?.precioOferta == e2?.precioOferta;
   }
 
   @override
@@ -159,9 +167,10 @@ class ProductosRecordDocumentEquality implements Equality<ProductosRecord> {
         e?.imagen,
         e?.estado,
         e?.fechaPublicacion,
-        e?.categoria,
         e?.marca,
-        e?.modelo
+        e?.modelo,
+        e?.categorias,
+        e?.precioOferta
       ]);
 
   @override

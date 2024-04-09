@@ -123,6 +123,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                 .override(
                                   fontFamily: 'Open Sans',
                                   fontSize: 26.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           tileColor: const Color(0x00FFFFFF),
@@ -145,6 +146,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -166,6 +168,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -187,6 +190,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -208,6 +212,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -229,6 +234,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -250,6 +256,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -306,6 +313,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 0.0,
                                   borderSide: const BorderSide(
@@ -332,6 +340,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 22.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ],
@@ -383,6 +392,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             fontSize: 18.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                           ),
                                     ),
@@ -404,6 +414,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                           fontFamily: 'Readex Pro',
                                           color: const Color(0xFF707070),
                                           fontSize: 16.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
@@ -469,6 +480,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                                     fontFamily: 'Readex Pro',
                                                     color: Colors.white,
                                                     fontSize: 18.0,
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                               elevation: 0.0,
@@ -510,6 +522,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                                     fontFamily: 'Readex Pro',
                                                     color: Colors.white,
                                                     fontSize: 18.0,
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                               elevation: 0.0,
@@ -536,8 +549,12 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                 children: [
                                   Text(
                                     'Zona de atencion de clientes:',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
@@ -550,8 +567,12 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                 children: [
                                   Text(
                                     'Provincia',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
@@ -582,7 +603,11 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                       width: 300.0,
                                       height: 50.0,
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                       hintText: 'Please select...',
                                       icon: const Icon(
                                         Icons.keyboard_arrow_down_sharp,
@@ -614,8 +639,12 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                 children: [
                                   Text(
                                     'Cantón',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
@@ -646,7 +675,11 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                       width: 300.0,
                                       height: 50.0,
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                       hintText: 'Please select...',
                                       icon: const Icon(
                                         Icons.keyboard_arrow_down_sharp,
@@ -678,8 +711,12 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                 children: [
                                   Text(
                                     'Distrito',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
@@ -710,7 +747,11 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                       width: 300.0,
                                       height: 50.0,
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                       hintText: 'Please select...',
                                       icon: const Icon(
                                         Icons.keyboard_arrow_down_sharp,
@@ -766,6 +807,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                             fontFamily: 'Readex Pro',
                                             color: Colors.white,
                                             fontSize: 18.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                           ),
                                       elevation: 0.0,
@@ -795,6 +837,7 @@ class _MiPerfilVendedorWidgetState extends State<MiPerfilVendedorWidget> {
                                             fontFamily: 'Readex Pro',
                                             color: const Color(0xFF882E7F),
                                             fontSize: 16.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                           ),
                                     ),

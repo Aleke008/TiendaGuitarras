@@ -21,8 +21,6 @@ class RegisterUsuariosModel extends FlutterFlowModel<RegisterUsuariosWidget> {
   late bool txtContrasena2Visibility;
   String? Function(BuildContext, String?)? txtContrasena2ControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     txtContrasenaVisibility = false;
@@ -41,8 +39,4 @@ class RegisterUsuariosModel extends FlutterFlowModel<RegisterUsuariosWidget> {
     txtContrasena2FocusNode?.dispose();
     txtContrasena2Controller?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -1,9 +1,11 @@
+import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'registro_vendedor_model.dart';
@@ -123,6 +125,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                 .override(
                                   fontFamily: 'Open Sans',
                                   fontSize: 26.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                           tileColor: const Color(0x00FFFFFF),
@@ -145,6 +148,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -166,6 +170,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -187,6 +192,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -208,6 +214,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -229,6 +236,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -250,6 +258,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 26.0,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         tileColor: const Color(0x00FFFFFF),
@@ -306,6 +315,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 0.0,
                                   borderSide: const BorderSide(
@@ -332,6 +342,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 22.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ],
@@ -383,6 +394,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             fontSize: 18.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                           ),
                                     ),
@@ -404,6 +416,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                           fontFamily: 'Readex Pro',
                                           color: const Color(0xFF707070),
                                           fontSize: 16.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
@@ -445,8 +458,79 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 5.0),
                                           child: FFButtonWidget(
-                                            onPressed: () {
-                                              print('btnSubirFoto pressed ...');
+                                            onPressed: () async {
+                                              final selectedMedia =
+                                                  await selectMedia(
+                                                mediaSource:
+                                                    MediaSource.photoGallery,
+                                                multiImage: false,
+                                              );
+                                              if (selectedMedia != null &&
+                                                  selectedMedia.every((m) =>
+                                                      validateFileFormat(
+                                                          m.storagePath,
+                                                          context))) {
+                                                setState(() => _model
+                                                    .isDataUploading = true);
+                                                var selectedUploadedFiles =
+                                                    <FFUploadedFile>[];
+
+                                                var downloadUrls = <String>[];
+                                                try {
+                                                  selectedUploadedFiles =
+                                                      selectedMedia
+                                                          .map((m) =>
+                                                              FFUploadedFile(
+                                                                name: m
+                                                                    .storagePath
+                                                                    .split('/')
+                                                                    .last,
+                                                                bytes: m.bytes,
+                                                                height: m
+                                                                    .dimensions
+                                                                    ?.height,
+                                                                width: m
+                                                                    .dimensions
+                                                                    ?.width,
+                                                                blurHash:
+                                                                    m.blurHash,
+                                                              ))
+                                                          .toList();
+
+                                                  downloadUrls =
+                                                      (await Future.wait(
+                                                    selectedMedia.map(
+                                                      (m) async =>
+                                                          await uploadData(
+                                                              m.storagePath,
+                                                              m.bytes),
+                                                    ),
+                                                  ))
+                                                          .where(
+                                                              (u) => u != null)
+                                                          .map((u) => u!)
+                                                          .toList();
+                                                } finally {
+                                                  _model.isDataUploading =
+                                                      false;
+                                                }
+                                                if (selectedUploadedFiles
+                                                            .length ==
+                                                        selectedMedia.length &&
+                                                    downloadUrls.length ==
+                                                        selectedMedia.length) {
+                                                  setState(() {
+                                                    _model.uploadedLocalFile =
+                                                        selectedUploadedFiles
+                                                            .first;
+                                                    _model.uploadedFileUrl =
+                                                        downloadUrls.first;
+                                                  });
+                                                } else {
+                                                  setState(() {});
+                                                  return;
+                                                }
+                                              }
                                             },
                                             text: 'Subir foto',
                                             icon: const FaIcon(
@@ -469,6 +553,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                                     fontFamily: 'Readex Pro',
                                                     color: Colors.white,
                                                     fontSize: 18.0,
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                               elevation: 0.0,
@@ -510,6 +595,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                                     fontFamily: 'Readex Pro',
                                                     color: Colors.white,
                                                     fontSize: 18.0,
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                               elevation: 0.0,
@@ -536,8 +622,12 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                 children: [
                                   Text(
                                     'Zona de atencion de clientes:',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
@@ -550,8 +640,12 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                 children: [
                                   Text(
                                     'Provincia',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
@@ -582,7 +676,11 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                       width: 300.0,
                                       height: 50.0,
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                       hintText: 'Please select...',
                                       icon: const Icon(
                                         Icons.keyboard_arrow_down_sharp,
@@ -614,8 +712,12 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                 children: [
                                   Text(
                                     'Cantón',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
@@ -646,7 +748,11 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                       width: 300.0,
                                       height: 50.0,
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                       hintText: 'Please select...',
                                       icon: const Icon(
                                         Icons.keyboard_arrow_down_sharp,
@@ -678,8 +784,12 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                 children: [
                                   Text(
                                     'Distrito',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
@@ -710,7 +820,11 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                       width: 300.0,
                                       height: 50.0,
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                       hintText: 'Please select...',
                                       icon: const Icon(
                                         Icons.keyboard_arrow_down_sharp,
@@ -766,6 +880,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                             fontFamily: 'Readex Pro',
                                             color: Colors.white,
                                             fontSize: 18.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                           ),
                                       elevation: 0.0,

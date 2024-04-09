@@ -94,6 +94,7 @@ class _PaginaInformacionVendedorWidgetState
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             color: Colors.white,
+                                            letterSpacing: 0.0,
                                           ),
                                       elevation: 0.0,
                                       borderSide: const BorderSide(
@@ -121,6 +122,7 @@ class _PaginaInformacionVendedorWidgetState
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
                                         fontSize: 22.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ],
@@ -156,6 +158,7 @@ class _PaginaInformacionVendedorWidgetState
                                           fontFamily: 'Readex Pro',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
@@ -287,6 +290,7 @@ class _PaginaInformacionVendedorWidgetState
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
+                                                            letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                           ),
@@ -302,6 +306,7 @@ class _PaginaInformacionVendedorWidgetState
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -330,6 +335,7 @@ class _PaginaInformacionVendedorWidgetState
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
+                                                            letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                           ),
@@ -373,6 +379,8 @@ class _PaginaInformacionVendedorWidgetState
                                                                 .override(
                                                                   fontFamily:
                                                                       'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -397,6 +405,8 @@ class _PaginaInformacionVendedorWidgetState
                                                                       'Readex Pro',
                                                                   color: const Color(
                                                                       0xFF8A8A8A),
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -417,6 +427,8 @@ class _PaginaInformacionVendedorWidgetState
                                                                 .override(
                                                                   fontFamily:
                                                                       'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -435,6 +447,8 @@ class _PaginaInformacionVendedorWidgetState
                                                                       'Readex Pro',
                                                                   color: const Color(
                                                                       0xFF8A8A8A),
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -455,6 +469,8 @@ class _PaginaInformacionVendedorWidgetState
                                                                 .override(
                                                                   fontFamily:
                                                                       'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -471,6 +487,8 @@ class _PaginaInformacionVendedorWidgetState
                                                                       'Readex Pro',
                                                                   color: const Color(
                                                                       0xFF8A8A8A),
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -511,6 +529,7 @@ class _PaginaInformacionVendedorWidgetState
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 20.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                         ],
@@ -639,6 +658,8 @@ class _PaginaInformacionVendedorWidgetState
                                                                 .override(
                                                                   fontFamily:
                                                                       'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -657,7 +678,13 @@ class _PaginaInformacionVendedorWidgetState
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       ),
                                                     ),
                                                   ],
@@ -672,7 +699,13 @@ class _PaginaInformacionVendedorWidgetState
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       ),
                                                     ),
                                                   ],
@@ -687,7 +720,13 @@ class _PaginaInformacionVendedorWidgetState
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       ),
                                                     ),
                                                   ],
@@ -702,7 +741,13 @@ class _PaginaInformacionVendedorWidgetState
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       ),
                                                     ),
                                                   ],
@@ -724,6 +769,8 @@ class _PaginaInformacionVendedorWidgetState
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
@@ -764,6 +811,7 @@ class _PaginaInformacionVendedorWidgetState
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 20.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                         ],
@@ -883,6 +931,7 @@ class _PaginaInformacionVendedorWidgetState
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
+                                                            letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                           ),
@@ -896,10 +945,14 @@ class _PaginaInformacionVendedorWidgetState
                                                   Flexible(
                                                     child: Text(
                                                       'Estado: Nueva',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -910,10 +963,14 @@ class _PaginaInformacionVendedorWidgetState
                                                   Flexible(
                                                     child: Text(
                                                       'Categoría:',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -924,10 +981,14 @@ class _PaginaInformacionVendedorWidgetState
                                                   Flexible(
                                                     child: Text(
                                                       'Modelo:',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -938,10 +999,14 @@ class _PaginaInformacionVendedorWidgetState
                                                   Flexible(
                                                     child: Text(
                                                       'Vendedor:',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -964,6 +1029,8 @@ class _PaginaInformacionVendedorWidgetState
                                                                 .override(
                                                                   fontFamily:
                                                                       'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,

@@ -7,6 +7,11 @@ class RegistroVendedorModel extends FlutterFlowModel<RegistroVendedorWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
+
   // State field(s) for DropDown widget.
   String? dropDownValue1;
   FormFieldController<String>? dropDownValueController1;
@@ -17,8 +22,6 @@ class RegistroVendedorModel extends FlutterFlowModel<RegistroVendedorWidget> {
   String? dropDownValue3;
   FormFieldController<String>? dropDownValueController3;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -26,8 +29,4 @@ class RegistroVendedorModel extends FlutterFlowModel<RegistroVendedorWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }
