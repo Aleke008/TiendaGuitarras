@@ -418,136 +418,116 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
               Expanded(
                 child: Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
-                  child: StreamBuilder<List<MensajesRecord>>(
-                    stream: queryMensajesRecord(
-                      queryBuilder: (mensajesRecord) =>
-                          mensajesRecord.orderBy('created_time'),
-                      limit: 255,
+                      const EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 0.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFD49ED2),
+                      borderRadius: BorderRadius.circular(25.0),
                     ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
-                              ),
-                            ),
-                          ),
-                        );
-                      }
-                      List<MensajesRecord> listViewMensajesRecordList =
-                          snapshot.data!;
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: listViewMensajesRecordList.length,
-                        itemBuilder: (context, listViewIndex) {
-                          final listViewMensajesRecord =
-                              listViewMensajesRecordList[listViewIndex];
-                          return Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 50.0, 16.0),
-                            child: Container(
-                              width: 100.0,
-                              decoration: const BoxDecoration(
-                                color: Color(0xFF882E7F),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 4.0,
-                                    color: Color(0x33000000),
-                                    offset: Offset(
-                                      0.0,
-                                      2.0,
-                                    ),
-                                  )
-                                ],
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(15.0),
-                                  bottomRight: Radius.circular(15.0),
-                                  topLeft: Radius.circular(0.0),
-                                  topRight: Radius.circular(15.0),
+                    child: Padding(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          16.0, 16.0, 16.0, 16.0),
+                      child: StreamBuilder<List<MensajesRecord>>(
+                        stream: queryMensajesRecord(
+                          queryBuilder: (mensajesRecord) =>
+                              mensajesRecord.orderBy('created_time'),
+                          limit: 255,
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
                                 ),
                               ),
-                              child: Padding(
+                            );
+                          }
+                          List<MensajesRecord> listViewMensajesRecordList =
+                              snapshot.data!;
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: listViewMensajesRecordList.length,
+                            itemBuilder: (context, listViewIndex) {
+                              final listViewMensajesRecord =
+                                  listViewMensajesRecordList[listViewIndex];
+                              return Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 15.0, 15.0, 15.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Flexible(
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 30.0),
-                                                  child: Text(
-                                                    listViewMensajesRecord
-                                                        .mensaje,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
+                                    0.0, 0.0, 50.0, 16.0),
+                                child: Container(
+                                  width: 100.0,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFF882E7F),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 4.0,
+                                        color: Color(0x33000000),
+                                        offset: Offset(
+                                          0.0,
+                                          2.0,
+                                        ),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(15.0),
+                                      bottomRight: Radius.circular(15.0),
+                                      topLeft: Radius.circular(0.0),
+                                      topRight: Radius.circular(15.0),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        15.0, 15.0, 15.0, 15.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              const Expanded(
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Icon(
-                                                      Icons.delete_sweep,
-                                                      color: Color(0xFFFF1818),
-                                                      size: 24.0,
-                                                    ),
-                                                    Padding(
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Flexible(
+                                                    child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  15.0,
                                                                   0.0,
                                                                   0.0,
-                                                                  0.0),
-                                                      child: Icon(
-                                                        Icons.edit,
-                                                        color:
-                                                            Color(0xFFD49ED2),
-                                                        size: 24.0,
+                                                                  0.0,
+                                                                  30.0),
+                                                      child: Text(
+                                                        listViewMensajesRecord
+                                                            .mensaje,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
                                               Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -555,22 +535,63 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                8.0, 0.0),
-                                                    child: Text(
-                                                      valueOrDefault<String>(
-                                                        dateTimeFormat(
-                                                            'd/M/y',
-                                                            listViewMensajesRecord
-                                                                .createdTime),
-                                                        'hace un momento',
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                  const Expanded(
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Icon(
+                                                          Icons.delete_sweep,
+                                                          color:
+                                                              Color(0xFFFF1818),
+                                                          size: 24.0,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      15.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Icon(
+                                                            Icons.edit,
+                                                            color: Color(
+                                                                0xFFD49ED2),
+                                                            size: 24.0,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    8.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          valueOrDefault<String>(
+                                                            dateTimeFormat(
+                                                                'd/M/y',
+                                                                listViewMensajesRecord
+                                                                    .createdTime),
+                                                            'hace un momento',
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
@@ -581,55 +602,58 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
-                                                    ),
-                                                  ),
-                                                  ToggleIcon(
-                                                    onPressed: () async {
-                                                      await listViewMensajesRecord
-                                                          .reference
-                                                          .update({
-                                                        ...mapToFirestore(
-                                                          {
-                                                            'estado':
-                                                                !listViewMensajesRecord
-                                                                    .estado,
-                                                          },
                                                         ),
-                                                      });
-                                                    },
-                                                    value:
-                                                        listViewMensajesRecord
-                                                            .estado,
-                                                    onIcon: const FaIcon(
-                                                      FontAwesomeIcons
-                                                          .checkDouble,
-                                                      color: Color(0xFFA3D5B2),
-                                                      size: 25.0,
-                                                    ),
-                                                    offIcon: FaIcon(
-                                                      FontAwesomeIcons.check,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                      ),
+                                                      ToggleIcon(
+                                                        onPressed: () async {
+                                                          await listViewMensajesRecord
+                                                              .reference
+                                                              .update({
+                                                            ...mapToFirestore(
+                                                              {
+                                                                'estado':
+                                                                    !listViewMensajesRecord
+                                                                        .estado,
+                                                              },
+                                                            ),
+                                                          });
+                                                        },
+                                                        value:
+                                                            listViewMensajesRecord
+                                                                .estado,
+                                                        onIcon: const FaIcon(
+                                                          FontAwesomeIcons
+                                                              .checkDouble,
+                                                          color:
+                                                              Color(0xFFA3D5B2),
+                                                          size: 25.0,
+                                                        ),
+                                                        offIcon: FaIcon(
+                                                          FontAwesomeIcons
+                                                              .check,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
                                                               .alternate,
-                                                      size: 25.0,
-                                                    ),
+                                                          size: 25.0,
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ],
                                               ),
                                             ],
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
-                            ),
+                              );
+                            },
                           );
                         },
-                      );
-                    },
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -697,10 +721,40 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                 ),
                               ),
                             ),
-                            const Icon(
-                              Icons.send,
-                              color: Color(0xFF882E7F),
-                              size: 50.0,
+                            Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Stack(
+                                children: [
+                                  Align(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    child: Container(
+                                      width: 100.0,
+                                      height: 56.0,
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFF882E7F),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(25.0),
+                                          bottomRight: Radius.circular(25.0),
+                                          topLeft: Radius.circular(25.0),
+                                          topRight: Radius.circular(25.0),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          30.0, 0.0, 0.0, 0.0),
+                                      child: Icon(
+                                        Icons.send,
+                                        color: Colors.white,
+                                        size: 50.0,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
