@@ -15,6 +15,7 @@ import 'schema/users_record.dart';
 import 'schema/provincia_record.dart';
 import 'schema/canton_record.dart';
 import 'schema/distrito_record.dart';
+import 'schema/mensajes_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -32,6 +33,7 @@ export 'schema/users_record.dart';
 export 'schema/provincia_record.dart';
 export 'schema/canton_record.dart';
 export 'schema/distrito_record.dart';
+export 'schema/mensajes_record.dart';
 
 /// Functions to query ProductosRecords (as a Stream and as a Future).
 Future<int> queryProductosRecordCount({
@@ -398,6 +400,43 @@ Future<List<DistritoRecord>> queryDistritoRecordOnce({
     queryCollectionOnce(
       DistritoRecord.collection,
       DistritoRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query MensajesRecords (as a Stream and as a Future).
+Future<int> queryMensajesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      MensajesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<MensajesRecord>> queryMensajesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      MensajesRecord.collection,
+      MensajesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<MensajesRecord>> queryMensajesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      MensajesRecord.collection,
+      MensajesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

@@ -640,14 +640,6 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [],
-                ),
-              ),
             ],
           ),
         ),

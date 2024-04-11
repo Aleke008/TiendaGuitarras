@@ -198,23 +198,33 @@ class _PaginaIniciarWidgetState extends State<PaginaIniciarWidget> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.chat_bubble_outline,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('chatMensajes');
+                        },
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.chat_bubble_outline,
+                            color: Color(0xFF882E7F),
+                            size: 30.0,
+                          ),
+                          title: Text(
+                            'Mensajes',
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  fontSize: 26.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          tileColor: const Color(0x00FFFFFF),
+                          dense: false,
                         ),
-                        title: Text(
-                          'Mensajes',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
                       ),
                     ),
                     Padding(
