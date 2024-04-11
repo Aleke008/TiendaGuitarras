@@ -1,7 +1,6 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
@@ -585,7 +584,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                                         child: Text(
                                                           valueOrDefault<String>(
                                                             dateTimeFormat(
-                                                                'd/M/y',
+                                                                'd/M/y h:mm a',
                                                                 listViewMensajesRecord
                                                                     .createdTime),
                                                             'hace un momento',
@@ -604,39 +603,27 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                                               ),
                                                         ),
                                                       ),
-                                                      ToggleIcon(
-                                                        onPressed: () async {
-                                                          await listViewMensajesRecord
-                                                              .reference
-                                                              .update({
-                                                            ...mapToFirestore(
-                                                              {
-                                                                'estado':
-                                                                    !listViewMensajesRecord
-                                                                        .estado,
-                                                              },
-                                                            ),
-                                                          });
-                                                        },
-                                                        value:
-                                                            listViewMensajesRecord
-                                                                .estado,
-                                                        onIcon: const FaIcon(
-                                                          FontAwesomeIcons
-                                                              .checkDouble,
-                                                          color:
-                                                              Color(0xFFA3D5B2),
-                                                          size: 25.0,
-                                                        ),
-                                                        offIcon: FaIcon(
+                                                      if (listViewMensajesRecord
+                                                              .estado ==
+                                                          false)
+                                                        FaIcon(
                                                           FontAwesomeIcons
                                                               .check,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .alternate,
-                                                          size: 25.0,
+                                                          size: 24.0,
                                                         ),
-                                                      ),
+                                                      if (listViewMensajesRecord
+                                                              .estado ==
+                                                          true)
+                                                        const FaIcon(
+                                                          FontAwesomeIcons
+                                                              .checkDouble,
+                                                          color:
+                                                              Color(0xFFA3D5B2),
+                                                          size: 24.0,
+                                                        ),
                                                     ],
                                                   ),
                                                 ],
@@ -713,7 +700,6 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                         fontSize: 20.0,
                                         letterSpacing: 0.0,
                                       ),
-                                  minLines: null,
                                   keyboardType: TextInputType.multiline,
                                   validator: _model
                                       .inputMensajeEnviarControllerValidator

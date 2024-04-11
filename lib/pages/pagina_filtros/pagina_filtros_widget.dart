@@ -599,7 +599,6 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                   fontSize: 17.0,
                                   letterSpacing: 0.0,
                                 ),
-                            minLines: null,
                             keyboardType: TextInputType.number,
                             validator: _model.txtMinControllerValidator
                                 .asValidator(context),
@@ -680,7 +679,6 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                   fontSize: 17.0,
                                   letterSpacing: 0.0,
                                 ),
-                            minLines: null,
                             keyboardType: TextInputType.number,
                             validator: _model.txtMaxControllerValidator
                                 .asValidator(context),
@@ -776,7 +774,6 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                   fontSize: 17.0,
                                   letterSpacing: 0.0,
                                 ),
-                            minLines: null,
                             keyboardType: TextInputType.number,
                             validator: _model.textController3Validator
                                 .asValidator(context),
@@ -875,7 +872,6 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                   fontSize: 17.0,
                                   letterSpacing: 0.0,
                                 ),
-                            minLines: null,
                             keyboardType: TextInputType.number,
                             validator: _model.textController4Validator
                                 .asValidator(context),

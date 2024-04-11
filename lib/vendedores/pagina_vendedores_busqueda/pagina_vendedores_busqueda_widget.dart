@@ -197,7 +197,6 @@ class _PaginaVendedoresBusquedaWidgetState
                               color: Colors.black,
                               letterSpacing: 0.0,
                             ),
-                        minLines: null,
                         validator: _model.txtBuscadorControllerValidator
                             .asValidator(context),
                       ),

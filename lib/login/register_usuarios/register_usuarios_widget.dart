@@ -223,7 +223,6 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
-                            minLines: null,
                             validator: _model.txtCorreoControllerValidator
                                 .asValidator(context),
                           ),
@@ -318,7 +317,6 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
-                            minLines: null,
                             validator: _model.txtContrasenaControllerValidator
                                 .asValidator(context),
                           ),
@@ -413,7 +411,6 @@ class _RegisterUsuariosWidgetState extends State<RegisterUsuariosWidget> {
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
-                            minLines: null,
                             validator: _model.txtContrasena2ControllerValidator
                                 .asValidator(context),
                           ),

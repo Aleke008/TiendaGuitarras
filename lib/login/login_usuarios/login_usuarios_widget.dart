@@ -221,7 +221,6 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
-                            minLines: null,
                             validator: _model.txtCorreoControllerValidator
                                 .asValidator(context),
                           ),
@@ -316,7 +315,6 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
-                            minLines: null,
                             validator: _model.txtContrasenaControllerValidator
                                 .asValidator(context),
                           ),

@@ -499,7 +499,6 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                                 fontFamily: 'Open Sans',
                                                 letterSpacing: 0.0,
                                               ),
-                                          minLines: null,
                                           validator: _model
                                               .txtNombreListaController1Validator
                                               .asValidator(context),
@@ -602,7 +601,6 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                                 letterSpacing: 0.0,
                                               ),
                                           maxLines: 5,
-                                          minLines: null,
                                           validator: _model
                                               .txtDescripcionListaControllerValidator
                                               .asValidator(context),
@@ -704,7 +702,6 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                                 fontFamily: 'Open Sans',
                                                 letterSpacing: 0.0,
                                               ),
-                                          minLines: null,
                                           validator: _model
                                               .txtPrecioListaControllerValidator
                                               .asValidator(context),
@@ -877,7 +874,6 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                                 fontFamily: 'Open Sans',
                                                 letterSpacing: 0.0,
                                               ),
-                                          minLines: null,
                                           validator: _model
                                               .txtNombreListaController2Validator
                                               .asValidator(context),

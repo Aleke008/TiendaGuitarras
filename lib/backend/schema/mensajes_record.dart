@@ -20,16 +20,6 @@ class MensajesRecord extends FirestoreRecord {
   DateTime? get createdTime => _createdTime;
   bool hasCreatedTime() => _createdTime != null;
 
-  // "uid" field.
-  String? _uid;
-  String get uid => _uid ?? '';
-  bool hasUid() => _uid != null;
-
-  // "photo_url" field.
-  String? _photoUrl;
-  String get photoUrl => _photoUrl ?? '';
-  bool hasPhotoUrl() => _photoUrl != null;
-
   // "mensaje" field.
   String? _mensaje;
   String get mensaje => _mensaje ?? '';
@@ -40,12 +30,34 @@ class MensajesRecord extends FirestoreRecord {
   bool get estado => _estado ?? false;
   bool hasEstado() => _estado != null;
 
+  // "senderId" field.
+  String? _senderId;
+  String get senderId => _senderId ?? '';
+  bool hasSenderId() => _senderId != null;
+
+  // "senderEmail" field.
+  String? _senderEmail;
+  String get senderEmail => _senderEmail ?? '';
+  bool hasSenderEmail() => _senderEmail != null;
+
+  // "receiverId" field.
+  String? _receiverId;
+  String get receiverId => _receiverId ?? '';
+  bool hasReceiverId() => _receiverId != null;
+
+  // "chatRoomId" field.
+  String? _chatRoomId;
+  String get chatRoomId => _chatRoomId ?? '';
+  bool hasChatRoomId() => _chatRoomId != null;
+
   void _initializeFields() {
     _createdTime = snapshotData['created_time'] as DateTime?;
-    _uid = snapshotData['uid'] as String?;
-    _photoUrl = snapshotData['photo_url'] as String?;
     _mensaje = snapshotData['mensaje'] as String?;
     _estado = snapshotData['estado'] as bool?;
+    _senderId = snapshotData['senderId'] as String?;
+    _senderEmail = snapshotData['senderEmail'] as String?;
+    _receiverId = snapshotData['receiverId'] as String?;
+    _chatRoomId = snapshotData['chatRoomId'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -84,18 +96,22 @@ class MensajesRecord extends FirestoreRecord {
 
 Map<String, dynamic> createMensajesRecordData({
   DateTime? createdTime,
-  String? uid,
-  String? photoUrl,
   String? mensaje,
   bool? estado,
+  String? senderId,
+  String? senderEmail,
+  String? receiverId,
+  String? chatRoomId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'created_time': createdTime,
-      'uid': uid,
-      'photo_url': photoUrl,
       'mensaje': mensaje,
       'estado': estado,
+      'senderId': senderId,
+      'senderEmail': senderEmail,
+      'receiverId': receiverId,
+      'chatRoomId': chatRoomId,
     }.withoutNulls,
   );
 
@@ -108,15 +124,24 @@ class MensajesRecordDocumentEquality implements Equality<MensajesRecord> {
   @override
   bool equals(MensajesRecord? e1, MensajesRecord? e2) {
     return e1?.createdTime == e2?.createdTime &&
-        e1?.uid == e2?.uid &&
-        e1?.photoUrl == e2?.photoUrl &&
         e1?.mensaje == e2?.mensaje &&
-        e1?.estado == e2?.estado;
+        e1?.estado == e2?.estado &&
+        e1?.senderId == e2?.senderId &&
+        e1?.senderEmail == e2?.senderEmail &&
+        e1?.receiverId == e2?.receiverId &&
+        e1?.chatRoomId == e2?.chatRoomId;
   }
 
   @override
-  int hash(MensajesRecord? e) => const ListEquality()
-      .hash([e?.createdTime, e?.uid, e?.photoUrl, e?.mensaje, e?.estado]);
+  int hash(MensajesRecord? e) => const ListEquality().hash([
+        e?.createdTime,
+        e?.mensaje,
+        e?.estado,
+        e?.senderId,
+        e?.senderEmail,
+        e?.receiverId,
+        e?.chatRoomId
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is MensajesRecord;

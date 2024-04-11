@@ -490,7 +490,6 @@ class _EdicionVentasSinInformacionWidgetState
                                                 fontFamily: 'Open Sans',
                                                 letterSpacing: 0.0,
                                               ),
-                                          minLines: null,
                                           validator: _model
                                               .txtNombreListaController1Validator
                                               .asValidator(context),
@@ -593,7 +592,6 @@ class _EdicionVentasSinInformacionWidgetState
                                                 letterSpacing: 0.0,
                                               ),
                                           maxLines: 5,
-                                          minLines: null,
                                           validator: _model
                                               .txtNombreListaController2Validator
                                               .asValidator(context),

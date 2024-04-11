@@ -473,7 +473,6 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                               color: Colors.black,
                               letterSpacing: 0.0,
                             ),
-                        minLines: null,
                         validator: _model.txtBuscadorControllerValidator
                             .asValidator(context),
                       ),
