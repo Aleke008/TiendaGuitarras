@@ -59,8 +59,7 @@ export '/vendedores/tienda/editar_producto_clasificacion/editar_producto_clasifi
     show EditarProductoClasificacionWidget;
 export '/mensajes/chat_mensajes/chat_mensajes_widget.dart'
     show ChatMensajesWidget;
-export '/mensajes/mensajes_confirmacion/mensajes_confirmacion_widget.dart'
-    show MensajesConfirmacionWidget;
+export '/mensajes/chat_rooms/chat_rooms_widget.dart' show ChatRoomsWidget;
 export '/mensajes/mensaje_sin_informacion/mensaje_sin_informacion_widget.dart'
     show MensajeSinInformacionWidget;
 export '/vendedores/tienda/editar_imagenes_producto/editar_imagenes_producto_widget.dart'

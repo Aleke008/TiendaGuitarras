@@ -440,8 +440,15 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     FFButtonWidget(
-                      onPressed: () {
-                        print('btnCuentaGoogle pressed ...');
+                      onPressed: () async {
+                        GoRouter.of(context).prepareAuthEvent();
+                        final user =
+                            await authManager.signInWithGoogle(context);
+                        if (user == null) {
+                          return;
+                        }
+
+                        context.goNamedAuth('paginaIniciar', context.mounted);
                       },
                       text: 'Continuar con Google',
                       icon: const FaIcon(
@@ -480,46 +487,52 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  FFButtonWidget(
-                    onPressed: () {
-                      print('btnCuentaApple pressed ...');
-                    },
-                    text: 'Continuar con Apple',
-                    icon: const FaIcon(
-                      FontAwesomeIcons.apple,
-                      color: Color(0xFF882E7F),
-                      size: 35.0,
-                    ),
-                    options: FFButtonOptions(
-                      width: 300.0,
-                      height: 45.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFFD49ED2),
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.white,
-                                fontSize: 18.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                      elevation: 0.0,
-                      borderSide: const BorderSide(
-                        color: Colors.transparent,
-                        width: 0.0,
-                      ),
-                      borderRadius: BorderRadius.circular(24.0),
-                    ),
-                  ),
+                  isAndroid
+                      ? Container()
+                      : FFButtonWidget(
+                          onPressed: () async {
+                            GoRouter.of(context).prepareAuthEvent();
+                            final user =
+                                await authManager.signInWithApple(context);
+                            if (user == null) {
+                              return;
+                            }
+
+                            context.goNamedAuth(
+                                'paginaIniciar', context.mounted);
+                          },
+                          text: 'Continuar con Apple',
+                          icon: const FaIcon(
+                            FontAwesomeIcons.apple,
+                            color: Color(0xFF882E7F),
+                            size: 35.0,
+                          ),
+                          options: FFButtonOptions(
+                            width: 300.0,
+                            height: 45.0,
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: const Color(0xFFD49ED2),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  fontSize: 18.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                            elevation: 0.0,
+                            borderSide: const BorderSide(
+                              color: Colors.transparent,
+                              width: 0.0,
+                            ),
+                            borderRadius: BorderRadius.circular(24.0),
+                          ),
+                        ),
                 ],
-              ),
-              const Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [],
               ),
             ],
           ),

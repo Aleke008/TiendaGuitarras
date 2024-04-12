@@ -235,12 +235,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'chatMensajes',
           path: '/chatMensajes',
-          builder: (context, params) => const ChatMensajesWidget(),
+          builder: (context, params) => ChatMensajesWidget(
+            chatRoomId: params.getParam(
+              'chatRoomId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
-          name: 'mensajesConfirmacion',
-          path: '/mensajesConfirmacion',
-          builder: (context, params) => const MensajesConfirmacionWidget(),
+          name: 'chatRooms',
+          path: '/chatRooms',
+          builder: (context, params) => const ChatRoomsWidget(),
         ),
         FFRoute(
           name: 'mensajeSinInformacion',

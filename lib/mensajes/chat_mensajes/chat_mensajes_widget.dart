@@ -9,7 +9,12 @@ import 'chat_mensajes_model.dart';
 export 'chat_mensajes_model.dart';
 
 class ChatMensajesWidget extends StatefulWidget {
-  const ChatMensajesWidget({super.key});
+  const ChatMensajesWidget({
+    super.key,
+    String? chatRoomId,
+  }) : chatRoomId = chatRoomId ?? 'nuevo';
+
+  final String chatRoomId;
 
   @override
   State<ChatMensajesWidget> createState() => _ChatMensajesWidgetState();
@@ -428,8 +433,12 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                           16.0, 16.0, 16.0, 16.0),
                       child: StreamBuilder<List<MensajesRecord>>(
                         stream: queryMensajesRecord(
-                          queryBuilder: (mensajesRecord) =>
-                              mensajesRecord.orderBy('created_time'),
+                          queryBuilder: (mensajesRecord) => mensajesRecord
+                              .where(
+                                'chatRoomId',
+                                isEqualTo: widget.chatRoomId,
+                              )
+                              .orderBy('created_time'),
                           limit: 255,
                         ),
                         builder: (context, snapshot) {

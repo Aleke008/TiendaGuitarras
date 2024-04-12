@@ -1,9 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'mensajes_confirmacion_widget.dart' show MensajesConfirmacionWidget;
+import 'chat_rooms_widget.dart' show ChatRoomsWidget;
 import 'package:flutter/material.dart';
 
-class MensajesConfirmacionModel
-    extends FlutterFlowModel<MensajesConfirmacionWidget> {
+class ChatRoomsModel extends FlutterFlowModel<ChatRoomsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

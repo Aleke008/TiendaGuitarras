@@ -204,7 +204,7 @@ class _PaginaIniciarWidgetState extends State<PaginaIniciarWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed('chatMensajes');
+                          context.pushNamed('chatRooms');
                         },
                         child: ListTile(
                           leading: const Icon(
