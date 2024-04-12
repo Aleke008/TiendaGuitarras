@@ -62,36 +62,38 @@ class _ConfigAplicacionWidgetState extends State<ConfigAplicacionWidget> {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  context.pushNamed('loginUsuarios');
-                                },
-                                text: '',
-                                icon: const Icon(
-                                  Icons.keyboard_return,
-                                  color: Color(0xFF882E7F),
-                                  size: 50.0,
-                                ),
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: const Color(0x004B39EF),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        color: Colors.white,
-                                        letterSpacing: 0.0,
-                                      ),
-                                  elevation: 0.0,
-                                  borderSide: const BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                              Expanded(
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    context.safePop();
+                                  },
+                                  text: '',
+                                  icon: const Icon(
+                                    Icons.keyboard_return,
+                                    color: Color(0xFF882E7F),
+                                    size: 50.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: const Color(0x004B39EF),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    elevation: 0.0,
+                                    borderSide: const BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
                                 ),
                               ),
                             ],
@@ -163,12 +165,12 @@ class _ConfigAplicacionWidgetState extends State<ConfigAplicacionWidget> {
                       children: [
                         Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             FlutterFlowIconButton(
                               borderColor: FlutterFlowTheme.of(context)
                                   .primaryBackground,
-                              borderWidth: 0.0,
+                              borderRadius: 10.0,
                               buttonSize: 40.0,
                               fillColor: FlutterFlowTheme.of(context)
                                   .primaryBackground,
@@ -177,8 +179,8 @@ class _ConfigAplicacionWidgetState extends State<ConfigAplicacionWidget> {
                                 color: Color(0xFF882E7F),
                                 size: 35.0,
                               ),
-                              onPressed: () {
-                                print('IconButton pressed ...');
+                              onPressed: () async {
+                                context.pushNamed('configNotificaciones');
                               },
                             ),
                           ],
@@ -230,18 +232,19 @@ class _ConfigAplicacionWidgetState extends State<ConfigAplicacionWidget> {
                     ),
                     Column(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               FlutterFlowIconButton(
                                 borderColor: FlutterFlowTheme.of(context)
                                     .primaryBackground,
-                                borderRadius: 20.0,
-                                borderWidth: 1.0,
+                                borderRadius: 10.0,
                                 buttonSize: 40.0,
                                 fillColor: FlutterFlowTheme.of(context)
                                     .primaryBackground,
@@ -250,8 +253,8 @@ class _ConfigAplicacionWidgetState extends State<ConfigAplicacionWidget> {
                                   color: Color(0xFF882E7F),
                                   size: 35.0,
                                 ),
-                                onPressed: () {
-                                  print('IconButton pressed ...');
+                                onPressed: () async {
+                                  context.pushNamed('configInterfaz');
                                 },
                               ),
                             ],

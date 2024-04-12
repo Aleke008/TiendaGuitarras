@@ -79,12 +79,21 @@ class _PaginaIniciarWidgetState extends State<PaginaIniciarWidget> {
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               80.0, 0.0, 0.0, 0.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.asset(
-                              'assets/images/logo.png',
-                              height: MediaQuery.sizeOf(context).height * 0.1,
-                              fit: BoxFit.cover,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed('paginaIniciar');
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                'assets/images/logo.png',
+                                height: MediaQuery.sizeOf(context).height * 0.1,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
@@ -230,23 +239,33 @@ class _PaginaIniciarWidgetState extends State<PaginaIniciarWidget> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.settings_sharp,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('configAplicacion');
+                        },
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.settings_sharp,
+                            color: Color(0xFF882E7F),
+                            size: 30.0,
+                          ),
+                          title: Text(
+                            'Configuración',
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  fontSize: 26.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          tileColor: const Color(0x00FFFFFF),
+                          dense: false,
                         ),
-                        title: Text(
-                          'Configuración',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
                       ),
                     ),
                     if (currentUserEmail == '')
@@ -297,7 +316,7 @@ class _PaginaIniciarWidgetState extends State<PaginaIniciarWidget> {
                             GoRouter.of(context).clearRedirectLocation();
 
                             context.goNamedAuth(
-                                'registerUsuarios', context.mounted);
+                                'loginUsuarios', context.mounted);
                           },
                           child: ListTile(
                             leading: const Icon(
@@ -413,36 +432,38 @@ class _PaginaIniciarWidgetState extends State<PaginaIniciarWidget> {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  scaffoldKey.currentState!.openDrawer();
-                                },
-                                text: '',
-                                icon: const Icon(
-                                  Icons.note_alt_rounded,
-                                  color: Color(0xFF882E7F),
-                                  size: 50.0,
-                                ),
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: const Color(0x004B39EF),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        color: Colors.white,
-                                        letterSpacing: 0.0,
-                                      ),
-                                  elevation: 0.0,
-                                  borderSide: const BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                              Expanded(
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    scaffoldKey.currentState!.openDrawer();
+                                  },
+                                  text: '',
+                                  icon: const Icon(
+                                    Icons.note_alt_rounded,
+                                    color: Color(0xFF882E7F),
+                                    size: 50.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: const Color(0x004B39EF),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    elevation: 0.0,
+                                    borderSide: const BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
                                 ),
                               ),
                             ],

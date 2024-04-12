@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -293,36 +295,38 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              FFButtonWidget(
-                                onPressed: () {
-                                  print('btnVolver pressed ...');
-                                },
-                                text: '',
-                                icon: const Icon(
-                                  Icons.keyboard_return,
-                                  color: Color(0xFF882E7F),
-                                  size: 50.0,
-                                ),
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: const Color(0x004B39EF),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        color: Colors.white,
-                                        letterSpacing: 0.0,
-                                      ),
-                                  elevation: 0.0,
-                                  borderSide: const BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                              Expanded(
+                                child: FFButtonWidget(
+                                  onPressed: () {
+                                    print('btnVolver pressed ...');
+                                  },
+                                  text: '',
+                                  icon: const Icon(
+                                    Icons.keyboard_return,
+                                    color: Color(0xFF882E7F),
+                                    size: 50.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: const Color(0x004B39EF),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    elevation: 0.0,
+                                    borderSide: const BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
                                 ),
                               ),
                             ],
@@ -387,7 +391,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                 children: [
                                   Expanded(
                                     child: Text(
-                                      'Formulario de informacion de vendedor',
+                                      'Formulario de información de vendedor',
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
@@ -433,8 +437,11 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                         20.0, 0.0, 0.0, 0.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.asset(
-                                        'assets/images/thispersondoenotexist.jpg',
+                                      child: Image.network(
+                                        valueOrDefault<String>(
+                                          _model.uploadedFileUrl,
+                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/tienda-virtual-de-guitarras-vdm5bb/assets/yttosfyw748v/sign_error.png',
+                                        ),
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.3,
@@ -442,6 +449,18 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                             MediaQuery.sizeOf(context).height *
                                                 0.15,
                                         fit: BoxFit.cover,
+                                        errorBuilder:
+                                            (context, error, stackTrace) =>
+                                                Image.asset(
+                                          'assets/images/error_image.png',
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  0.3,
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.15,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -453,159 +472,112 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 5.0),
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              final selectedMedia =
-                                                  await selectMedia(
-                                                mediaSource:
-                                                    MediaSource.photoGallery,
-                                                multiImage: false,
-                                              );
-                                              if (selectedMedia != null &&
-                                                  selectedMedia.every((m) =>
-                                                      validateFileFormat(
-                                                          m.storagePath,
-                                                          context))) {
-                                                setState(() => _model
-                                                    .isDataUploading = true);
-                                                var selectedUploadedFiles =
-                                                    <FFUploadedFile>[];
+                                        FFButtonWidget(
+                                          onPressed: () async {
+                                            final selectedMedia =
+                                                await selectMedia(
+                                              mediaSource:
+                                                  MediaSource.photoGallery,
+                                              multiImage: false,
+                                            );
+                                            if (selectedMedia != null &&
+                                                selectedMedia.every((m) =>
+                                                    validateFileFormat(
+                                                        m.storagePath,
+                                                        context))) {
+                                              setState(() => _model
+                                                  .isDataUploading = true);
+                                              var selectedUploadedFiles =
+                                                  <FFUploadedFile>[];
 
-                                                var downloadUrls = <String>[];
-                                                try {
-                                                  selectedUploadedFiles =
-                                                      selectedMedia
-                                                          .map((m) =>
-                                                              FFUploadedFile(
-                                                                name: m
-                                                                    .storagePath
-                                                                    .split('/')
-                                                                    .last,
-                                                                bytes: m.bytes,
-                                                                height: m
-                                                                    .dimensions
-                                                                    ?.height,
-                                                                width: m
-                                                                    .dimensions
-                                                                    ?.width,
-                                                                blurHash:
-                                                                    m.blurHash,
-                                                              ))
-                                                          .toList();
+                                              var downloadUrls = <String>[];
+                                              try {
+                                                selectedUploadedFiles =
+                                                    selectedMedia
+                                                        .map((m) =>
+                                                            FFUploadedFile(
+                                                              name: m
+                                                                  .storagePath
+                                                                  .split('/')
+                                                                  .last,
+                                                              bytes: m.bytes,
+                                                              height: m
+                                                                  .dimensions
+                                                                  ?.height,
+                                                              width: m
+                                                                  .dimensions
+                                                                  ?.width,
+                                                              blurHash:
+                                                                  m.blurHash,
+                                                            ))
+                                                        .toList();
 
-                                                  downloadUrls =
-                                                      (await Future.wait(
-                                                    selectedMedia.map(
-                                                      (m) async =>
-                                                          await uploadData(
-                                                              m.storagePath,
-                                                              m.bytes),
-                                                    ),
-                                                  ))
-                                                          .where(
-                                                              (u) => u != null)
-                                                          .map((u) => u!)
-                                                          .toList();
-                                                } finally {
-                                                  _model.isDataUploading =
-                                                      false;
-                                                }
-                                                if (selectedUploadedFiles
-                                                            .length ==
-                                                        selectedMedia.length &&
-                                                    downloadUrls.length ==
-                                                        selectedMedia.length) {
-                                                  setState(() {
-                                                    _model.uploadedLocalFile =
-                                                        selectedUploadedFiles
-                                                            .first;
-                                                    _model.uploadedFileUrl =
-                                                        downloadUrls.first;
-                                                  });
-                                                } else {
-                                                  setState(() {});
-                                                  return;
-                                                }
+                                                downloadUrls =
+                                                    (await Future.wait(
+                                                  selectedMedia.map(
+                                                    (m) async =>
+                                                        await uploadData(
+                                                            m.storagePath,
+                                                            m.bytes),
+                                                  ),
+                                                ))
+                                                        .where((u) => u != null)
+                                                        .map((u) => u!)
+                                                        .toList();
+                                              } finally {
+                                                _model.isDataUploading = false;
                                               }
-                                            },
-                                            text: 'Subir foto',
-                                            icon: const FaIcon(
-                                              FontAwesomeIcons.cloudUploadAlt,
-                                              color: Color(0xFF882E7F),
-                                              size: 30.0,
-                                            ),
-                                            options: FFButtonOptions(
-                                              height: 40.0,
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: const Color(0xFFD49ED2),
-                                              textStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    color: Colors.white,
-                                                    fontSize: 18.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                              elevation: 0.0,
-                                              borderSide: const BorderSide(
-                                                color: Colors.transparent,
-                                                width: 0.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                            ),
+                                              if (selectedUploadedFiles
+                                                          .length ==
+                                                      selectedMedia.length &&
+                                                  downloadUrls.length ==
+                                                      selectedMedia.length) {
+                                                setState(() {
+                                                  _model.uploadedLocalFile =
+                                                      selectedUploadedFiles
+                                                          .first;
+                                                  _model.uploadedFileUrl =
+                                                      downloadUrls.first;
+                                                });
+                                              } else {
+                                                setState(() {});
+                                                return;
+                                              }
+                                            }
+                                          },
+                                          text: 'Subir foto',
+                                          icon: const FaIcon(
+                                            FontAwesomeIcons.cloudUploadAlt,
+                                            color: Color(0xFF882E7F),
+                                            size: 30.0,
                                           ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 5.0, 0.0, 0.0),
-                                          child: FFButtonWidget(
-                                            onPressed: () {
-                                              print('btnTomarFoto pressed ...');
-                                            },
-                                            text: 'Tomar foto',
-                                            icon: const FaIcon(
-                                              FontAwesomeIcons.camera,
-                                              color: Color(0xFF882E7F),
-                                              size: 30.0,
+                                          options: FFButtonOptions(
+                                            height: 40.0,
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: const Color(0xFFD49ED2),
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color: Colors.white,
+                                                      fontSize: 18.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                            elevation: 0.0,
+                                            borderSide: const BorderSide(
+                                              color: Colors.transparent,
+                                              width: 0.0,
                                             ),
-                                            options: FFButtonOptions(
-                                              height: 40.0,
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: const Color(0xFFD49ED2),
-                                              textStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    color: Colors.white,
-                                                    fontSize: 18.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                              elevation: 0.0,
-                                              borderSide: const BorderSide(
-                                                color: Colors.transparent,
-                                                width: 0.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
                                           ),
                                         ),
                                       ],
@@ -658,47 +630,75 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Expanded(
-                                    child: FlutterFlowDropDown<String>(
-                                      controller:
-                                          _model.dropDownValueController1 ??=
-                                              FormFieldController<String>(null),
-                                      options: const [
-                                        'San José',
-                                        'Alajuela',
-                                        'Heredia',
-                                        'Cartago',
-                                        'Limon',
-                                        'Puntarenas',
-                                        'Guanacaste'
-                                      ],
-                                      onChanged: (val) => setState(
-                                          () => _model.dropDownValue1 = val),
-                                      width: 300.0,
-                                      height: 50.0,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            letterSpacing: 0.0,
-                                          ),
-                                      hintText: 'Please select...',
-                                      icon: const Icon(
-                                        Icons.keyboard_arrow_down_sharp,
-                                        color: Color(0xFF882E7F),
-                                        size: 50.0,
+                                    child: StreamBuilder<
+                                        List<ProvinciaPruebaRecord>>(
+                                      stream: queryProvinciaPruebaRecord(
+                                        queryBuilder: (provinciaPruebaRecord) =>
+                                            provinciaPruebaRecord
+                                                .orderBy('idProvincia'),
                                       ),
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      elevation: 2.0,
-                                      borderColor: const Color(0xFFD49ED2),
-                                      borderWidth: 2.0,
-                                      borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 4.0, 16.0, 4.0),
-                                      hidesUnderline: true,
-                                      isOverButton: true,
-                                      isSearchable: false,
-                                      isMultiSelect: false,
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        List<ProvinciaPruebaRecord>
+                                            ddProvinciaProvinciaPruebaRecordList =
+                                            snapshot.data!;
+                                        return FlutterFlowDropDown<String>(
+                                          controller: _model
+                                                  .ddProvinciaValueController ??=
+                                              FormFieldController<String>(null),
+                                          options:
+                                              ddProvinciaProvinciaPruebaRecordList
+                                                  .map((e) => e.nombre)
+                                                  .toList(),
+                                          onChanged: (val) => setState(() =>
+                                              _model.ddProvinciaValue = val),
+                                          width: 300.0,
+                                          height: 50.0,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          hintText: 'Selecciona la provincia',
+                                          icon: const Icon(
+                                            Icons.keyboard_arrow_down_sharp,
+                                            color: Color(0xFF882E7F),
+                                            size: 50.0,
+                                          ),
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          elevation: 2.0,
+                                          borderColor: const Color(0xFFD49ED2),
+                                          borderWidth: 2.0,
+                                          borderRadius: 8.0,
+                                          margin:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 4.0, 16.0, 4.0),
+                                          hidesUnderline: true,
+                                          isOverButton: false,
+                                          isSearchable: false,
+                                          isMultiSelect: false,
+                                        );
+                                      },
                                     ),
                                   ),
                                 ],
@@ -730,47 +730,77 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Expanded(
-                                    child: FlutterFlowDropDown<String>(
-                                      controller:
-                                          _model.dropDownValueController2 ??=
-                                              FormFieldController<String>(null),
-                                      options: const [
-                                        'San José',
-                                        'Alajuela',
-                                        'Heredia',
-                                        'Cartago',
-                                        'Limon',
-                                        'Puntarenas',
-                                        'Guanacaste'
-                                      ],
-                                      onChanged: (val) => setState(
-                                          () => _model.dropDownValue2 = val),
-                                      width: 300.0,
-                                      height: 50.0,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            letterSpacing: 0.0,
-                                          ),
-                                      hintText: 'Please select...',
-                                      icon: const Icon(
-                                        Icons.keyboard_arrow_down_sharp,
-                                        color: Color(0xFF882E7F),
-                                        size: 50.0,
+                                    child:
+                                        StreamBuilder<List<CantonPruebaRecord>>(
+                                      stream: queryCantonPruebaRecord(
+                                        queryBuilder: (cantonPruebaRecord) =>
+                                            cantonPruebaRecord.where(
+                                          'provincia',
+                                          isEqualTo: _model.ddProvinciaValue,
+                                        ),
                                       ),
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      elevation: 2.0,
-                                      borderColor: const Color(0xFFD49ED2),
-                                      borderWidth: 2.0,
-                                      borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 4.0, 16.0, 4.0),
-                                      hidesUnderline: true,
-                                      isOverButton: true,
-                                      isSearchable: false,
-                                      isMultiSelect: false,
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        List<CantonPruebaRecord>
+                                            ddCantonCantonPruebaRecordList =
+                                            snapshot.data!;
+                                        return FlutterFlowDropDown<String>(
+                                          controller: _model
+                                                  .ddCantonValueController ??=
+                                              FormFieldController<String>(null),
+                                          options:
+                                              ddCantonCantonPruebaRecordList
+                                                  .map((e) => e.nombre)
+                                                  .toList(),
+                                          onChanged: (val) => setState(
+                                              () => _model.ddCantonValue = val),
+                                          width: 300.0,
+                                          height: 50.0,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          hintText: 'Selecciona el cantón',
+                                          icon: const Icon(
+                                            Icons.keyboard_arrow_down_sharp,
+                                            color: Color(0xFF882E7F),
+                                            size: 50.0,
+                                          ),
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          elevation: 2.0,
+                                          borderColor: const Color(0xFFD49ED2),
+                                          borderWidth: 2.0,
+                                          borderRadius: 8.0,
+                                          margin:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 4.0, 16.0, 4.0),
+                                          hidesUnderline: true,
+                                          isOverButton: false,
+                                          isSearchable: false,
+                                          isMultiSelect: false,
+                                        );
+                                      },
                                     ),
                                   ),
                                 ],
@@ -802,47 +832,77 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Expanded(
-                                    child: FlutterFlowDropDown<String>(
-                                      controller:
-                                          _model.dropDownValueController3 ??=
-                                              FormFieldController<String>(null),
-                                      options: const [
-                                        'San José',
-                                        'Alajuela',
-                                        'Heredia',
-                                        'Cartago',
-                                        'Limon',
-                                        'Puntarenas',
-                                        'Guanacaste'
-                                      ],
-                                      onChanged: (val) => setState(
-                                          () => _model.dropDownValue3 = val),
-                                      width: 300.0,
-                                      height: 50.0,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            letterSpacing: 0.0,
-                                          ),
-                                      hintText: 'Please select...',
-                                      icon: const Icon(
-                                        Icons.keyboard_arrow_down_sharp,
-                                        color: Color(0xFF882E7F),
-                                        size: 50.0,
+                                    child: StreamBuilder<
+                                        List<DistritoPruebaRecord>>(
+                                      stream: queryDistritoPruebaRecord(
+                                        queryBuilder: (distritoPruebaRecord) =>
+                                            distritoPruebaRecord.where(
+                                          'canton',
+                                          isEqualTo: _model.ddCantonValue,
+                                        ),
                                       ),
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      elevation: 2.0,
-                                      borderColor: const Color(0xFFD49ED2),
-                                      borderWidth: 2.0,
-                                      borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 4.0, 16.0, 4.0),
-                                      hidesUnderline: true,
-                                      isOverButton: true,
-                                      isSearchable: false,
-                                      isMultiSelect: false,
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        List<DistritoPruebaRecord>
+                                            ddDistritoDistritoPruebaRecordList =
+                                            snapshot.data!;
+                                        return FlutterFlowDropDown<String>(
+                                          controller: _model
+                                                  .ddDistritoValueController ??=
+                                              FormFieldController<String>(null),
+                                          options:
+                                              ddDistritoDistritoPruebaRecordList
+                                                  .map((e) => e.nombre)
+                                                  .toList(),
+                                          onChanged: (val) => setState(() =>
+                                              _model.ddDistritoValue = val),
+                                          width: 300.0,
+                                          height: 50.0,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          hintText: 'Selecciona el distrito',
+                                          icon: const Icon(
+                                            Icons.keyboard_arrow_down_sharp,
+                                            color: Color(0xFF882E7F),
+                                            size: 50.0,
+                                          ),
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          elevation: 2.0,
+                                          borderColor: const Color(0xFFD49ED2),
+                                          borderWidth: 2.0,
+                                          borderRadius: 8.0,
+                                          margin:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 4.0, 16.0, 4.0),
+                                          hidesUnderline: true,
+                                          isOverButton: false,
+                                          isSearchable: false,
+                                          isMultiSelect: false,
+                                        );
+                                      },
                                     ),
                                   ),
                                 ],
@@ -855,8 +915,15 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   FFButtonWidget(
-                                    onPressed: () {
-                                      print('btnRegistrarse pressed ...');
+                                    onPressed: () async {
+                                      await currentUserReference!
+                                          .update(createUsersRecordData(
+                                        photoUrl: _model.uploadedFileUrl,
+                                        provincia: _model.ddProvinciaValue,
+                                        canton: _model.ddCantonValue,
+                                        distrito: _model.ddDistritoValue,
+                                        rol: 'vendedor',
+                                      ));
                                     },
                                     text: 'Registrarse',
                                     icon: const FaIcon(

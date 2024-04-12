@@ -65,8 +65,8 @@ class _ConfigNotificacionesWidgetState
                             children: [
                               Expanded(
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('btnSalir pressed ...');
+                                  onPressed: () async {
+                                    context.safePop();
                                   },
                                   text: '',
                                   icon: const Icon(

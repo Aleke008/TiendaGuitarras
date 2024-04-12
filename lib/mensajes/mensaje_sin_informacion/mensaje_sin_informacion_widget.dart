@@ -293,8 +293,8 @@ class _MensajeSinInformacionWidgetState
                             children: [
                               Expanded(
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('btnVolver pressed ...');
+                                  onPressed: () async {
+                                    context.safePop();
                                   },
                                   text: '',
                                   icon: const Icon(

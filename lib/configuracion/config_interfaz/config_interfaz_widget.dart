@@ -63,8 +63,8 @@ class _ConfigInterfazWidgetState extends State<ConfigInterfazWidget> {
                             children: [
                               Expanded(
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('btnSalir pressed ...');
+                                  onPressed: () async {
+                                    context.safePop();
                                   },
                                   text: '',
                                   icon: const Icon(
@@ -103,7 +103,7 @@ class _ConfigInterfazWidgetState extends State<ConfigInterfazWidget> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'Notificaciones',
+                                'Interfaz',
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

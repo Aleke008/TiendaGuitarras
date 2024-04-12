@@ -72,15 +72,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? const PaginaIniciarWidget()
-          : const RegisterUsuariosWidget(),
+          ? const RegistroVendedorWidget()
+          : const LoginUsuariosWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? const PaginaIniciarWidget()
-              : const RegisterUsuariosWidget(),
+              ? const RegistroVendedorWidget()
+              : const LoginUsuariosWidget(),
         ),
         FFRoute(
           name: 'paginaCerrar',
@@ -238,16 +238,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ChatMensajesWidget(
             chatRoomId: params.getParam(
               'chatRoomId',
-              ParamType.String,
-            ),
-            usuarioChat: params.getParam(
-              'usuarioChat',
-              ParamType.DocumentReference,
-              false,
-              ['users'],
-            ),
-            usuarioEnviarMensajeId: params.getParam(
-              'usuarioEnviarMensajeId',
               ParamType.String,
             ),
           ),
@@ -457,7 +447,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/registerUsuarios';
+            return '/loginUsuarios';
           }
           return null;
         },

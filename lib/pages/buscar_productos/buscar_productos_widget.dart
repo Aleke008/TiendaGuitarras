@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
@@ -85,12 +86,21 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               80.0, 0.0, 0.0, 0.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.asset(
-                              'assets/images/logo.png',
-                              height: MediaQuery.sizeOf(context).height * 0.1,
-                              fit: BoxFit.cover,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed('paginaIniciar');
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                'assets/images/logo.png',
+                                height: MediaQuery.sizeOf(context).height * 0.1,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
@@ -106,23 +116,33 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const FaIcon(
-                          FontAwesomeIcons.home,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('buscarProductos');
+                        },
+                        child: ListTile(
+                          leading: const FaIcon(
+                            FontAwesomeIcons.home,
+                            color: Color(0xFF882E7F),
+                            size: 30.0,
+                          ),
+                          title: Text(
+                            'Inicio',
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  fontSize: 26.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          tileColor: const Color(0x00FFFFFF),
+                          dense: false,
                         ),
-                        title: Text(
-                          'Inicio',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
                       ),
                     ),
                     Padding(
@@ -194,66 +214,22 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.chat_bubble_outline,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Mensajes',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.settings_sharp,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Configuración',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed('loginUsuarios');
+                          context.pushNamed('chatRooms');
                         },
                         child: ListTile(
                           leading: const Icon(
-                            Icons.login_outlined,
+                            Icons.chat_bubble_outline,
                             color: Color(0xFF882E7F),
                             size: 30.0,
                           ),
                           title: Text(
-                            'Iniciar Sesión',
+                            'Mensajes',
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge
                                 .override(
@@ -267,6 +243,109 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                         ),
                       ),
                     ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('configAplicacion');
+                        },
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.settings_sharp,
+                            color: Color(0xFF882E7F),
+                            size: 30.0,
+                          ),
+                          title: Text(
+                            'Configuración',
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  fontSize: 26.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          tileColor: const Color(0x00FFFFFF),
+                          dense: false,
+                        ),
+                      ),
+                    ),
+                    if (currentUserEmail == '')
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('loginUsuarios');
+                          },
+                          child: ListTile(
+                            leading: const Icon(
+                              Icons.login_outlined,
+                              color: Color(0xFF882E7F),
+                              size: 30.0,
+                            ),
+                            title: Text(
+                              'Iniciar Sesión',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    fontFamily: 'Open Sans',
+                                    fontSize: 26.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                            tileColor: const Color(0x00FFFFFF),
+                            dense: false,
+                          ),
+                        ),
+                      ),
+                    if (currentUserEmail != '')
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            GoRouter.of(context).prepareAuthEvent();
+                            await authManager.signOut();
+                            GoRouter.of(context).clearRedirectLocation();
+
+                            context.goNamedAuth(
+                                'loginUsuarios', context.mounted);
+                          },
+                          child: ListTile(
+                            leading: const Icon(
+                              Icons.login_outlined,
+                              color: Color(0xFF882E7F),
+                              size: 30.0,
+                            ),
+                            title: Text(
+                              'Cerrar sesión',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    fontFamily: 'Open Sans',
+                                    fontSize: 26.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                            tileColor: const Color(0x00FFFFFF),
+                            dense: false,
+                          ),
+                        ),
+                      ),
                   ],
                 ),
               ],

@@ -50,10 +50,10 @@ class UsersRecord extends FirestoreRecord {
   String get rol => _rol ?? '';
   bool hasRol() => _rol != null;
 
-  // "pronvincia" field.
-  String? _pronvincia;
-  String get pronvincia => _pronvincia ?? '';
-  bool hasPronvincia() => _pronvincia != null;
+  // "provincia" field.
+  String? _provincia;
+  String get provincia => _provincia ?? '';
+  bool hasProvincia() => _provincia != null;
 
   // "canton" field.
   String? _canton;
@@ -65,11 +65,6 @@ class UsersRecord extends FirestoreRecord {
   String get distrito => _distrito ?? '';
   bool hasDistrito() => _distrito != null;
 
-  // "estado" field.
-  String? _estado;
-  String get estado => _estado ?? '';
-  bool hasEstado() => _estado != null;
-
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -78,10 +73,9 @@ class UsersRecord extends FirestoreRecord {
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
     _rol = snapshotData['rol'] as String?;
-    _pronvincia = snapshotData['pronvincia'] as String?;
+    _provincia = snapshotData['provincia'] as String?;
     _canton = snapshotData['canton'] as String?;
     _distrito = snapshotData['distrito'] as String?;
-    _estado = snapshotData['estado'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -125,10 +119,9 @@ Map<String, dynamic> createUsersRecordData({
   DateTime? createdTime,
   String? phoneNumber,
   String? rol,
-  String? pronvincia,
+  String? provincia,
   String? canton,
   String? distrito,
-  String? estado,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -139,10 +132,9 @@ Map<String, dynamic> createUsersRecordData({
       'created_time': createdTime,
       'phone_number': phoneNumber,
       'rol': rol,
-      'pronvincia': pronvincia,
+      'provincia': provincia,
       'canton': canton,
       'distrito': distrito,
-      'estado': estado,
     }.withoutNulls,
   );
 
@@ -161,10 +153,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.createdTime == e2?.createdTime &&
         e1?.phoneNumber == e2?.phoneNumber &&
         e1?.rol == e2?.rol &&
-        e1?.pronvincia == e2?.pronvincia &&
+        e1?.provincia == e2?.provincia &&
         e1?.canton == e2?.canton &&
-        e1?.distrito == e2?.distrito &&
-        e1?.estado == e2?.estado;
+        e1?.distrito == e2?.distrito;
   }
 
   @override
@@ -176,10 +167,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.createdTime,
         e?.phoneNumber,
         e?.rol,
-        e?.pronvincia,
+        e?.provincia,
         e?.canton,
-        e?.distrito,
-        e?.estado
+        e?.distrito
       ]);
 
   @override

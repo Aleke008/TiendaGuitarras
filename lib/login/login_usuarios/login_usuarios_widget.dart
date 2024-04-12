@@ -64,66 +64,20 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    context.pushNamed('paginaIniciar');
-                                  },
-                                  text: '',
-                                  icon: const Icon(
-                                    Icons.keyboard_return,
-                                    color: Color(0xFF882E7F),
-                                    size: 50.0,
-                                  ),
-                                  options: FFButtonOptions(
-                                    height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: const Color(0x004B39EF),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    elevation: 0.0,
-                                    borderSide: const BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
+                          Text(
+                            'Inicio de sesión',
+                            textAlign: TextAlign.start,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  fontSize: 22.0,
+                                  letterSpacing: 0.0,
                                 ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Inicio de sesión',
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      fontSize: 22.0,
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
-                            ],
                           ),
                         ],
                       ),
@@ -344,7 +298,8 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                             return;
                           }
 
-                          context.goNamedAuth('paginaIniciar', context.mounted);
+                          context.goNamedAuth(
+                              'registroVendedor', context.mounted);
                         },
                         text: 'Iniciar sesión',
                         icon: const Icon(
@@ -448,7 +403,8 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                           return;
                         }
 
-                        context.goNamedAuth('paginaIniciar', context.mounted);
+                        context.goNamedAuth(
+                            'registroVendedor', context.mounted);
                       },
                       text: 'Continuar con Google',
                       icon: const FaIcon(
@@ -499,7 +455,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                             }
 
                             context.goNamedAuth(
-                                'paginaIniciar', context.mounted);
+                                'registroVendedor', context.mounted);
                           },
                           text: 'Continuar con Apple',
                           icon: const FaIcon(
