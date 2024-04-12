@@ -240,6 +240,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'chatRoomId',
               ParamType.String,
             ),
+            usuarioChat: params.getParam(
+              'usuarioChat',
+              ParamType.DocumentReference,
+              false,
+              ['users'],
+            ),
+            usuarioEnviarMensajeId: params.getParam(
+              'usuarioEnviarMensajeId',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(

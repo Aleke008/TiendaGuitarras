@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'chat_rooms_model.dart';
@@ -293,8 +294,8 @@ class _ChatRoomsWidgetState extends State<ChatRoomsWidget> {
                             children: [
                               Expanded(
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('btnVolver pressed ...');
+                                  onPressed: () async {
+                                    context.pushNamed('paginaIniciar');
                                   },
                                   text: '',
                                   icon: const Icon(
@@ -389,7 +390,16 @@ class _ChatRoomsWidgetState extends State<ChatRoomsWidget> {
                             'chatMensajes',
                             queryParameters: {
                               'chatRoomId': serializeParam(
-                                '$currentUserUid${listViewUsersRecord.uid}',
+                                functions.construirChatRoomId(
+                                    currentUserUid, listViewUsersRecord.uid),
+                                ParamType.String,
+                              ),
+                              'usuarioChat': serializeParam(
+                                listViewUsersRecord.reference,
+                                ParamType.DocumentReference,
+                              ),
+                              'usuarioEnviarMensajeId': serializeParam(
+                                listViewUsersRecord.uid,
                                 ParamType.String,
                               ),
                             }.withoutNulls,
