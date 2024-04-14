@@ -72,14 +72,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? const RegistroVendedorWidget()
+          ? const BuscarProductosCopyWidget()
           : const LoginUsuariosWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? const RegistroVendedorWidget()
+              ? const BuscarProductosCopyWidget()
               : const LoginUsuariosWidget(),
         ),
         FFRoute(
@@ -198,11 +198,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const AgregarProductoWidget(),
         ),
         FFRoute(
-          name: 'agregarProductoClasificacion',
-          path: '/agregarProductoClasificacion',
-          builder: (context, params) => const AgregarProductoClasificacionWidget(),
-        ),
-        FFRoute(
           name: 'agregarProductosImagenes',
           path: '/agregarProductosImagenes',
           builder: (context, params) => const AgregarProductosImagenesWidget(),
@@ -239,6 +234,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             chatRoomId: params.getParam(
               'chatRoomId',
               ParamType.String,
+            ),
+            userChatRoom: params.getParam(
+              'userChatRoom',
+              ParamType.DocumentReference,
+              false,
+              ['users'],
             ),
           ),
         ),
@@ -277,6 +278,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'listaFavoritosVendedores',
           path: '/listaFavoritosVendedores',
           builder: (context, params) => const ListaFavoritosVendedoresWidget(),
+        ),
+        FFRoute(
+          name: 'agregarProductoClasificacion',
+          path: '/agregarProductoClasificacion',
+          builder: (context, params) => const AgregarProductoClasificacionWidget(),
+        ),
+        FFRoute(
+          name: 'buscarProductosCopy',
+          path: '/buscarProductosCopy',
+          builder: (context, params) => const BuscarProductosCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

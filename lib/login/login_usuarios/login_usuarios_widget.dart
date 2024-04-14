@@ -299,7 +299,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                           }
 
                           context.goNamedAuth(
-                              'registroVendedor', context.mounted);
+                              'buscarProductosCopy', context.mounted);
                         },
                         text: 'Iniciar sesión',
                         icon: const Icon(
@@ -404,7 +404,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                         }
 
                         context.goNamedAuth(
-                            'registroVendedor', context.mounted);
+                            'buscarProductosCopy', context.mounted);
                       },
                       text: 'Continuar con Google',
                       icon: const FaIcon(
@@ -455,7 +455,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                             }
 
                             context.goNamedAuth(
-                                'registroVendedor', context.mounted);
+                                'buscarProductosCopy', context.mounted);
                           },
                           text: 'Continuar con Apple',
                           icon: const FaIcon(

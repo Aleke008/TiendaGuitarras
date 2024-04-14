@@ -12,9 +12,11 @@ class ChatMensajesWidget extends StatefulWidget {
   const ChatMensajesWidget({
     super.key,
     String? chatRoomId,
+    required this.userChatRoom,
   }) : chatRoomId = chatRoomId ?? 'nuevo';
 
   final String chatRoomId;
+  final DocumentReference? userChatRoom;
 
   @override
   State<ChatMensajesWidget> createState() => _ChatMensajesWidgetState();

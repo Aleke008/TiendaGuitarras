@@ -8,9 +8,9 @@ class AgregarProductoModel extends FlutterFlowModel<AgregarProductoWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for txtNombreLista widget.
-  FocusNode? txtNombreListaFocusNode1;
-  TextEditingController? txtNombreListaController1;
-  String? Function(BuildContext, String?)? txtNombreListaController1Validator;
+  FocusNode? txtNombreListaFocusNode;
+  TextEditingController? txtNombreListaController;
+  String? Function(BuildContext, String?)? txtNombreListaControllerValidator;
   // State field(s) for txtDescripcionLista widget.
   FocusNode? txtDescripcionListaFocusNode;
   TextEditingController? txtDescripcionListaController;
@@ -20,13 +20,13 @@ class AgregarProductoModel extends FlutterFlowModel<AgregarProductoWidget> {
   FocusNode? txtPrecioListaFocusNode;
   TextEditingController? txtPrecioListaController;
   String? Function(BuildContext, String?)? txtPrecioListaControllerValidator;
-  // State field(s) for txtNombreLista widget.
-  String? txtNombreListaValue;
-  FormFieldController<String>? txtNombreListaValueController;
-  // State field(s) for txtNombreLista widget.
-  FocusNode? txtNombreListaFocusNode2;
-  TextEditingController? txtNombreListaController2;
-  String? Function(BuildContext, String?)? txtNombreListaController2Validator;
+  // State field(s) for ddOferta widget.
+  bool? ddOfertaValue;
+  FormFieldController<bool>? ddOfertaValueController;
+  // State field(s) for txtPrecioOferta widget.
+  FocusNode? txtPrecioOfertaFocusNode;
+  TextEditingController? txtPrecioOfertaController;
+  String? Function(BuildContext, String?)? txtPrecioOfertaControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -34,8 +34,8 @@ class AgregarProductoModel extends FlutterFlowModel<AgregarProductoWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
-    txtNombreListaFocusNode1?.dispose();
-    txtNombreListaController1?.dispose();
+    txtNombreListaFocusNode?.dispose();
+    txtNombreListaController?.dispose();
 
     txtDescripcionListaFocusNode?.dispose();
     txtDescripcionListaController?.dispose();
@@ -43,7 +43,7 @@ class AgregarProductoModel extends FlutterFlowModel<AgregarProductoWidget> {
     txtPrecioListaFocusNode?.dispose();
     txtPrecioListaController?.dispose();
 
-    txtNombreListaFocusNode2?.dispose();
-    txtNombreListaController2?.dispose();
+    txtPrecioOfertaFocusNode?.dispose();
+    txtPrecioOfertaController?.dispose();
   }
 }

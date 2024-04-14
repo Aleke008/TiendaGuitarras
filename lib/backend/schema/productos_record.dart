@@ -61,6 +61,16 @@ class ProductosRecord extends FirestoreRecord {
   List<String> get categorias => _categorias ?? const [];
   bool hasCategorias() => _categorias != null;
 
+  // "esOferta" field.
+  bool? _esOferta;
+  bool get esOferta => _esOferta ?? false;
+  bool hasEsOferta() => _esOferta != null;
+
+  // "precioOferta" field.
+  double? _precioOferta;
+  double get precioOferta => _precioOferta ?? 0.0;
+  bool hasPrecioOferta() => _precioOferta != null;
+
   void _initializeFields() {
     _nombre = snapshotData['nombre'] as String?;
     _descripcion = snapshotData['descripcion'] as String?;
@@ -71,6 +81,8 @@ class ProductosRecord extends FirestoreRecord {
     _marca = snapshotData['marca'] as String?;
     _modelo = snapshotData['modelo'] as String?;
     _categorias = getDataList(snapshotData['categorias']);
+    _esOferta = snapshotData['esOferta'] as bool?;
+    _precioOferta = castToType<double>(snapshotData['precioOferta']);
   }
 
   static CollectionReference get collection =>
@@ -116,6 +128,8 @@ Map<String, dynamic> createProductosRecordData({
   DateTime? fechaPublicacion,
   String? marca,
   String? modelo,
+  bool? esOferta,
+  double? precioOferta,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -127,6 +141,8 @@ Map<String, dynamic> createProductosRecordData({
       'fechaPublicacion': fechaPublicacion,
       'marca': marca,
       'modelo': modelo,
+      'esOferta': esOferta,
+      'precioOferta': precioOferta,
     }.withoutNulls,
   );
 
@@ -147,7 +163,9 @@ class ProductosRecordDocumentEquality implements Equality<ProductosRecord> {
         e1?.fechaPublicacion == e2?.fechaPublicacion &&
         e1?.marca == e2?.marca &&
         e1?.modelo == e2?.modelo &&
-        listEquality.equals(e1?.categorias, e2?.categorias);
+        listEquality.equals(e1?.categorias, e2?.categorias) &&
+        e1?.esOferta == e2?.esOferta &&
+        e1?.precioOferta == e2?.precioOferta;
   }
 
   @override
@@ -160,7 +178,9 @@ class ProductosRecordDocumentEquality implements Equality<ProductosRecord> {
         e?.fechaPublicacion,
         e?.marca,
         e?.modelo,
-        e?.categorias
+        e?.categorias,
+        e?.esOferta,
+        e?.precioOferta
       ]);
 
   @override

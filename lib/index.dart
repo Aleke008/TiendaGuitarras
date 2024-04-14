@@ -43,8 +43,6 @@ export '/vendedores/tienda/edicion_ventas_sin_informacion/edicion_ventas_sin_inf
     show EdicionVentasSinInformacionWidget;
 export '/vendedores/tienda/agregar_producto/agregar_producto_widget.dart'
     show AgregarProductoWidget;
-export '/vendedores/tienda/agregar_producto_clasificacion/agregar_producto_clasificacion_widget.dart'
-    show AgregarProductoClasificacionWidget;
 export '/vendedores/tienda/agregar_productos_imagenes/agregar_productos_imagenes_widget.dart'
     show AgregarProductosImagenesWidget;
 export '/vendedores/tienda/lista_venta_nuevo_producto_agregado/lista_venta_nuevo_producto_agregado_widget.dart'
@@ -72,3 +70,7 @@ export '/vendedores/tienda/lista_favoritos_productos/lista_favoritos_productos_w
     show ListaFavoritosProductosWidget;
 export '/vendedores/lista_favoritos_vendedores/lista_favoritos_vendedores_widget.dart'
     show ListaFavoritosVendedoresWidget;
+export '/vendedores/tienda/agregar_producto_clasificacion/agregar_producto_clasificacion_widget.dart'
+    show AgregarProductoClasificacionWidget;
+export '/pages/buscar_productos_copy/buscar_productos_copy_widget.dart'
+    show BuscarProductosCopyWidget;

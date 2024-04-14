@@ -44,6 +44,12 @@ class FFAppState extends ChangeNotifier {
     _integer = value;
     prefs.setInt('ff_integer', value);
   }
+
+  bool _MostrarListaCompleta = true;
+  bool get MostrarListaCompleta => _MostrarListaCompleta;
+  set MostrarListaCompleta(bool value) {
+    _MostrarListaCompleta = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

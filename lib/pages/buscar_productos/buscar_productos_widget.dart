@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
@@ -492,68 +493,93 @@ class _BuscarProductosWidgetState extends State<BuscarProductosWidget> {
                     child: Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(8.0, 10.0, 8.0, 0.0),
-                      child: TextFormField(
-                        controller: _model.txtBuscadorController,
-                        focusNode: _model.txtBuscadorFocusNode,
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Buscar productos...',
-                          labelStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
+                      child: StreamBuilder<List<ProductosRecord>>(
+                        stream: queryProductosRecord(),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                          List<ProductosRecord> txtBuscadorProductosRecordList =
+                              snapshot.data!;
+                          return TextFormField(
+                            controller: _model.txtBuscadorController,
+                            focusNode: _model.txtBuscadorFocusNode,
+                            autofocus: true,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: 'Buscar productos...',
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
                                     fontFamily: 'Readex Pro',
                                     color: const Color(0xFF707070),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                   ),
-                          alignLabelWithHint: false,
-                          hintStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
+                              alignLabelWithHint: false,
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
                                     lineHeight: 2.0,
                                   ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Color(0xFFD49ED2),
-                              width: 2.0,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color(0xFFD49ED2),
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(50.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color(0xFF882E7F),
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(50.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(50.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(50.0),
+                              ),
+                              prefixIcon: const Icon(
+                                Icons.search,
+                                color: Color(0xFF882E7F),
+                                size: 30.0,
+                              ),
                             ),
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Color(0xFF882E7F),
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
-                          prefixIcon: const Icon(
-                            Icons.search,
-                            color: Color(0xFF882E7F),
-                            size: 30.0,
-                          ),
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
-                              color: Colors.black,
-                              letterSpacing: 0.0,
-                            ),
-                        validator: _model.txtBuscadorControllerValidator
-                            .asValidator(context),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.black,
+                                  letterSpacing: 0.0,
+                                ),
+                            validator: _model.txtBuscadorControllerValidator
+                                .asValidator(context),
+                          );
+                        },
                       ),
                     ),
                   ),

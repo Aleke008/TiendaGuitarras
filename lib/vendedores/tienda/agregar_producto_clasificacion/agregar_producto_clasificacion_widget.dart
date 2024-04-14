@@ -293,12 +293,12 @@ class _AgregarProductoClasificacionWidgetState
                             children: [
                               Expanded(
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('btnVolver pressed ...');
+                                  onPressed: () async {
+                                    context.pushNamed('paginaProductoDetalles');
                                   },
                                   text: '',
                                   icon: const Icon(
-                                    Icons.clear,
+                                    Icons.keyboard_return,
                                     color: Color(0xFF882E7F),
                                     size: 50.0,
                                   ),
@@ -333,7 +333,7 @@ class _AgregarProductoClasificacionWidgetState
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'Agregar producto',
+                                'Editar producto',
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -373,234 +373,280 @@ class _AgregarProductoClasificacionWidgetState
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 0.0),
-                                      child: Text(
-                                        'Categoria',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Open Sans',
-                                              fontSize: 20.0,
-                                              letterSpacing: 0.0,
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 20.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Flexible(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                'Categoría',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 10.0, 0.0, 5.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Text(
+                                                  'Todas las categorías',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color:
+                                                            const Color(0xFF707070),
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ],
                                             ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
-                                      },
-                                      text: 'Todas las categorias',
-                                      icon: const Icon(
-                                        Icons.arrow_forward_ios,
-                                        color: Color(0xFF882E7F),
-                                        size: 15.0,
-                                      ),
-                                      options: FFButtonOptions(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                1.0,
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.05,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Open Sans',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              letterSpacing: 0.0,
-                                            ),
-                                        elevation: 0.0,
-                                        borderSide: const BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        FlutterFlowIconButton(
+                                          borderColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          borderRadius: 20.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 40.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          icon: const Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Color(0xFF882E7F),
+                                            size: 30.0,
+                                          ),
+                                          onPressed: () {
+                                            print('IconButton pressed ...');
+                                          },
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
+                                      ],
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 0.0),
-                                      child: Text(
-                                        'Marca',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Open Sans',
-                                              fontSize: 20.0,
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
-                                      },
-                                      text: 'Todas las marcas',
-                                      icon: const Icon(
-                                        Icons.arrow_forward_ios,
-                                        color: Color(0xFF882E7F),
-                                        size: 15.0,
-                                      ),
-                                      options: FFButtonOptions(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                1.0,
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.05,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Open Sans',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              letterSpacing: 0.0,
-                                            ),
-                                        elevation: 0.0,
-                                        borderSide: const BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 0.0),
-                                      child: Text(
-                                        'Estado',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Open Sans',
-                                              fontSize: 20.0,
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
-                                      },
-                                      text: 'Todas los estados',
-                                      icon: const Icon(
-                                        Icons.arrow_forward_ios,
-                                        color: Color(0xFF882E7F),
-                                        size: 15.0,
-                                      ),
-                                      options: FFButtonOptions(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                1.0,
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.05,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Open Sans',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              letterSpacing: 0.0,
-                                            ),
-                                        elevation: 0.0,
-                                        borderSide: const BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                               const Divider(
                                 thickness: 1.0,
+                                indent: 5.0,
+                                endIndent: 5.0,
+                                color: Color(0xFF882E7F),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Flexible(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                'Marca',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 10.0, 0.0, 5.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Text(
+                                                  'Todas las marcas',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color:
+                                                            const Color(0xFF707070),
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        FlutterFlowIconButton(
+                                          borderColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          borderRadius: 20.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 40.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          icon: const Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Color(0xFF882E7F),
+                                            size: 30.0,
+                                          ),
+                                          onPressed: () {
+                                            print('IconButton pressed ...');
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const Divider(
+                                thickness: 1.0,
+                                indent: 5.0,
+                                endIndent: 5.0,
+                                color: Color(0xFF882E7F),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Flexible(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                'Estado',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 10.0, 0.0, 5.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Text(
+                                                  'Todos los estados',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color:
+                                                            const Color(0xFF707070),
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        FlutterFlowIconButton(
+                                          borderColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          borderRadius: 20.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 40.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          icon: const Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Color(0xFF882E7F),
+                                            size: 30.0,
+                                          ),
+                                          onPressed: () {
+                                            print('IconButton pressed ...');
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const Divider(
+                                thickness: 1.0,
+                                indent: 5.0,
+                                endIndent: 5.0,
                                 color: Color(0xFF882E7F),
                               ),
                               Row(
-                                mainAxisSize: MainAxisSize.max,
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Expanded(
                                     child: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 300.0, 10.0, 0.0),
+                                          10.0, 330.0, 10.0, 0.0),
                                       child: FFButtonWidget(
-                                        onPressed: () async {
-                                          context.pushNamed(
-                                              'agregarProductosImagenes');
+                                        onPressed: () {
+                                          print('Button pressed ...');
                                         },
                                         text: 'Continuar',
                                         icon: const Icon(
@@ -625,7 +671,7 @@ class _AgregarProductoClasificacionWidgetState
                                                     color: Colors.white,
                                                     letterSpacing: 0.0,
                                                   ),
-                                          elevation: 0.0,
+                                          elevation: 3.0,
                                           borderSide: const BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
