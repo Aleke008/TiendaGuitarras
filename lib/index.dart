@@ -72,5 +72,3 @@ export '/vendedores/lista_favoritos_vendedores/lista_favoritos_vendedores_widget
     show ListaFavoritosVendedoresWidget;
 export '/vendedores/tienda/agregar_producto_clasificacion/agregar_producto_clasificacion_widget.dart'
     show AgregarProductoClasificacionWidget;
-export '/pages/buscar_productos_copy/buscar_productos_copy_widget.dart'
-    show BuscarProductosCopyWidget;

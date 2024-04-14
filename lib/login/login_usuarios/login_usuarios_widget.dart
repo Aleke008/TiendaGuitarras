@@ -298,8 +298,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                             return;
                           }
 
-                          context.goNamedAuth(
-                              'buscarProductosCopy', context.mounted);
+                          context.goNamedAuth('paginaIniciar', context.mounted);
                         },
                         text: 'Iniciar sesión',
                         icon: const Icon(
@@ -403,8 +402,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                           return;
                         }
 
-                        context.goNamedAuth(
-                            'buscarProductosCopy', context.mounted);
+                        context.goNamedAuth('paginaIniciar', context.mounted);
                       },
                       text: 'Continuar con Google',
                       icon: const FaIcon(
@@ -455,7 +453,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                             }
 
                             context.goNamedAuth(
-                                'buscarProductosCopy', context.mounted);
+                                'paginaIniciar', context.mounted);
                           },
                           text: 'Continuar con Apple',
                           icon: const FaIcon(

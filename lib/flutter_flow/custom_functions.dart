@@ -29,3 +29,27 @@ String? construirChatRoomId(
 
   return chatRoomId;
 }
+
+bool? calcularDifTiempoMsgEnviado(DateTime? fechaHoraEnvio) {
+  try {
+    if (fechaHoraEnvio == null) {
+      throw ArgumentError('La fecha de envío no puede ser nula');
+    }
+
+    // Obtener la fecha y hora actual
+    DateTime fechaActual = DateTime.now();
+
+    // Calcular la diferencia de tiempo en minutos
+    Duration diferencia = fechaActual.difference(fechaHoraEnvio);
+    int minutosDiferencia =
+        diferencia.inMinutes.abs(); // Obtener valor absoluto
+
+    // Verificar si la diferencia es mayor a 5 minutos
+    bool esMayorA5Minutos = minutosDiferencia > 5;
+
+    return esMayorA5Minutos;
+  } catch (e) {
+    print('Error al calcular la diferencia de tiempo: $e');
+    return false; // Manejar el error devolviendo false
+  }
+}

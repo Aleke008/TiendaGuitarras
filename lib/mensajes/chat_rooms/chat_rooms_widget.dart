@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'chat_rooms_model.dart';
@@ -380,101 +381,97 @@ class _ChatRoomsWidgetState extends State<ChatRoomsWidget> {
                     itemBuilder: (context, listViewIndex) {
                       final listViewUsersRecord =
                           listViewUsersRecordList[listViewIndex];
-                      return InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed(
-                            'chatMensajes',
-                            queryParameters: {
-                              'chatRoomId': serializeParam(
-                                functions.construirChatRoomId(
+                      return StreamBuilder<List<MensajesRecord>>(
+                        stream: queryMensajesRecord(
+                          queryBuilder: (mensajesRecord) => mensajesRecord
+                              .where(
+                                'chatRoomId',
+                                isEqualTo: functions.construirChatRoomId(
                                     currentUserUid, listViewUsersRecord.uid),
-                                ParamType.String,
-                              ),
-                            }.withoutNulls,
-                          );
-                        },
-                        child: Container(
-                          width: 100.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            'https://picsum.photos/seed/402/600',
-                                            width: 55.0,
-                                            height: 55.0,
-                                            fit: BoxFit.cover,
-                                            alignment: const Alignment(0.0, 0.0),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                              )
+                              .orderBy('created_time', descending: true),
+                          singleRecord: true,
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
                                   ),
-                                ],
+                                ),
                               ),
-                              Flexible(
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 10.0, 5.0, 0.0),
-                                  child: Column(
+                            );
+                          }
+                          List<MensajesRecord> containerMensajesRecordList =
+                              snapshot.data!;
+                          // Return an empty Container when the item does not exist.
+                          if (snapshot.data!.isEmpty) {
+                            return Container();
+                          }
+                          final containerMensajesRecord =
+                              containerMensajesRecordList.isNotEmpty
+                                  ? containerMensajesRecordList.first
+                                  : null;
+                          return InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                'chatMensajes',
+                                queryParameters: {
+                                  'chatRoomId': serializeParam(
+                                    functions.construirChatRoomId(
+                                        currentUserUid,
+                                        listViewUsersRecord.uid),
+                                    ParamType.String,
+                                  ),
+                                  'usuarioChat': serializeParam(
+                                    listViewUsersRecord.reference,
+                                    ParamType.DocumentReference,
+                                  ),
+                                  'receiverId': serializeParam(
+                                    listViewUsersRecord.uid,
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
+                            child: Container(
+                              width: 100.0,
+                              height: 100.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Column(
                                     mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 10.0),
+                                            10.0, 0.0, 0.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Text(
-                                              listViewUsersRecord.email,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              child: Text(
-                                                'Hola Byron, gracias por el interés en el producto...',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.network(
+                                                'https://picsum.photos/seed/402/600',
+                                                width: 55.0,
+                                                height: 55.0,
+                                                fit: BoxFit.cover,
+                                                alignment: const Alignment(0.0, 0.0),
                                               ),
                                             ),
                                           ],
@@ -482,51 +479,190 @@ class _ChatRoomsWidgetState extends State<ChatRoomsWidget> {
                                       ),
                                     ],
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 5.0, 0.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Text(
-                                          'hace un momento',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                fontSize: 12.0,
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                    const Expanded(
-                                      child: Row(
+                                  Flexible(
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 10.0, 5.0, 0.0),
+                                      child: Column(
                                         mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
                                         children: [
-                                          Icon(
-                                            Icons.circle_sharp,
-                                            color: Color(0xFF882E7F),
-                                            size: 40.0,
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 10.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Text(
+                                                  listViewUsersRecord.email,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Expanded(
+                                                  child: Text(
+                                                    containerMensajesRecord!
+                                                        .mensaje,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 5.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              valueOrDefault<String>(
+                                                dateTimeFormat(
+                                                    'd/M/y h:mm a',
+                                                    containerMensajesRecord
+                                                        .createdTime),
+                                                'hace un momento',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              FutureBuilder<int>(
+                                                future:
+                                                    queryMensajesRecordCount(
+                                                  queryBuilder:
+                                                      (mensajesRecord) =>
+                                                          mensajesRecord
+                                                              .where(
+                                                                'chatRoomId',
+                                                                isEqualTo:
+                                                                    containerMensajesRecord
+                                                                        .chatRoomId,
+                                                              )
+                                                              .where(
+                                                                'estado',
+                                                                isEqualTo:
+                                                                    false,
+                                                              )
+                                                              .where(
+                                                                'receiverId',
+                                                                isEqualTo:
+                                                                    currentUserUid,
+                                                              ),
+                                                ),
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                          valueColor:
+                                                              AlwaysStoppedAnimation<
+                                                                  Color>(
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                  int badgeCount =
+                                                      snapshot.data!;
+                                                  return badges.Badge(
+                                                    badgeContent: Text(
+                                                      valueOrDefault<String>(
+                                                        badgeCount.toString(),
+                                                        '0',
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .titleSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            color: Colors.white,
+                                                            fontSize: 20.0,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                    showBadge: true,
+                                                    shape: badges
+                                                        .BadgeShape.circle,
+                                                    badgeColor:
+                                                        const Color(0xFF882E7F),
+                                                    elevation: 4.0,
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 8.0,
+                                                                8.0, 8.0),
+                                                    position: badges
+                                                        .BadgePosition.topEnd(),
+                                                    animationType: badges
+                                                        .BadgeAnimationType
+                                                        .scale,
+                                                    toAnimate: true,
+                                                  );
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ),
+                            ),
+                          );
+                        },
                       );
                     },
                   );

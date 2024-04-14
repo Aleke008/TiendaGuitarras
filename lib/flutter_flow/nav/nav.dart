@@ -72,14 +72,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? const BuscarProductosCopyWidget()
+          ? const PaginaIniciarWidget()
           : const LoginUsuariosWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? const BuscarProductosCopyWidget()
+              ? const PaginaIniciarWidget()
               : const LoginUsuariosWidget(),
         ),
         FFRoute(
@@ -235,11 +235,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'chatRoomId',
               ParamType.String,
             ),
-            userChatRoom: params.getParam(
-              'userChatRoom',
+            usuarioChat: params.getParam(
+              'usuarioChat',
               ParamType.DocumentReference,
               false,
               ['users'],
+            ),
+            receiverId: params.getParam(
+              'receiverId',
+              ParamType.String,
             ),
           ),
         ),
@@ -283,11 +287,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'agregarProductoClasificacion',
           path: '/agregarProductoClasificacion',
           builder: (context, params) => const AgregarProductoClasificacionWidget(),
-        ),
-        FFRoute(
-          name: 'buscarProductosCopy',
-          path: '/buscarProductosCopy',
-          builder: (context, params) => const BuscarProductosCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
