@@ -629,7 +629,7 @@ class _ChatRoomsWidgetState extends State<ChatRoomsWidget> {
                                                             fontFamily:
                                                                 'Readex Pro',
                                                             color: Colors.white,
-                                                            fontSize: 20.0,
+                                                            fontSize: 15.0,
                                                             letterSpacing: 0.0,
                                                           ),
                                                     ),
@@ -649,6 +649,11 @@ class _ChatRoomsWidgetState extends State<ChatRoomsWidget> {
                                                         .BadgeAnimationType
                                                         .scale,
                                                     toAnimate: true,
+                                                    child: const Icon(
+                                                      Icons.message,
+                                                      color: Color(0xFF882E7F),
+                                                      size: 35.0,
+                                                    ),
                                                   );
                                                 },
                                               ),

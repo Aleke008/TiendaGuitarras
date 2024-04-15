@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -151,49 +152,75 @@ class _PaginaUbicacionVendedoresWidgetState
                     child: Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                      child: FlutterFlowDropDown<String>(
-                        controller: _model.dropDownValueController1 ??=
-                            FormFieldController<String>(null),
-                        options: const ['Option 1', 'Option2', 'Option3'],
-                        onChanged: (val) =>
-                            setState(() => _model.dropDownValue1 = val),
-                        width: 300.0,
-                        height: 50.0,
-                        searchHintTextStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
+                      child: StreamBuilder<List<ProvinciaRecord>>(
+                        stream: queryProvinciaRecord(),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                          List<ProvinciaRecord> dropDownProvinciaRecordList =
+                              snapshot.data!;
+                          return FlutterFlowDropDown<String>(
+                            controller: _model.dropDownValueController1 ??=
+                                FormFieldController<String>(null),
+                            options: dropDownProvinciaRecordList
+                                .map((e) => e.nombre)
+                                .toList(),
+                            onChanged: (val) =>
+                                setState(() => _model.dropDownValue1 = val),
+                            width: 300.0,
+                            height: 50.0,
+                            searchHintTextStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
                                   fontFamily: 'Readex Pro',
                                   letterSpacing: 0.0,
                                 ),
-                        searchTextStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
+                            searchTextStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
                                   fontFamily: 'Readex Pro',
                                   letterSpacing: 0.0,
                                 ),
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
                                   letterSpacing: 0.0,
                                 ),
-                        hintText: 'Please select...',
-                        searchHintText: 'Search for an item...',
-                        icon: const Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: Color(0xFF882E7F),
-                          size: 55.0,
-                        ),
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 2.0,
-                        borderColor: FlutterFlowTheme.of(context).alternate,
-                        borderWidth: 2.0,
-                        borderRadius: 8.0,
-                        margin: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 4.0),
-                        hidesUnderline: true,
-                        isOverButton: true,
-                        isSearchable: true,
-                        isMultiSelect: false,
+                            hintText: 'Please select...',
+                            searchHintText: 'Search for an item...',
+                            icon: const Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                              color: Color(0xFF882E7F),
+                              size: 55.0,
+                            ),
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            elevation: 2.0,
+                            borderColor: FlutterFlowTheme.of(context).alternate,
+                            borderWidth: 2.0,
+                            borderRadius: 8.0,
+                            margin: const EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 16.0, 4.0),
+                            hidesUnderline: true,
+                            isOverButton: true,
+                            isSearchable: true,
+                            isMultiSelect: false,
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -226,49 +253,75 @@ class _PaginaUbicacionVendedoresWidgetState
                     child: Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                      child: FlutterFlowDropDown<String>(
-                        controller: _model.dropDownValueController2 ??=
-                            FormFieldController<String>(null),
-                        options: const ['Option 1', 'Option2', 'Option3'],
-                        onChanged: (val) =>
-                            setState(() => _model.dropDownValue2 = val),
-                        width: 300.0,
-                        height: 50.0,
-                        searchHintTextStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
+                      child: StreamBuilder<List<CantonRecord>>(
+                        stream: queryCantonRecord(),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                          List<CantonRecord> dropDownCantonRecordList =
+                              snapshot.data!;
+                          return FlutterFlowDropDown<String>(
+                            controller: _model.dropDownValueController2 ??=
+                                FormFieldController<String>(null),
+                            options: dropDownCantonRecordList
+                                .map((e) => e.nombre)
+                                .toList(),
+                            onChanged: (val) =>
+                                setState(() => _model.dropDownValue2 = val),
+                            width: 300.0,
+                            height: 50.0,
+                            searchHintTextStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
                                   fontFamily: 'Readex Pro',
                                   letterSpacing: 0.0,
                                 ),
-                        searchTextStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
+                            searchTextStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
                                   fontFamily: 'Readex Pro',
                                   letterSpacing: 0.0,
                                 ),
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
                                   letterSpacing: 0.0,
                                 ),
-                        hintText: 'Please select...',
-                        searchHintText: 'Search for an item...',
-                        icon: const Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: Color(0xFF882E7F),
-                          size: 55.0,
-                        ),
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 2.0,
-                        borderColor: FlutterFlowTheme.of(context).alternate,
-                        borderWidth: 2.0,
-                        borderRadius: 8.0,
-                        margin: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 4.0),
-                        hidesUnderline: true,
-                        isOverButton: true,
-                        isSearchable: true,
-                        isMultiSelect: false,
+                            hintText: 'Please select...',
+                            searchHintText: 'Search for an item...',
+                            icon: const Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                              color: Color(0xFF882E7F),
+                              size: 55.0,
+                            ),
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            elevation: 2.0,
+                            borderColor: FlutterFlowTheme.of(context).alternate,
+                            borderWidth: 2.0,
+                            borderRadius: 8.0,
+                            margin: const EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 16.0, 4.0),
+                            hidesUnderline: true,
+                            isOverButton: true,
+                            isSearchable: true,
+                            isMultiSelect: false,
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -301,49 +354,75 @@ class _PaginaUbicacionVendedoresWidgetState
                     child: Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                      child: FlutterFlowDropDown<String>(
-                        controller: _model.dropDownValueController3 ??=
-                            FormFieldController<String>(null),
-                        options: const ['Option 1', 'Option2', 'Option3'],
-                        onChanged: (val) =>
-                            setState(() => _model.dropDownValue3 = val),
-                        width: 300.0,
-                        height: 50.0,
-                        searchHintTextStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
+                      child: StreamBuilder<List<DistritoRecord>>(
+                        stream: queryDistritoRecord(),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                          List<DistritoRecord> dropDownDistritoRecordList =
+                              snapshot.data!;
+                          return FlutterFlowDropDown<String>(
+                            controller: _model.dropDownValueController3 ??=
+                                FormFieldController<String>(null),
+                            options: dropDownDistritoRecordList
+                                .map((e) => e.nombre)
+                                .toList(),
+                            onChanged: (val) =>
+                                setState(() => _model.dropDownValue3 = val),
+                            width: 300.0,
+                            height: 50.0,
+                            searchHintTextStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
                                   fontFamily: 'Readex Pro',
                                   letterSpacing: 0.0,
                                 ),
-                        searchTextStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
+                            searchTextStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
                                   fontFamily: 'Readex Pro',
                                   letterSpacing: 0.0,
                                 ),
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 17.0,
                                   letterSpacing: 0.0,
                                 ),
-                        hintText: 'Please select...',
-                        searchHintText: 'Search for an item...',
-                        icon: const Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: Color(0xFF882E7F),
-                          size: 55.0,
-                        ),
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 2.0,
-                        borderColor: FlutterFlowTheme.of(context).alternate,
-                        borderWidth: 2.0,
-                        borderRadius: 8.0,
-                        margin: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 4.0),
-                        hidesUnderline: true,
-                        isOverButton: true,
-                        isSearchable: true,
-                        isMultiSelect: false,
+                            hintText: 'Please select...',
+                            searchHintText: 'Search for an item...',
+                            icon: const Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                              color: Color(0xFF882E7F),
+                              size: 55.0,
+                            ),
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            elevation: 2.0,
+                            borderColor: FlutterFlowTheme.of(context).alternate,
+                            borderWidth: 2.0,
+                            borderRadius: 8.0,
+                            margin: const EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 16.0, 4.0),
+                            hidesUnderline: true,
+                            isOverButton: true,
+                            isSearchable: true,
+                            isMultiSelect: false,
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -386,8 +465,20 @@ class _PaginaUbicacionVendedoresWidgetState
                                           alignment:
                                               const AlignmentDirectional(0.0, 0.0),
                                           child: FFButtonWidget(
-                                            onPressed: () {
-                                              print('Button pressed ...');
+                                            onPressed: () async {
+                                              context.pushNamed(
+                                                'paginaFiltros',
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey:
+                                                      const TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                        PageTransitionType.fade,
+                                                    duration: Duration(
+                                                        milliseconds: 5),
+                                                  ),
+                                                },
+                                              );
                                             },
                                             text: 'Aplicar filtros',
                                             icon: const Icon(
@@ -446,8 +537,9 @@ class _PaginaUbicacionVendedoresWidgetState
                                             alignment:
                                                 const AlignmentDirectional(0.0, 0.0),
                                             child: FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
+                                              onPressed: () async {
+                                                context
+                                                    .pushNamed('paginaFiltros');
                                               },
                                               text: 'Eliminar filtros',
                                               icon: const FaIcon(

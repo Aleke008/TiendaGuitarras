@@ -15,26 +15,23 @@ class PaginaFiltrosModel extends FlutterFlowModel<PaginaFiltrosWidget> {
   FocusNode? txtMaxFocusNode;
   TextEditingController? txtMaxController;
   String? Function(BuildContext, String?)? txtMaxControllerValidator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController3;
-  String? Function(BuildContext, String?)? textController3Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController4;
-  String? Function(BuildContext, String?)? textController4Validator;
+  DateTime? datePicked1;
+  DateTime? datePicked2;
   // State field(s) for DropDown widget.
   String? dropDownValue1;
   FormFieldController<String>? dropDownValueController1;
+  // State field(s) for ddCategoria widget.
+  List<String>? ddCategoriaValue;
+  FormFieldController<List<String>>? ddCategoriaValueController;
+  // State field(s) for ddMarca widget.
+  List<String>? ddMarcaValue;
+  FormFieldController<List<String>>? ddMarcaValueController;
   // State field(s) for DropDown widget.
   List<String>? dropDownValue2;
   FormFieldController<List<String>>? dropDownValueController2;
   // State field(s) for DropDown widget.
   List<String>? dropDownValue3;
   FormFieldController<List<String>>? dropDownValueController3;
-  // State field(s) for DropDown widget.
-  List<String>? dropDownValue4;
-  FormFieldController<List<String>>? dropDownValueController4;
 
   @override
   void initState(BuildContext context) {}
@@ -47,11 +44,5 @@ class PaginaFiltrosModel extends FlutterFlowModel<PaginaFiltrosWidget> {
 
     txtMaxFocusNode?.dispose();
     txtMaxController?.dispose();
-
-    textFieldFocusNode1?.dispose();
-    textController3?.dispose();
-
-    textFieldFocusNode2?.dispose();
-    textController4?.dispose();
   }
 }

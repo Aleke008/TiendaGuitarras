@@ -72,14 +72,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? const PaginaIniciarWidget()
+          ? const PaginaFiltrosWidget()
           : const LoginUsuariosWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? const PaginaIniciarWidget()
+              ? const PaginaFiltrosWidget()
               : const LoginUsuariosWidget(),
         ),
         FFRoute(

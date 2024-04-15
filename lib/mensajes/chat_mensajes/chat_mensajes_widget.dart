@@ -412,6 +412,14 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
+                                            Icon(
+                                              Icons.circle,
+                                              color: columnUsersRecord.estado ==
+                                                      'En línea'
+                                                  ? const Color(0xFFA3D5B2)
+                                                  : const Color(0xFFFF1818),
+                                              size: 24.0,
+                                            ),
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(5.0, 0.0, 0.0, 0.0),
@@ -430,14 +438,6 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
-                                            ),
-                                            Icon(
-                                              Icons.circle,
-                                              color: columnUsersRecord.estado ==
-                                                      'En línea'
-                                                  ? const Color(0xFFA3D5B2)
-                                                  : const Color(0xFFFF1818),
-                                              size: 24.0,
                                             ),
                                           ],
                                         ),
