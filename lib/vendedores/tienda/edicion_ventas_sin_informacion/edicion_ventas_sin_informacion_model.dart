@@ -9,13 +9,18 @@ class EdicionVentasSinInformacionModel
 
   final unfocusNode = FocusNode();
   // State field(s) for txtNombreLista widget.
-  FocusNode? txtNombreListaFocusNode1;
-  TextEditingController? txtNombreListaController1;
-  String? Function(BuildContext, String?)? txtNombreListaController1Validator;
-  // State field(s) for txtNombreLista widget.
-  FocusNode? txtNombreListaFocusNode2;
-  TextEditingController? txtNombreListaController2;
-  String? Function(BuildContext, String?)? txtNombreListaController2Validator;
+  FocusNode? txtNombreListaFocusNode;
+  TextEditingController? txtNombreListaController;
+  String? Function(BuildContext, String?)? txtNombreListaControllerValidator;
+  // State field(s) for txtDescripcionLista widget.
+  FocusNode? txtDescripcionListaFocusNode;
+  TextEditingController? txtDescripcionListaController;
+  String? Function(BuildContext, String?)?
+      txtDescripcionListaControllerValidator;
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
 
   @override
   void initState(BuildContext context) {}
@@ -23,10 +28,10 @@ class EdicionVentasSinInformacionModel
   @override
   void dispose() {
     unfocusNode.dispose();
-    txtNombreListaFocusNode1?.dispose();
-    txtNombreListaController1?.dispose();
+    txtNombreListaFocusNode?.dispose();
+    txtNombreListaController?.dispose();
 
-    txtNombreListaFocusNode2?.dispose();
-    txtNombreListaController2?.dispose();
+    txtDescripcionListaFocusNode?.dispose();
+    txtDescripcionListaController?.dispose();
   }
 }

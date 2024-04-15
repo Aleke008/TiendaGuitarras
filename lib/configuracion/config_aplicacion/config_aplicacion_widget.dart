@@ -65,7 +65,7 @@ class _ConfigAplicacionWidgetState extends State<ConfigAplicacionWidget> {
                               Expanded(
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    context.safePop();
+                                    context.pushNamed('buscarProductos');
                                   },
                                   text: '',
                                   icon: const Icon(
@@ -168,12 +168,10 @@ class _ConfigAplicacionWidgetState extends State<ConfigAplicacionWidget> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             FlutterFlowIconButton(
-                              borderColor: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
+                              borderColor: Colors.transparent,
                               borderRadius: 10.0,
                               buttonSize: 40.0,
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
+                              fillColor: Colors.transparent,
                               icon: const Icon(
                                 Icons.arrow_forward_ios,
                                 color: Color(0xFF882E7F),
@@ -242,12 +240,10 @@ class _ConfigAplicacionWidgetState extends State<ConfigAplicacionWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               FlutterFlowIconButton(
-                                borderColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
+                                borderColor: Colors.transparent,
                                 borderRadius: 10.0,
                                 buttonSize: 40.0,
-                                fillColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
+                                fillColor: Colors.transparent,
                                 icon: const Icon(
                                   Icons.arrow_forward_ios,
                                   color: Color(0xFF882E7F),

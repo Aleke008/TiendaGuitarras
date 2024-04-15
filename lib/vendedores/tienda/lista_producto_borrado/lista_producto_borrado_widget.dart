@@ -148,7 +148,8 @@ class _ListaProductoBorradoWidgetState
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: Colors.black,
+                                          color: FlutterFlowTheme.of(context)
+                                              .letras,
                                           fontSize: 22.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
@@ -173,7 +174,8 @@ class _ListaProductoBorradoWidgetState
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: Colors.black,
+                                          color: FlutterFlowTheme.of(context)
+                                              .letras,
                                           fontSize: 18.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,

@@ -181,7 +181,8 @@ class _ListaFavoritosVendedoresWidgetState
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: Colors.black,
+                                          color: FlutterFlowTheme.of(context)
+                                              .letras,
                                           fontSize: 20.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
@@ -220,7 +221,8 @@ class _ListaFavoritosVendedoresWidgetState
                                           .titleSmall
                                           .override(
                                             fontFamily: 'Readex Pro',
-                                            color: Colors.black,
+                                            color: FlutterFlowTheme.of(context)
+                                                .letras,
                                             letterSpacing: 0.0,
                                           ),
                                       borderSide: const BorderSide(
@@ -252,7 +254,8 @@ class _ListaFavoritosVendedoresWidgetState
                                           .titleSmall
                                           .override(
                                             fontFamily: 'Readex Pro',
-                                            color: Colors.black,
+                                            color: FlutterFlowTheme.of(context)
+                                                .letras,
                                             letterSpacing: 0.0,
                                           ),
                                       borderSide: const BorderSide(

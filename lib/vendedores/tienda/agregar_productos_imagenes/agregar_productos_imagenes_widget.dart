@@ -335,7 +335,7 @@ class _AgregarProductosImagenesWidgetState
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'Crear lista de venta',
+                                'Agregar imágenes',
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

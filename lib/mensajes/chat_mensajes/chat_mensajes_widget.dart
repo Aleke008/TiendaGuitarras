@@ -396,9 +396,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Readex Pro',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
+                                                    color: const Color(0xFFF2F2F2),
                                                     fontSize: 15.0,
                                                     letterSpacing: 0.0,
                                                   ),
@@ -425,18 +423,15 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                                   .fromSTEB(5.0, 0.0, 0.0, 0.0),
                                               child: Text(
                                                 columnUsersRecord.estado,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryBackground,
-                                                          fontSize: 15.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color: const Color(0xFFF2F2F2),
+                                                      fontSize: 15.0,
+                                                      letterSpacing: 0.0,
+                                                    ),
                                               ),
                                             ),
                                           ],
@@ -575,9 +570,8 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Readex Pro',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .alternate,
+                                                                  color: const Color(
+                                                                      0xFFF2F2F2),
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -732,28 +726,32 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .alternate,
+                                                                color: const Color(
+                                                                    0xFFF2F2F2),
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
                                                         ),
                                                       ),
-                                                      if (listViewMensajesRecord
-                                                              .estado ==
-                                                          false)
-                                                        FaIcon(
+                                                      if ((listViewMensajesRecord
+                                                                  .estado ==
+                                                              false) &&
+                                                          (currentUserUid ==
+                                                              listViewMensajesRecord
+                                                                  .senderId))
+                                                        const FaIcon(
                                                           FontAwesomeIcons
                                                               .check,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
+                                                          color:
+                                                              Color(0xFFF2F2F2),
                                                           size: 24.0,
                                                         ),
-                                                      if (listViewMensajesRecord
-                                                              .estado ==
-                                                          true)
+                                                      if ((listViewMensajesRecord
+                                                                  .estado ==
+                                                              true) &&
+                                                          (currentUserUid ==
+                                                              listViewMensajesRecord
+                                                                  .senderId))
                                                         const FaIcon(
                                                           FontAwesomeIcons
                                                               .checkDouble,
@@ -789,7 +787,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                     Expanded(
                       child: Container(
                         decoration: const BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xFFF2F2F2),
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(25.0),
                             bottomRight: Radius.circular(25.0),
@@ -815,6 +813,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                         .labelMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
+                                          color: const Color(0xFF0B0B0B),
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                         ),
@@ -834,6 +833,7 @@ class _ChatMensajesWidgetState extends State<ChatMensajesWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Readex Pro',
+                                        color: const Color(0xFF090909),
                                         fontSize: 20.0,
                                         letterSpacing: 0.0,
                                       ),

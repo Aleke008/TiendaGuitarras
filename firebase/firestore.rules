@@ -98,5 +98,24 @@ service cloud.firestore {
       allow write: if false;
       allow delete: if false;
     }
+
+    match /listas/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /listas/{parent}/productos2/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/productos2/{document} {
+      allow read: if true;
+    }
+
   }
 }

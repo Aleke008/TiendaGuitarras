@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
@@ -341,8 +342,7 @@ class _ChatRoomsWidgetState extends State<ChatRoomsWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                      color: const Color(0xFFF2F2F2),
                                       fontSize: 22.0,
                                       letterSpacing: 0.0,
                                     ),
@@ -441,6 +441,11 @@ class _ChatRoomsWidgetState extends State<ChatRoomsWidget> {
                                     ParamType.String,
                                   ),
                                 }.withoutNulls,
+                              );
+
+                              await actions.cambiarEstadoMensaje(
+                                containerMensajesRecord.chatRoomId,
+                                currentUserUid,
                               );
                             },
                             child: Container(

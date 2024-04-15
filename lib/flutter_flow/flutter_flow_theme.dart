@@ -3,9 +3,31 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
+const kThemeModeKey = '__theme_mode__';
+SharedPreferences? _prefs;
+
 abstract class FlutterFlowTheme {
+  static Future initialize() async =>
+      _prefs = await SharedPreferences.getInstance();
+  static ThemeMode get themeMode {
+    final darkMode = _prefs?.getBool(kThemeModeKey);
+    return darkMode == null
+        ? ThemeMode.system
+        : darkMode
+            ? ThemeMode.dark
+            : ThemeMode.light;
+  }
+
+  static void saveThemeMode(ThemeMode mode) => mode == ThemeMode.system
+      ? _prefs?.remove(kThemeModeKey)
+      : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
+
   static FlutterFlowTheme of(BuildContext context) {
-    return LightModeTheme();
+    return Theme.of(context).brightness == Brightness.dark
+        ? DarkModeTheme()
+        : LightModeTheme();
   }
 
   @Deprecated('Use primary instead')
@@ -31,6 +53,23 @@ abstract class FlutterFlowTheme {
   late Color warning;
   late Color error;
   late Color info;
+
+  late Color customColor1;
+  late Color rosaSecundario;
+  late Color fondo;
+  late Color corazon;
+  late Color letras1;
+  late Color letras;
+  late Color fondo2;
+  late Color fondoMensajeChat;
+  late Color iconoBasuraChat;
+  late Color btnFiltros;
+  late Color btnFiltros2;
+  late Color btnFiltrosE2;
+  late Color rosaSecundarioBordes;
+  late Color corazon2;
+  late Color btnFiltrosE;
+  late Color letrasLogin;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -119,6 +158,23 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color warning = const Color(0xFFF9CF58);
   late Color error = const Color(0xFFFF5963);
   late Color info = const Color(0xFFFFFFFF);
+
+  late Color customColor1 = const Color(0xFFA53970);
+  late Color rosaSecundario = const Color(0xFFD49ED2);
+  late Color fondo = const Color(0xFFFFFFFF);
+  late Color corazon = const Color(0xFFFF0A0A);
+  late Color letras1 = const Color(0xFF8A8A8A);
+  late Color letras = const Color(0xFF707070);
+  late Color fondo2 = const Color(0xFFF3F3F3);
+  late Color fondoMensajeChat = const Color(0xFFF2F2F2);
+  late Color iconoBasuraChat = const Color(0xFFFF1818);
+  late Color btnFiltros = const Color(0xFFA3D5B2);
+  late Color btnFiltros2 = const Color(0xFF096241);
+  late Color btnFiltrosE2 = const Color(0xFF620909);
+  late Color rosaSecundarioBordes = const Color(0xFF515151);
+  late Color corazon2 = const Color(0xFFEF394D);
+  late Color btnFiltrosE = const Color(0xFFD5A3A3);
+  late Color letrasLogin = const Color(0xFFA4A4A4);
 }
 
 abstract class Typography {
@@ -264,6 +320,49 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
       );
+}
+
+class DarkModeTheme extends FlutterFlowTheme {
+  @Deprecated('Use primary instead')
+  Color get primaryColor => primary;
+  @Deprecated('Use secondary instead')
+  Color get secondaryColor => secondary;
+  @Deprecated('Use tertiary instead')
+  Color get tertiaryColor => tertiary;
+
+  late Color primary = const Color(0xFF4B39EF);
+  late Color secondary = const Color(0xFF39D2C0);
+  late Color tertiary = const Color(0xFFEE8B60);
+  late Color alternate = const Color(0xFF262D34);
+  late Color primaryText = const Color(0xFFFFFFFF);
+  late Color secondaryText = const Color(0xFFFFFFFF);
+  late Color primaryBackground = const Color(0xFF1D2428);
+  late Color secondaryBackground = const Color(0xFF14181B);
+  late Color accent1 = const Color(0x4C4B39EF);
+  late Color accent2 = const Color(0x4D39D2C0);
+  late Color accent3 = const Color(0x4DEE8B60);
+  late Color accent4 = const Color(0xB2262D34);
+  late Color success = const Color(0xFF249689);
+  late Color warning = const Color(0xFFF9CF58);
+  late Color error = const Color(0xFFFF5963);
+  late Color info = const Color(0xFFFFFFFF);
+
+  late Color customColor1 = const Color(0xFFA53970);
+  late Color rosaSecundario = const Color(0xFFD49ED2);
+  late Color fondo = const Color(0xFF4A4A4A);
+  late Color corazon = const Color(0xFFFF0000);
+  late Color letras1 = const Color(0xFF8A8A8A);
+  late Color letras = const Color(0xFFFFFFFF);
+  late Color fondo2 = const Color(0xFF4A4A4A);
+  late Color fondoMensajeChat = const Color(0xFF888686);
+  late Color iconoBasuraChat = const Color(0xFFFF1818);
+  late Color btnFiltros = const Color(0xFFA3D5B2);
+  late Color btnFiltros2 = const Color(0xFF096241);
+  late Color btnFiltrosE2 = const Color(0xFF620909);
+  late Color rosaSecundarioBordes = const Color(0xFFD49ED2);
+  late Color corazon2 = const Color(0xFFEF394D);
+  late Color btnFiltrosE = const Color(0xFFD5A3A3);
+  late Color letrasLogin = const Color(0xFFFFFFFF);
 }
 
 extension TextStyleHelper on TextStyle {

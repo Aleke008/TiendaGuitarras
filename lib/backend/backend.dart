@@ -19,6 +19,8 @@ import 'schema/mensajes_record.dart';
 import 'schema/canton_prueba_record.dart';
 import 'schema/provincia_prueba_record.dart';
 import 'schema/distrito_prueba_record.dart';
+import 'schema/listas_record.dart';
+import 'schema/productos2_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -40,6 +42,8 @@ export 'schema/mensajes_record.dart';
 export 'schema/canton_prueba_record.dart';
 export 'schema/provincia_prueba_record.dart';
 export 'schema/distrito_prueba_record.dart';
+export 'schema/listas_record.dart';
+export 'schema/productos2_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -554,6 +558,83 @@ Future<List<DistritoPruebaRecord>> queryDistritoPruebaRecordOnce({
     queryCollectionOnce(
       DistritoPruebaRecord.collection,
       DistritoPruebaRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ListasRecords (as a Stream and as a Future).
+Future<int> queryListasRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ListasRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ListasRecord>> queryListasRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ListasRecord.collection,
+      ListasRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ListasRecord>> queryListasRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ListasRecord.collection,
+      ListasRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query Productos2Records (as a Stream and as a Future).
+Future<int> queryProductos2RecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      Productos2Record.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<Productos2Record>> queryProductos2Record({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      Productos2Record.collection(parent),
+      Productos2Record.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<Productos2Record>> queryProductos2RecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      Productos2Record.collection(parent),
+      Productos2Record.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

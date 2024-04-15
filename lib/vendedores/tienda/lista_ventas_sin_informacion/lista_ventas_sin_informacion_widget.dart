@@ -293,8 +293,8 @@ class _ListaVentasSinInformacionWidgetState
                             children: [
                               Expanded(
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('btnVolver pressed ...');
+                                  onPressed: () async {
+                                    context.pushNamed('buscarProductos');
                                   },
                                   text: '',
                                   icon: const Icon(
@@ -403,8 +403,7 @@ class _ListaVentasSinInformacionWidgetState
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     50.0, 0.0, 230.0, 0.0),
                                 child: FlutterFlowIconButton(
-                                  borderColor: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
+                                  borderColor: Colors.transparent,
                                   borderRadius: 20.0,
                                   borderWidth: 1.0,
                                   buttonSize:
@@ -415,8 +414,9 @@ class _ListaVentasSinInformacionWidgetState
                                     color: Color(0xFFD49ED2),
                                     size: 50.0,
                                   ),
-                                  onPressed: () {
-                                    print('IconButton pressed ...');
+                                  onPressed: () async {
+                                    context.pushNamed(
+                                        'creacionVentasSinInformacion');
                                   },
                                 ),
                               ),

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -72,14 +73,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? const PaginaFiltrosWidget()
+          ? const PaginaInformacionVendedorWidget()
           : const LoginUsuariosWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? const PaginaFiltrosWidget()
+              ? const PaginaInformacionVendedorWidget()
               : const LoginUsuariosWidget(),
         ),
         FFRoute(
@@ -190,7 +191,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'edicionVentasSinInformacion',
           path: '/edicionVentasSinInformacion',
-          builder: (context, params) => const EdicionVentasSinInformacionWidget(),
+          asyncParams: {
+            'lista': getDoc(['listas'], ListasRecord.fromSnapshot),
+          },
+          builder: (context, params) => EdicionVentasSinInformacionWidget(
+            lista: params.getParam(
+              'lista',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: 'agregarProducto',
@@ -215,7 +224,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'listaProductosAgregados',
           path: '/listaProductosAgregados',
-          builder: (context, params) => const ListaProductosAgregadosWidget(),
+          asyncParams: {
+            'listas': getDoc(['listas'], ListasRecord.fromSnapshot),
+          },
+          builder: (context, params) => ListaProductosAgregadosWidget(
+            listas: params.getParam(
+              'listas',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: 'configAplicacion',

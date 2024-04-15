@@ -64,7 +64,7 @@ class _ConfigInterfazWidgetState extends State<ConfigInterfazWidget> {
                               Expanded(
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    context.safePop();
+                                    context.pushNamed('configAplicacion');
                                   },
                                   text: '',
                                   icon: const Icon(
@@ -183,6 +183,11 @@ class _ConfigInterfazWidgetState extends State<ConfigInterfazWidget> {
                               value: _model.switchValue ??= false,
                               onChanged: (newValue) async {
                                 setState(() => _model.switchValue = newValue);
+                                if (newValue) {
+                                  setDarkModeSetting(context, ThemeMode.dark);
+                                } else {
+                                  setDarkModeSetting(context, ThemeMode.light);
+                                }
                               },
                               activeColor: const Color(0xFF882E7F),
                               activeTrackColor: const Color(0xFFD49ED2),

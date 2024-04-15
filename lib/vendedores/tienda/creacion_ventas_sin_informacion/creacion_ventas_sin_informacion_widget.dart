@@ -1,7 +1,10 @@
+import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'creacion_ventas_sin_informacion_model.dart';
@@ -26,12 +29,10 @@ class _CreacionVentasSinInformacionWidgetState
     super.initState();
     _model = createModel(context, () => CreacionVentasSinInformacionModel());
 
-    _model.txtNombreListaController ??=
-        TextEditingController(text: 'Agregar nombre...');
+    _model.txtNombreListaController ??= TextEditingController();
     _model.txtNombreListaFocusNode ??= FocusNode();
 
-    _model.txtDescripcionListaController ??=
-        TextEditingController(text: 'Agregar descripción...');
+    _model.txtDescripcionListaController ??= TextEditingController();
     _model.txtDescripcionListaFocusNode ??= FocusNode();
   }
 
@@ -301,8 +302,8 @@ class _CreacionVentasSinInformacionWidgetState
                             children: [
                               Expanded(
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('btnVolver pressed ...');
+                                  onPressed: () async {
+                                    context.safePop();
                                   },
                                   text: '',
                                   icon: const Icon(
@@ -429,6 +430,22 @@ class _CreacionVentasSinInformacionWidgetState
                                               _model.txtNombreListaController,
                                           focusNode:
                                               _model.txtNombreListaFocusNode,
+                                          onFieldSubmitted: (_) async {
+                                            await ListasRecord.collection
+                                                .doc()
+                                                .set(createListasRecordData(
+                                                  nombre: _model
+                                                      .txtNombreListaController
+                                                      .text,
+                                                  descripcion: _model
+                                                      .txtDescripcionListaController
+                                                      .text,
+                                                  imagen:
+                                                      _model.uploadedFileUrl,
+                                                  fechaCreacion:
+                                                      getCurrentTimestamp,
+                                                ));
+                                          },
                                           autofocus: true,
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -439,6 +456,7 @@ class _CreacionVentasSinInformacionWidgetState
                                                       fontFamily: 'Readex Pro',
                                                       letterSpacing: 0.0,
                                                     ),
+                                            hintText: 'Agregar nombre...',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
@@ -458,7 +476,7 @@ class _CreacionVentasSinInformacionWidgetState
                                               borderSide: BorderSide(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primary,
+                                                        .rosaSecundario,
                                                 width: 2.0,
                                               ),
                                               borderRadius:
@@ -540,6 +558,7 @@ class _CreacionVentasSinInformacionWidgetState
                                                       fontFamily: 'Readex Pro',
                                                       letterSpacing: 0.0,
                                                     ),
+                                            hintText: 'Agregar descripción...',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
@@ -559,7 +578,7 @@ class _CreacionVentasSinInformacionWidgetState
                                               borderSide: BorderSide(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primary,
+                                                        .rosaSecundario,
                                                 width: 2.0,
                                               ),
                                               borderRadius:
@@ -604,7 +623,7 @@ class _CreacionVentasSinInformacionWidgetState
                                 ),
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 50.0, 0.0, 0.0),
+                                      0.0, 50.0, 0.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -625,8 +644,6 @@ class _CreacionVentasSinInformacionWidgetState
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Container(
-                                      width: MediaQuery.sizeOf(context).width *
-                                          1.0,
                                       height:
                                           MediaQuery.sizeOf(context).height *
                                               0.2,
@@ -640,7 +657,10 @@ class _CreacionVentasSinInformacionWidgetState
                                             borderRadius:
                                                 BorderRadius.circular(20.0),
                                             child: Image.network(
-                                              'https://picsum.photos/seed/791/600',
+                                              valueOrDefault<String>(
+                                                _model.uploadedFileUrl,
+                                                'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/tienda-virtual-de-guitarras-vdm5bb/assets/yttosfyw748v/sign_error.png',
+                                              ),
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
                                                   0.4,
@@ -664,101 +684,135 @@ class _CreacionVentasSinInformacionWidgetState
                                               ),
                                             ),
                                           ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    180.0, 20.0, 0.0, 0.0),
-                                            child: FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
-                                              },
-                                              text: 'Subir foto',
-                                              icon: const Icon(
-                                                Icons.cloud_upload_outlined,
-                                                size: 15.0,
-                                              ),
-                                              options: FFButtonOptions(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.38,
-                                                height:
-                                                    MediaQuery.sizeOf(context)
-                                                            .height *
-                                                        0.05,
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        24.0, 0.0, 24.0, 0.0),
-                                                iconPadding:
-                                                    const EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color: const Color(0xFFD49ED2),
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(-1.0, 0.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      180.0, 0.0, 0.0, 0.0),
+                                              child: FFButtonWidget(
+                                                onPressed: () async {
+                                                  final selectedMedia =
+                                                      await selectMediaWithSourceBottomSheet(
+                                                    context: context,
+                                                    allowPhoto: true,
+                                                  );
+                                                  if (selectedMedia != null &&
+                                                      selectedMedia.every((m) =>
+                                                          validateFileFormat(
+                                                              m.storagePath,
+                                                              context))) {
+                                                    setState(() =>
+                                                        _model.isDataUploading =
+                                                            true);
+                                                    var selectedUploadedFiles =
+                                                        <FFUploadedFile>[];
+
+                                                    var downloadUrls =
+                                                        <String>[];
+                                                    try {
+                                                      selectedUploadedFiles =
+                                                          selectedMedia
+                                                              .map((m) =>
+                                                                  FFUploadedFile(
+                                                                    name: m
+                                                                        .storagePath
+                                                                        .split(
+                                                                            '/')
+                                                                        .last,
+                                                                    bytes:
+                                                                        m.bytes,
+                                                                    height: m
+                                                                        .dimensions
+                                                                        ?.height,
+                                                                    width: m
+                                                                        .dimensions
+                                                                        ?.width,
+                                                                    blurHash: m
+                                                                        .blurHash,
+                                                                  ))
+                                                              .toList();
+
+                                                      downloadUrls =
+                                                          (await Future.wait(
+                                                        selectedMedia.map(
+                                                          (m) async =>
+                                                              await uploadData(
+                                                                  m.storagePath,
+                                                                  m.bytes),
                                                         ),
-                                                elevation: 3.0,
-                                                borderSide: const BorderSide(
+                                                      ))
+                                                              .where((u) =>
+                                                                  u != null)
+                                                              .map((u) => u!)
+                                                              .toList();
+                                                    } finally {
+                                                      _model.isDataUploading =
+                                                          false;
+                                                    }
+                                                    if (selectedUploadedFiles
+                                                                .length ==
+                                                            selectedMedia
+                                                                .length &&
+                                                        downloadUrls.length ==
+                                                            selectedMedia
+                                                                .length) {
+                                                      setState(() {
+                                                        _model.uploadedLocalFile =
+                                                            selectedUploadedFiles
+                                                                .first;
+                                                        _model.uploadedFileUrl =
+                                                            downloadUrls.first;
+                                                      });
+                                                    } else {
+                                                      setState(() {});
+                                                      return;
+                                                    }
+                                                  }
+                                                },
+                                                text: 'Subir foto',
+                                                icon: const Icon(
+                                                  Icons.cloud_upload_outlined,
                                                   color: Color(0xFF8A2F7C),
-                                                  width: 1.0,
+                                                  size: 15.0,
                                                 ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    180.0, 75.0, 0.0, 0.0),
-                                            child: FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
-                                              },
-                                              text: 'Tomar foto',
-                                              icon: const Icon(
-                                                Icons.add_a_photo_sharp,
-                                                size: 15.0,
-                                              ),
-                                              options: FFButtonOptions(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.38,
-                                                height:
-                                                    MediaQuery.sizeOf(context)
-                                                            .height *
-                                                        0.05,
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        24.0, 0.0, 24.0, 0.0),
-                                                iconPadding:
-                                                    const EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color: const Color(0xFFD49ED2),
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: const BorderSide(
-                                                  color: Color(0xFF8A2F7C),
-                                                  width: 1.0,
+                                                options: FFButtonOptions(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.38,
+                                                  height:
+                                                      MediaQuery.sizeOf(context)
+                                                              .height *
+                                                          0.05,
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          24.0, 0.0, 24.0, 0.0),
+                                                  iconPadding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: const Color(0xFFD49ED2),
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            color: Colors.white,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                  elevation: 3.0,
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0xFF8A2F7C),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
                                                 ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
                                               ),
                                             ),
                                           ),
@@ -767,51 +821,71 @@ class _CreacionVentasSinInformacionWidgetState
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 20.0, 0.0, 0.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
-                                          },
-                                          text: 'Crear lista',
-                                          icon: const FaIcon(
-                                            FontAwesomeIcons.pen,
-                                            color: Color(0xFF8A2F7C),
-                                          ),
-                                          options: FFButtonOptions(
-                                            height: 40.0,
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    24.0, 0.0, 24.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0xFFD49ED2),
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color: Colors.white,
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            elevation: 3.0,
-                                            borderSide: const BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
+                                Expanded(
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 20.0, 0.0, 0.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              await ListasRecord.collection
+                                                  .doc()
+                                                  .set(createListasRecordData(
+                                                    nombre: _model
+                                                        .txtNombreListaController
+                                                        .text,
+                                                    descripcion: _model
+                                                        .txtDescripcionListaController
+                                                        .text,
+                                                    imagen:
+                                                        _model.uploadedFileUrl,
+                                                    fechaCreacion:
+                                                        getCurrentTimestamp,
+                                                  ));
+
+                                              context.pushNamed(
+                                                  'listaVentasConInformacion');
+                                            },
+                                            text: 'Crear lista',
+                                            icon: const FaIcon(
+                                              FontAwesomeIcons.pen,
+                                              color: Color(0xFF8A2F7C),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
+                                            options: FFButtonOptions(
+                                              height: 40.0,
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      24.0, 0.0, 24.0, 0.0),
+                                              iconPadding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: const Color(0xFFD49ED2),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color: Colors.white,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              elevation: 3.0,
+                                              borderSide: const BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),

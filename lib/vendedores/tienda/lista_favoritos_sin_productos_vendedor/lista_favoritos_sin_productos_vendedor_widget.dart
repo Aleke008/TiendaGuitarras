@@ -406,8 +406,7 @@ class _ListaFavoritosSinProductosVendedorWidgetState
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       50.0, 0.0, 230.0, 0.0),
                                   child: FlutterFlowIconButton(
-                                    borderColor: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
+                                    borderColor: Colors.transparent,
                                     borderRadius: 20.0,
                                     borderWidth: 1.0,
                                     buttonSize:
