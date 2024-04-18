@@ -33,14 +33,14 @@ class _EdicionVentasSinInformacionWidgetState
     super.initState();
     _model = createModel(context, () => EdicionVentasSinInformacionModel());
 
-    _model.txtNombreListaController ??= TextEditingController(
+    _model.txtNombreListaTextController ??= TextEditingController(
         text: valueOrDefault<String>(
       widget.lista?.nombre,
       'sin nombre',
     ));
     _model.txtNombreListaFocusNode ??= FocusNode();
 
-    _model.txtDescripcionListaController ??= TextEditingController(
+    _model.txtDescripcionListaTextController ??= TextEditingController(
         text: valueOrDefault<String>(
       widget.lista?.descripcion,
       'sin descripción',
@@ -158,8 +158,7 @@ class _EdicionVentasSinInformacionWidgetState
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                          color: const Color(0xFFF2F2F2),
                                           fontSize: 22.0,
                                           letterSpacing: 0.0,
                                         ),
@@ -239,7 +238,7 @@ class _EdicionVentasSinInformacionWidgetState
                                                     8.0, 10.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller: _model
-                                                  .txtNombreListaController,
+                                                  .txtNombreListaTextController,
                                               focusNode: _model
                                                   .txtNombreListaFocusNode,
                                               autofocus: true,
@@ -316,7 +315,7 @@ class _EdicionVentasSinInformacionWidgetState
                                                         letterSpacing: 0.0,
                                                       ),
                                               validator: _model
-                                                  .txtNombreListaControllerValidator
+                                                  .txtNombreListaTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -352,7 +351,7 @@ class _EdicionVentasSinInformacionWidgetState
                                                     8.0, 10.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller: _model
-                                                  .txtDescripcionListaController,
+                                                  .txtDescripcionListaTextController,
                                               focusNode: _model
                                                   .txtDescripcionListaFocusNode,
                                               autofocus: true,
@@ -431,7 +430,7 @@ class _EdicionVentasSinInformacionWidgetState
                                                       ),
                                               maxLines: 5,
                                               validator: _model
-                                                  .txtDescripcionListaControllerValidator
+                                                  .txtDescripcionListaTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -457,200 +456,247 @@ class _EdicionVentasSinInformacionWidgetState
                                         ],
                                       ),
                                     ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Container(
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.2,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          child: Stack(
-                                            children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(20.0),
-                                                child: Image.network(
-                                                  _model.uploadedFileUrl,
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          0.4,
-                                                  height:
-                                                      MediaQuery.sizeOf(context)
-                                                              .height *
-                                                          0.22,
-                                                  fit: BoxFit.cover,
-                                                  errorBuilder: (context, error,
-                                                          stackTrace) =>
-                                                      Image.asset(
-                                                    'assets/images/error_image.png',
-                                                    width: MediaQuery.sizeOf(
-                                                                context)
-                                                            .width *
-                                                        0.4,
-                                                    height: MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.22,
-                                                    fit: BoxFit.cover,
-                                                  ),
+                                    StreamBuilder<ListasRecord>(
+                                      stream: ListasRecord.getDocument(
+                                          widget.lista!.reference),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
                                                 ),
                                               ),
-                                              Align(
-                                                alignment: const AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          180.0, 0.0, 0.0, 0.0),
-                                                  child: FFButtonWidget(
-                                                    onPressed: () async {
-                                                      final selectedMedia =
-                                                          await selectMediaWithSourceBottomSheet(
-                                                        context: context,
-                                                        allowPhoto: true,
-                                                      );
-                                                      if (selectedMedia !=
-                                                              null &&
-                                                          selectedMedia.every((m) =>
-                                                              validateFileFormat(
-                                                                  m.storagePath,
-                                                                  context))) {
-                                                        setState(() => _model
-                                                                .isDataUploading =
-                                                            true);
-                                                        var selectedUploadedFiles =
-                                                            <FFUploadedFile>[];
-
-                                                        var downloadUrls =
-                                                            <String>[];
-                                                        try {
-                                                          selectedUploadedFiles =
-                                                              selectedMedia
-                                                                  .map((m) =>
-                                                                      FFUploadedFile(
-                                                                        name: m
-                                                                            .storagePath
-                                                                            .split('/')
-                                                                            .last,
-                                                                        bytes: m
-                                                                            .bytes,
-                                                                        height: m
-                                                                            .dimensions
-                                                                            ?.height,
-                                                                        width: m
-                                                                            .dimensions
-                                                                            ?.width,
-                                                                        blurHash:
-                                                                            m.blurHash,
-                                                                      ))
-                                                                  .toList();
-
-                                                          downloadUrls =
-                                                              (await Future
-                                                                      .wait(
-                                                            selectedMedia.map(
-                                                              (m) async =>
-                                                                  await uploadData(
-                                                                      m.storagePath,
-                                                                      m.bytes),
-                                                            ),
-                                                          ))
-                                                                  .where((u) =>
-                                                                      u != null)
-                                                                  .map(
-                                                                      (u) => u!)
-                                                                  .toList();
-                                                        } finally {
-                                                          _model.isDataUploading =
-                                                              false;
-                                                        }
-                                                        if (selectedUploadedFiles
-                                                                    .length ==
-                                                                selectedMedia
-                                                                    .length &&
-                                                            downloadUrls
-                                                                    .length ==
-                                                                selectedMedia
-                                                                    .length) {
-                                                          setState(() {
-                                                            _model.uploadedLocalFile =
-                                                                selectedUploadedFiles
-                                                                    .first;
-                                                            _model.uploadedFileUrl =
-                                                                downloadUrls
-                                                                    .first;
-                                                          });
-                                                        } else {
-                                                          setState(() {});
-                                                          return;
-                                                        }
-                                                      }
-                                                    },
-                                                    text: 'Subir foto',
-                                                    icon: const Icon(
-                                                      Icons
-                                                          .cloud_upload_outlined,
-                                                      color: Color(0xFF8A2F7C),
-                                                      size: 15.0,
-                                                    ),
-                                                    options: FFButtonOptions(
+                                            ),
+                                          );
+                                        }
+                                        final rowListasRecord = snapshot.data!;
+                                        return Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.2,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                              ),
+                                              child: Stack(
+                                                children: [
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20.0),
+                                                    child: Image.network(
+                                                      valueOrDefault<String>(
+                                                        _model.uploadedFileUrl !=
+                                                                    ''
+                                                            ? _model
+                                                                .uploadedFileUrl
+                                                            : rowListasRecord
+                                                                .imagen,
+                                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/tienda-virtual-de-guitarras-vdm5bb/assets/9s29aii367py/SIN.jpg',
+                                                      ),
                                                       width: MediaQuery.sizeOf(
                                                                   context)
                                                               .width *
-                                                          0.38,
+                                                          0.4,
                                                       height: MediaQuery.sizeOf(
                                                                   context)
                                                               .height *
-                                                          0.05,
+                                                          0.22,
+                                                      fit: BoxFit.contain,
+                                                      errorBuilder: (context,
+                                                              error,
+                                                              stackTrace) =>
+                                                          Image.asset(
+                                                        'assets/images/error_image.png',
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.4,
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                0.22,
+                                                        fit: BoxFit.contain,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
                                                       padding:
                                                           const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  24.0,
-                                                                  0.0,
-                                                                  24.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
+                                                                  180.0,
                                                                   0.0,
                                                                   0.0,
                                                                   0.0),
-                                                      color: const Color(0xFFD49ED2),
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                color: Colors
-                                                                    .white,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      elevation: 3.0,
-                                                      borderSide: const BorderSide(
-                                                        color:
-                                                            Color(0xFF8A2F7C),
-                                                        width: 1.0,
+                                                      child: FFButtonWidget(
+                                                        onPressed: () async {
+                                                          final selectedMedia =
+                                                              await selectMediaWithSourceBottomSheet(
+                                                            context: context,
+                                                            allowPhoto: true,
+                                                          );
+                                                          if (selectedMedia !=
+                                                                  null &&
+                                                              selectedMedia.every((m) =>
+                                                                  validateFileFormat(
+                                                                      m.storagePath,
+                                                                      context))) {
+                                                            setState(() => _model
+                                                                    .isDataUploading =
+                                                                true);
+                                                            var selectedUploadedFiles =
+                                                                <FFUploadedFile>[];
+
+                                                            var downloadUrls =
+                                                                <String>[];
+                                                            try {
+                                                              selectedUploadedFiles =
+                                                                  selectedMedia
+                                                                      .map((m) =>
+                                                                          FFUploadedFile(
+                                                                            name:
+                                                                                m.storagePath.split('/').last,
+                                                                            bytes:
+                                                                                m.bytes,
+                                                                            height:
+                                                                                m.dimensions?.height,
+                                                                            width:
+                                                                                m.dimensions?.width,
+                                                                            blurHash:
+                                                                                m.blurHash,
+                                                                          ))
+                                                                      .toList();
+
+                                                              downloadUrls =
+                                                                  (await Future
+                                                                          .wait(
+                                                                selectedMedia
+                                                                    .map(
+                                                                  (m) async =>
+                                                                      await uploadData(
+                                                                          m.storagePath,
+                                                                          m.bytes),
+                                                                ),
+                                                              ))
+                                                                      .where((u) =>
+                                                                          u !=
+                                                                          null)
+                                                                      .map((u) =>
+                                                                          u!)
+                                                                      .toList();
+                                                            } finally {
+                                                              _model.isDataUploading =
+                                                                  false;
+                                                            }
+                                                            if (selectedUploadedFiles
+                                                                        .length ==
+                                                                    selectedMedia
+                                                                        .length &&
+                                                                downloadUrls
+                                                                        .length ==
+                                                                    selectedMedia
+                                                                        .length) {
+                                                              setState(() {
+                                                                _model.uploadedLocalFile =
+                                                                    selectedUploadedFiles
+                                                                        .first;
+                                                                _model.uploadedFileUrl =
+                                                                    downloadUrls
+                                                                        .first;
+                                                              });
+                                                            } else {
+                                                              setState(() {});
+                                                              return;
+                                                            }
+                                                          }
+                                                        },
+                                                        text: 'Subir foto',
+                                                        icon: const Icon(
+                                                          Icons
+                                                              .cloud_upload_outlined,
+                                                          color:
+                                                              Color(0xFF8A2F7C),
+                                                          size: 15.0,
+                                                        ),
+                                                        options:
+                                                            FFButtonOptions(
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.38,
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.05,
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      24.0,
+                                                                      0.0,
+                                                                      24.0,
+                                                                      0.0),
+                                                          iconPadding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          color:
+                                                              const Color(0xFFD49ED2),
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    color: Colors
+                                                                        .white,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          elevation: 3.0,
+                                                          borderSide:
+                                                              const BorderSide(
+                                                            color: Color(
+                                                                0xFF8A2F7C),
+                                                            width: 1.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
                                                     ),
                                                   ),
-                                                ),
+                                                ],
                                               ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
+                                            ),
+                                          ],
+                                        );
+                                      },
                                     ),
                                     Expanded(
                                       child: Row(
@@ -669,14 +715,14 @@ class _EdicionVentasSinInformacionWidgetState
                                                       .update(
                                                           createListasRecordData(
                                                     nombre: _model
-                                                        .txtNombreListaController
+                                                        .txtNombreListaTextController
                                                         .text,
                                                     descripcion: _model
-                                                        .txtDescripcionListaController
+                                                        .txtDescripcionListaTextController
                                                         .text,
                                                     imagen:
                                                         _model.uploadedFileUrl,
-                                                    fechaCreacion:
+                                                    fechaActualizacion:
                                                         getCurrentTimestamp,
                                                   ));
 

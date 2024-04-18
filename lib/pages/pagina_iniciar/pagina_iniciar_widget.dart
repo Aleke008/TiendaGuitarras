@@ -41,7 +41,7 @@ class _PaginaIniciarWidgetState extends State<PaginaIniciarWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).fondo2,
         drawer: SizedBox(
           width: MediaQuery.sizeOf(context).width * 0.8,
           child: Drawer(
@@ -163,23 +163,38 @@ class _PaginaIniciarWidgetState extends State<PaginaIniciarWidget> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const FaIcon(
-                          FontAwesomeIcons.guitar,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          if (valueOrDefault(currentUserDocument?.rol, '') ==
+                              'vendedor') {
+                            context.pushNamed('listaVentasConInformacion');
+                          } else {
+                            context.pushNamed('registroVendedor');
+                          }
+                        },
+                        child: ListTile(
+                          leading: const FaIcon(
+                            FontAwesomeIcons.guitar,
+                            color: Color(0xFF882E7F),
+                            size: 30.0,
+                          ),
+                          title: Text(
+                            'Vender productos',
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  fontSize: 26.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          tileColor: const Color(0x00FFFFFF),
+                          dense: false,
                         ),
-                        title: Text(
-                          'Vender productos',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
                       ),
                     ),
                     Padding(

@@ -1,19 +1,21 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'agregar_producto_model.dart';
 export 'agregar_producto_model.dart';
 
 class AgregarProductoWidget extends StatefulWidget {
-  const AgregarProductoWidget({super.key});
+  const AgregarProductoWidget({
+    super.key,
+    required this.refAg,
+  });
+
+  final ListasRecord? refAg;
 
   @override
   State<AgregarProductoWidget> createState() => _AgregarProductoWidgetState();
@@ -29,21 +31,16 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
     super.initState();
     _model = createModel(context, () => AgregarProductoModel());
 
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      context.safePop();
-    });
-
-    _model.txtNombreListaController ??= TextEditingController();
+    _model.txtNombreListaTextController ??= TextEditingController();
     _model.txtNombreListaFocusNode ??= FocusNode();
 
-    _model.txtDescripcionListaController ??= TextEditingController();
+    _model.txtDescripcionListaTextController ??= TextEditingController();
     _model.txtDescripcionListaFocusNode ??= FocusNode();
 
-    _model.txtPrecioListaController ??= TextEditingController();
+    _model.txtPrecioListaTextController ??= TextEditingController();
     _model.txtPrecioListaFocusNode ??= FocusNode();
 
-    _model.txtPrecioOfertaController ??= TextEditingController();
+    _model.txtPrecioOfertaTextController ??= TextEditingController();
     _model.txtPrecioOfertaFocusNode ??= FocusNode();
   }
 
@@ -57,9 +54,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<ListasRecord>>(
-      stream: queryListasRecord(
-        singleRecord: true,
-      ),
+      stream: queryListasRecord(),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -79,14 +74,6 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
           );
         }
         List<ListasRecord> agregarProductoListasRecordList = snapshot.data!;
-        // Return an empty Container when the item does not exist.
-        if (snapshot.data!.isEmpty) {
-          return Container();
-        }
-        final agregarProductoListasRecord =
-            agregarProductoListasRecordList.isNotEmpty
-                ? agregarProductoListasRecordList.first
-                : null;
         return GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
               ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -94,240 +81,6 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: const Color(0xFFF3F3F3),
-            drawer: SizedBox(
-              width: MediaQuery.sizeOf(context).width * 0.8,
-              child: Drawer(
-                elevation: 30.0,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 0.0, 0.0),
-                            child: FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 20.0,
-                              borderWidth: 1.0,
-                              buttonSize: 60.0,
-                              icon: const Icon(
-                                Icons.close,
-                                color: Color(0xFF882E7F),
-                                size: 45.0,
-                              ),
-                              onPressed: () async {
-                                if (scaffoldKey.currentState!.isDrawerOpen ||
-                                    scaffoldKey.currentState!.isEndDrawerOpen) {
-                                  Navigator.pop(context);
-                                }
-                              },
-                            ),
-                          ),
-                          Flexible(
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  80.0, 0.0, 0.0, 0.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.asset(
-                                  'assets/images/logo.png',
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 0.1,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    ListView(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 30.0, 0.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.pushNamed('buscarProductos');
-                            },
-                            child: ListTile(
-                              leading: const FaIcon(
-                                FontAwesomeIcons.home,
-                                color: Color(0xFF882E7F),
-                                size: 30.0,
-                              ),
-                              title: Text(
-                                'Inicio',
-                                style: FlutterFlowTheme.of(context)
-                                    .titleLarge
-                                    .override(
-                                      fontFamily: 'Open Sans',
-                                      fontSize: 26.0,
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
-                              tileColor: const Color(0x00FFFFFF),
-                              dense: false,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 0.0),
-                          child: ListTile(
-                            leading: const FaIcon(
-                              FontAwesomeIcons.solidUser,
-                              color: Color(0xFF882E7F),
-                              size: 30.0,
-                            ),
-                            title: Text(
-                              'Mi perfil',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                            tileColor: const Color(0x00FFFFFF),
-                            dense: false,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 0.0),
-                          child: ListTile(
-                            leading: const FaIcon(
-                              FontAwesomeIcons.guitar,
-                              color: Color(0xFF882E7F),
-                              size: 30.0,
-                            ),
-                            title: Text(
-                              'Vender productos',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                            tileColor: const Color(0x00FFFFFF),
-                            dense: false,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 0.0),
-                          child: ListTile(
-                            leading: const Icon(
-                              Icons.favorite,
-                              color: Color(0xFF882E7F),
-                              size: 30.0,
-                            ),
-                            title: Text(
-                              'Lista Favoritos',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                            tileColor: const Color(0x00FFFFFF),
-                            dense: false,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 0.0),
-                          child: ListTile(
-                            leading: const Icon(
-                              Icons.chat_bubble_outline,
-                              color: Color(0xFF882E7F),
-                              size: 30.0,
-                            ),
-                            title: Text(
-                              'Mensajes',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                            tileColor: const Color(0x00FFFFFF),
-                            dense: false,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 0.0),
-                          child: ListTile(
-                            leading: const Icon(
-                              Icons.settings_sharp,
-                              color: Color(0xFF882E7F),
-                              size: 30.0,
-                            ),
-                            title: Text(
-                              'Configuración',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                            tileColor: const Color(0x00FFFFFF),
-                            dense: false,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 0.0),
-                          child: ListTile(
-                            leading: const Icon(
-                              Icons.logout_outlined,
-                              color: Color(0xFF882E7F),
-                              size: 30.0,
-                            ),
-                            title: Text(
-                              'Cerrar Sesión',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                            tileColor: const Color(0x00FFFFFF),
-                            dense: false,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
             body: SafeArea(
               top: true,
               child: Column(
@@ -352,8 +105,8 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                 children: [
                                   Expanded(
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('btnVolver pressed ...');
+                                      onPressed: () async {
+                                        context.safePop();
                                       },
                                       text: '',
                                       icon: const Icon(
@@ -400,8 +153,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                          color: const Color(0xFFF2F2F2),
                                           fontSize: 22.0,
                                           letterSpacing: 0.0,
                                         ),
@@ -481,7 +233,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                                     8.0, 10.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller: _model
-                                                  .txtNombreListaController,
+                                                  .txtNombreListaTextController,
                                               focusNode: _model
                                                   .txtNombreListaFocusNode,
                                               autofocus: true,
@@ -558,7 +310,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                               validator: _model
-                                                  .txtNombreListaControllerValidator
+                                                  .txtNombreListaTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -594,7 +346,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                                     8.0, 10.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller: _model
-                                                  .txtDescripcionListaController,
+                                                  .txtDescripcionListaTextController,
                                               focusNode: _model
                                                   .txtDescripcionListaFocusNode,
                                               autofocus: true,
@@ -673,7 +425,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                                       ),
                                               maxLines: 5,
                                               validator: _model
-                                                  .txtDescripcionListaControllerValidator
+                                                  .txtDescripcionListaTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -709,7 +461,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                                     8.0, 10.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller: _model
-                                                  .txtPrecioListaController,
+                                                  .txtPrecioListaTextController,
                                               focusNode: _model
                                                   .txtPrecioListaFocusNode,
                                               autofocus: true,
@@ -788,7 +540,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                               keyboardType:
                                                   TextInputType.number,
                                               validator: _model
-                                                  .txtPrecioListaControllerValidator
+                                                  .txtPrecioListaTextControllerValidator
                                                   .asValidator(context),
                                               inputFormatters: [
                                                 FilteringTextInputFormatter
@@ -907,7 +659,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                                       8.0, 10.0, 8.0, 0.0),
                                               child: TextFormField(
                                                 controller: _model
-                                                    .txtPrecioOfertaController,
+                                                    .txtPrecioOfertaTextController,
                                                 focusNode: _model
                                                     .txtPrecioOfertaFocusNode,
                                                 autofocus: true,
@@ -994,7 +746,7 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                                 keyboardType:
                                                     TextInputType.number,
                                                 validator: _model
-                                                    .txtPrecioOfertaControllerValidator
+                                                    .txtPrecioOfertaTextControllerValidator
                                                     .asValidator(context),
                                                 inputFormatters: [
                                                   FilteringTextInputFormatter
@@ -1015,32 +767,45 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                                   0.0, 20.0, 0.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
-                                              await Productos2Record.createDoc(
-                                                      agregarProductoListasRecord!
-                                                          .reference)
-                                                  .set(
-                                                      createProductos2RecordData(
-                                                nombre: _model
-                                                    .txtNombreListaController
-                                                    .text,
-                                                descripcion: _model
-                                                    .txtDescripcionListaController
-                                                    .text,
-                                                precio: double.tryParse(_model
-                                                    .txtPrecioListaController
-                                                    .text),
-                                                esOferta: _model.ddOfertaValue,
-                                                precioOferta: double.tryParse(
-                                                    _model
-                                                        .txtPrecioOfertaController
-                                                        .text),
-                                                fechaPublicacion:
-                                                    getCurrentTimestamp,
-                                              ));
-
                                               context.pushNamed(
                                                 'agregarProductoClasificacion',
+                                                queryParameters: {
+                                                  'refClas': serializeParam(
+                                                    widget.refAg,
+                                                    ParamType.Document,
+                                                  ),
+                                                  'nombre': serializeParam(
+                                                    _model
+                                                        .txtNombreListaTextController
+                                                        .text,
+                                                    ParamType.String,
+                                                  ),
+                                                  'descripcion': serializeParam(
+                                                    _model
+                                                        .txtDescripcionListaTextController
+                                                        .text,
+                                                    ParamType.String,
+                                                  ),
+                                                  'precio': serializeParam(
+                                                    double.tryParse(_model
+                                                        .txtPrecioListaTextController
+                                                        .text),
+                                                    ParamType.double,
+                                                  ),
+                                                  'esOferta': serializeParam(
+                                                    _model.ddOfertaValue,
+                                                    ParamType.bool,
+                                                  ),
+                                                  'precioOferta':
+                                                      serializeParam(
+                                                    double.tryParse(_model
+                                                        .txtPrecioOfertaTextController
+                                                        .text),
+                                                    ParamType.double,
+                                                  ),
+                                                }.withoutNulls,
                                                 extra: <String, dynamic>{
+                                                  'refClas': widget.refAg,
                                                   kTransitionInfoKey:
                                                       const TransitionInfo(
                                                     hasTransition: true,
@@ -1054,9 +819,10 @@ class _AgregarProductoWidgetState extends State<AgregarProductoWidget> {
                                               );
                                             },
                                             text: 'Continuar',
-                                            icon: const FaIcon(
-                                              FontAwesomeIcons.pen,
+                                            icon: const Icon(
+                                              Icons.arrow_forward_ios,
                                               color: Color(0xFF8A2F7C),
+                                              size: 15.0,
                                             ),
                                             options: FFButtonOptions(
                                               width: MediaQuery.sizeOf(context)

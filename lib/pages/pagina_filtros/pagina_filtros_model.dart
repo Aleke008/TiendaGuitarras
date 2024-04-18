@@ -9,12 +9,12 @@ class PaginaFiltrosModel extends FlutterFlowModel<PaginaFiltrosWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for txtMin widget.
   FocusNode? txtMinFocusNode;
-  TextEditingController? txtMinController;
-  String? Function(BuildContext, String?)? txtMinControllerValidator;
+  TextEditingController? txtMinTextController;
+  String? Function(BuildContext, String?)? txtMinTextControllerValidator;
   // State field(s) for txtMax widget.
   FocusNode? txtMaxFocusNode;
-  TextEditingController? txtMaxController;
-  String? Function(BuildContext, String?)? txtMaxControllerValidator;
+  TextEditingController? txtMaxTextController;
+  String? Function(BuildContext, String?)? txtMaxTextControllerValidator;
   DateTime? datePicked1;
   DateTime? datePicked2;
   // State field(s) for DropDown widget.
@@ -40,9 +40,9 @@ class PaginaFiltrosModel extends FlutterFlowModel<PaginaFiltrosWidget> {
   void dispose() {
     unfocusNode.dispose();
     txtMinFocusNode?.dispose();
-    txtMinController?.dispose();
+    txtMinTextController?.dispose();
 
     txtMaxFocusNode?.dispose();
-    txtMaxController?.dispose();
+    txtMaxTextController?.dispose();
   }
 }

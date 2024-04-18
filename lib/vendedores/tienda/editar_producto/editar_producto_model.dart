@@ -7,29 +7,31 @@ class EditarProductoModel extends FlutterFlowModel<EditarProductoWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for txtNombreLista widget.
-  FocusNode? txtNombreListaFocusNode1;
-  TextEditingController? txtNombreListaController1;
-  String? Function(BuildContext, String?)? txtNombreListaController1Validator;
+  // State field(s) for txtNombre widget.
+  FocusNode? txtNombreFocusNode;
+  TextEditingController? txtNombreTextController;
+  String? Function(BuildContext, String?)? txtNombreTextControllerValidator;
   // State field(s) for txtDescripcionLista widget.
   FocusNode? txtDescripcionListaFocusNode;
-  TextEditingController? txtDescripcionListaController;
+  TextEditingController? txtDescripcionListaTextController;
   String? Function(BuildContext, String?)?
-      txtDescripcionListaControllerValidator;
+      txtDescripcionListaTextControllerValidator;
   // State field(s) for txtPrecioLista widget.
   FocusNode? txtPrecioListaFocusNode;
-  TextEditingController? txtPrecioListaController;
-  String? Function(BuildContext, String?)? txtPrecioListaControllerValidator;
-  // State field(s) for txtNombreLista widget.
-  String? txtNombreListaValue;
-  FormFieldController<String>? txtNombreListaValueController;
-  // State field(s) for txtNombreLista widget.
-  FocusNode? txtNombreListaFocusNode2;
-  TextEditingController? txtNombreListaController2;
-  String? Function(BuildContext, String?)? txtNombreListaController2Validator;
+  TextEditingController? txtPrecioListaTextController;
+  String? Function(BuildContext, String?)?
+      txtPrecioListaTextControllerValidator;
+  // State field(s) for ddOferta widget.
+  bool? ddOfertaValue;
+  FormFieldController<bool>? ddOfertaValueController;
+  // State field(s) for txtPrecioOferta widget.
+  FocusNode? txtPrecioOfertaFocusNode;
+  TextEditingController? txtPrecioOfertaTextController;
+  String? Function(BuildContext, String?)?
+      txtPrecioOfertaTextControllerValidator;
   // State field(s) for txtPausaVenta widget.
-  String? txtPausaVentaValue;
-  FormFieldController<String>? txtPausaVentaValueController;
+  bool? txtPausaVentaValue;
+  FormFieldController<bool>? txtPausaVentaValueController;
 
   @override
   void initState(BuildContext context) {}
@@ -37,16 +39,16 @@ class EditarProductoModel extends FlutterFlowModel<EditarProductoWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
-    txtNombreListaFocusNode1?.dispose();
-    txtNombreListaController1?.dispose();
+    txtNombreFocusNode?.dispose();
+    txtNombreTextController?.dispose();
 
     txtDescripcionListaFocusNode?.dispose();
-    txtDescripcionListaController?.dispose();
+    txtDescripcionListaTextController?.dispose();
 
     txtPrecioListaFocusNode?.dispose();
-    txtPrecioListaController?.dispose();
+    txtPrecioListaTextController?.dispose();
 
-    txtNombreListaFocusNode2?.dispose();
-    txtNombreListaController2?.dispose();
+    txtPrecioOfertaFocusNode?.dispose();
+    txtPrecioOfertaTextController?.dispose();
   }
 }

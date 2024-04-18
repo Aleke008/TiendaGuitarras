@@ -8,9 +8,9 @@ class ChatMensajesModel extends FlutterFlowModel<ChatMensajesWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for inputMensajeEnviar widget.
   FocusNode? inputMensajeEnviarFocusNode;
-  TextEditingController? inputMensajeEnviarController;
+  TextEditingController? inputMensajeEnviarTextController;
   String? Function(BuildContext, String?)?
-      inputMensajeEnviarControllerValidator;
+      inputMensajeEnviarTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -19,6 +19,6 @@ class ChatMensajesModel extends FlutterFlowModel<ChatMensajesWidget> {
   void dispose() {
     unfocusNode.dispose();
     inputMensajeEnviarFocusNode?.dispose();
-    inputMensajeEnviarController?.dispose();
+    inputMensajeEnviarTextController?.dispose();
   }
 }

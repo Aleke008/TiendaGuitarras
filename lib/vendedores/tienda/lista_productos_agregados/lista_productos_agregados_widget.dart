@@ -1,8 +1,10 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'lista_productos_agregados_model.dart';
 export 'lista_productos_agregados_model.dart';
@@ -95,7 +97,8 @@ class _ListaProductosAgregadosWidgetState
                                   Expanded(
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        context.safePop();
+                                        context.pushNamed(
+                                            'listaVentasConInformacion');
                                       },
                                       text: '',
                                       icon: const Icon(
@@ -142,8 +145,7 @@ class _ListaProductosAgregadosWidgetState
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                          color: const Color(0xFFF2F2F2),
                                           fontSize: 22.0,
                                           letterSpacing: 0.0,
                                         ),
@@ -217,6 +219,48 @@ class _ListaProductosAgregadosWidgetState
                                             ),
                                       ),
                                     ),
+                                    Expanded(
+                                      child: FutureBuilder<int>(
+                                        future: queryProductos2RecordCount(
+                                          parent: widget.listas?.reference,
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          int textCount = snapshot.data!;
+                                          return Text(
+                                            textCount.toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .letras,
+                                                  fontSize: 18.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                          );
+                                        },
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -230,7 +274,9 @@ class _ListaProductosAgregadosWidgetState
                                     decoration: const BoxDecoration(),
                                     child:
                                         StreamBuilder<List<Productos2Record>>(
-                                      stream: queryProductos2Record(),
+                                      stream: queryProductos2Record(
+                                        parent: widget.listas?.reference,
+                                      ),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
@@ -302,8 +348,20 @@ class _ListaProductosAgregadosWidgetState
                                                                   Colors
                                                                       .transparent,
                                                               onTap: () async {
-                                                                context.pushNamed(
-                                                                    'paginaProductoDetalles');
+                                                                context
+                                                                    .pushNamed(
+                                                                  'paginaProductoDetalles',
+                                                                  queryParameters:
+                                                                      {
+                                                                    'refProducto':
+                                                                        serializeParam(
+                                                                      listViewProductosPopularesProductos2Record
+                                                                          .reference,
+                                                                      ParamType
+                                                                          .DocumentReference,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                );
                                                               },
                                                               child: Container(
                                                                 width: 234.0,
@@ -313,6 +371,22 @@ class _ListaProductosAgregadosWidgetState
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryBackground,
+                                                                  borderRadius:
+                                                                      const BorderRadius
+                                                                          .only(
+                                                                    bottomLeft:
+                                                                        Radius.circular(
+                                                                            0.0),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            0.0),
+                                                                    topLeft: Radius
+                                                                        .circular(
+                                                                            35.0),
+                                                                    topRight: Radius
+                                                                        .circular(
+                                                                            35.0),
+                                                                  ),
                                                                 ),
                                                                 child: Stack(
                                                                   children: [
@@ -330,14 +404,31 @@ class _ListaProductosAgregadosWidgetState
                                                                             Radius.circular(35.0),
                                                                       ),
                                                                       child: Image
-                                                                          .asset(
-                                                                        'assets/images/guitarra_acustica.jpg',
+                                                                          .network(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          listViewProductosPopularesProductos2Record
+                                                                              .imagenPrincipal,
+                                                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/tienda-virtual-de-guitarras-vdm5bb/assets/9s29aii367py/SIN.jpg',
+                                                                        ),
                                                                         width: MediaQuery.sizeOf(context).width *
                                                                             1.0,
                                                                         height: MediaQuery.sizeOf(context).height *
                                                                             1.0,
                                                                         fit: BoxFit
                                                                             .fill,
+                                                                        errorBuilder: (context,
+                                                                                error,
+                                                                                stackTrace) =>
+                                                                            Image.asset(
+                                                                          'assets/images/error_image.png',
+                                                                          width:
+                                                                              MediaQuery.sizeOf(context).width * 1.0,
+                                                                          height:
+                                                                              MediaQuery.sizeOf(context).height * 1.0,
+                                                                          fit: BoxFit
+                                                                              .fill,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                     Padding(
@@ -368,9 +459,26 @@ class _ListaProductosAgregadosWidgetState
                                                                               20.0,
                                                                         ),
                                                                         onPressed:
-                                                                            () {
-                                                                          print(
-                                                                              'IconButton pressed ...');
+                                                                            () async {
+                                                                          context
+                                                                              .pushNamed(
+                                                                            'editarProducto',
+                                                                            queryParameters:
+                                                                                {
+                                                                              'refProducto': serializeParam(
+                                                                                listViewProductosPopularesProductos2Record.reference,
+                                                                                ParamType.DocumentReference,
+                                                                              ),
+                                                                              'refLista': serializeParam(
+                                                                                widget.listas,
+                                                                                ParamType.Document,
+                                                                              ),
+                                                                            }.withoutNulls,
+                                                                            extra: <String,
+                                                                                dynamic>{
+                                                                              'refLista': widget.listas,
+                                                                            },
+                                                                          );
                                                                         },
                                                                       ),
                                                                     ),
@@ -402,9 +510,10 @@ class _ListaProductosAgregadosWidgetState
                                                                               20.0,
                                                                         ),
                                                                         onPressed:
-                                                                            () {
-                                                                          print(
-                                                                              'IconButton pressed ...');
+                                                                            () async {
+                                                                          await listViewProductosPopularesProductos2Record
+                                                                              .reference
+                                                                              .delete();
                                                                         },
                                                                       ),
                                                                     ),
@@ -479,7 +588,7 @@ class _ListaProductosAgregadosWidgetState
                                                                         Flexible(
                                                                           child:
                                                                               Text(
-                                                                            'Estado: Nueva',
+                                                                            'Estado: ${listViewProductosPopularesProductos2Record.estado}',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   letterSpacing: 0.0,
@@ -496,7 +605,7 @@ class _ListaProductosAgregadosWidgetState
                                                                         Flexible(
                                                                           child:
                                                                               Text(
-                                                                            'Categoría:',
+                                                                            'Categoría: ${listViewProductosPopularesProductos2Record.categoria}',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   letterSpacing: 0.0,
@@ -513,7 +622,7 @@ class _ListaProductosAgregadosWidgetState
                                                                         Flexible(
                                                                           child:
                                                                               Text(
-                                                                            'Modelo:',
+                                                                            'Modelo: ${listViewProductosPopularesProductos2Record.modelo}',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   letterSpacing: 0.0,
@@ -530,7 +639,7 @@ class _ListaProductosAgregadosWidgetState
                                                                         Flexible(
                                                                           child:
                                                                               Text(
-                                                                            'Vendedor:',
+                                                                            'Vendedor: ${functions.obtenerNombreUsuario(currentUserUid)}',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   letterSpacing: 0.0,
@@ -539,6 +648,25 @@ class _ListaProductosAgregadosWidgetState
                                                                         ),
                                                                       ],
                                                                     ),
+                                                                    if (listViewProductosPopularesProductos2Record
+                                                                            .esOferta ==
+                                                                        true)
+                                                                      Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Flexible(
+                                                                            child:
+                                                                                Text(
+                                                                              'Oferta: ${listViewProductosPopularesProductos2Record.esOferta ? 'En oferta' : 'Sin oferta'}',
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                    fontFamily: 'Readex Pro',
+                                                                                    letterSpacing: 0.0,
+                                                                                  ),
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
                                                                     Padding(
                                                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
@@ -558,21 +686,10 @@ class _ListaProductosAgregadosWidgetState
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              '₡',
+                                                                              listViewProductosPopularesProductos2Record.esOferta ? 'Antes: ₡${listViewProductosPopularesProductos2Record.precio.toString()} Ahora: ₡${listViewProductosPopularesProductos2Record.precioOferta.toString()}' : '₡ ${listViewProductosPopularesProductos2Record.precio.toString()}',
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Readex Pro',
                                                                                     letterSpacing: 0.0,
-                                                                                  ),
-                                                                            ),
-                                                                          ),
-                                                                          Flexible(
-                                                                            child:
-                                                                                Text(
-                                                                              listViewProductosPopularesProductos2Record.precio.toString(),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Readex Pro',
-                                                                                    letterSpacing: 0.0,
-                                                                                    fontWeight: FontWeight.bold,
                                                                                   ),
                                                                             ),
                                                                           ),

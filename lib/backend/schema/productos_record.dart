@@ -86,6 +86,11 @@ class ProductosRecord extends FirestoreRecord {
   String get categoria => _categoria ?? '';
   bool hasCategoria() => _categoria != null;
 
+  // "enVenta" field.
+  bool? _enVenta;
+  bool get enVenta => _enVenta ?? false;
+  bool hasEnVenta() => _enVenta != null;
+
   void _initializeFields() {
     _nombre = snapshotData['nombre'] as String?;
     _descripcion = snapshotData['descripcion'] as String?;
@@ -101,6 +106,7 @@ class ProductosRecord extends FirestoreRecord {
     _provincia = getDataList(snapshotData['provincia']);
     _canton = getDataList(snapshotData['canton']);
     _categoria = snapshotData['categoria'] as String?;
+    _enVenta = snapshotData['enVenta'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -149,6 +155,7 @@ Map<String, dynamic> createProductosRecordData({
   bool? esOferta,
   double? precioOferta,
   String? categoria,
+  bool? enVenta,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -163,6 +170,7 @@ Map<String, dynamic> createProductosRecordData({
       'esOferta': esOferta,
       'precioOferta': precioOferta,
       'categoria': categoria,
+      'enVenta': enVenta,
     }.withoutNulls,
   );
 
@@ -188,7 +196,8 @@ class ProductosRecordDocumentEquality implements Equality<ProductosRecord> {
         listEquality.equals(e1?.vendedor, e2?.vendedor) &&
         listEquality.equals(e1?.provincia, e2?.provincia) &&
         listEquality.equals(e1?.canton, e2?.canton) &&
-        e1?.categoria == e2?.categoria;
+        e1?.categoria == e2?.categoria &&
+        e1?.enVenta == e2?.enVenta;
   }
 
   @override
@@ -206,7 +215,8 @@ class ProductosRecordDocumentEquality implements Equality<ProductosRecord> {
         e?.vendedor,
         e?.provincia,
         e?.canton,
-        e?.categoria
+        e?.categoria,
+        e?.enVenta
       ]);
 
   @override

@@ -16,14 +16,13 @@ import 'schema/provincia_record.dart';
 import 'schema/canton_record.dart';
 import 'schema/distrito_record.dart';
 import 'schema/mensajes_record.dart';
-import 'schema/canton_prueba_record.dart';
-import 'schema/provincia_prueba_record.dart';
-import 'schema/distrito_prueba_record.dart';
 import 'schema/listas_record.dart';
 import 'schema/productos2_record.dart';
+import 'schema/imagenes_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
+export 'package:firebase_core/firebase_core.dart';
 export 'schema/index.dart';
 export 'schema/util/firestore_util.dart';
 export 'schema/util/schema_util.dart';
@@ -39,11 +38,9 @@ export 'schema/provincia_record.dart';
 export 'schema/canton_record.dart';
 export 'schema/distrito_record.dart';
 export 'schema/mensajes_record.dart';
-export 'schema/canton_prueba_record.dart';
-export 'schema/provincia_prueba_record.dart';
-export 'schema/distrito_prueba_record.dart';
 export 'schema/listas_record.dart';
 export 'schema/productos2_record.dart';
+export 'schema/imagenes_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -452,117 +449,6 @@ Future<List<MensajesRecord>> queryMensajesRecordOnce({
       singleRecord: singleRecord,
     );
 
-/// Functions to query CantonPruebaRecords (as a Stream and as a Future).
-Future<int> queryCantonPruebaRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      CantonPruebaRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<CantonPruebaRecord>> queryCantonPruebaRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      CantonPruebaRecord.collection,
-      CantonPruebaRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<CantonPruebaRecord>> queryCantonPruebaRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      CantonPruebaRecord.collection,
-      CantonPruebaRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-/// Functions to query ProvinciaPruebaRecords (as a Stream and as a Future).
-Future<int> queryProvinciaPruebaRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      ProvinciaPruebaRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<ProvinciaPruebaRecord>> queryProvinciaPruebaRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      ProvinciaPruebaRecord.collection,
-      ProvinciaPruebaRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<ProvinciaPruebaRecord>> queryProvinciaPruebaRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      ProvinciaPruebaRecord.collection,
-      ProvinciaPruebaRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-/// Functions to query DistritoPruebaRecords (as a Stream and as a Future).
-Future<int> queryDistritoPruebaRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      DistritoPruebaRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<DistritoPruebaRecord>> queryDistritoPruebaRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      DistritoPruebaRecord.collection,
-      DistritoPruebaRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<DistritoPruebaRecord>> queryDistritoPruebaRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      DistritoPruebaRecord.collection,
-      DistritoPruebaRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
 /// Functions to query ListasRecords (as a Stream and as a Future).
 Future<int> queryListasRecordCount({
   Query Function(Query)? queryBuilder,
@@ -640,6 +526,43 @@ Future<List<Productos2Record>> queryProductos2RecordOnce({
       singleRecord: singleRecord,
     );
 
+/// Functions to query ImagenesRecords (as a Stream and as a Future).
+Future<int> queryImagenesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ImagenesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ImagenesRecord>> queryImagenesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ImagenesRecord.collection,
+      ImagenesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ImagenesRecord>> queryImagenesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ImagenesRecord.collection,
+      ImagenesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
 Future<int> queryCollectionCount(
   Query collection, {
   Query Function(Query)? queryBuilder,
@@ -706,20 +629,14 @@ Future<List<T>> queryCollectionOnce<T>(
       .toList());
 }
 
-extension FilterExtension on Filter {
-  Filter filterIn(String field, List? list) => (list?.isEmpty ?? true)
-      ? Filter(field, whereIn: null)
-      : Filter(field, whereIn: list);
+Filter filterIn(String field, List? list) => (list?.isEmpty ?? true)
+    ? Filter(field, whereIn: null)
+    : Filter(field, whereIn: list);
 
-  Filter filterNotIn(String field, List? list) => (list?.isEmpty ?? true)
-      ? Filter(field, whereNotIn: null)
-      : Filter(field, whereNotIn: list);
-
-  Filter filterArrayContainsAny(String field, List? list) =>
-      (list?.isEmpty ?? true)
-          ? Filter(field, arrayContainsAny: null)
-          : Filter(field, arrayContainsAny: list);
-}
+Filter filterArrayContainsAny(String field, List? list) =>
+    (list?.isEmpty ?? true)
+        ? Filter(field, arrayContainsAny: null)
+        : Filter(field, arrayContainsAny: list);
 
 extension QueryExtension on Query {
   Query whereIn(String field, List? list) => (list?.isEmpty ?? true)

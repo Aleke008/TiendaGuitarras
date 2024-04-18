@@ -10,8 +10,8 @@ class PaginaVendedoresBusquedaModel
   final unfocusNode = FocusNode();
   // State field(s) for txtBuscador widget.
   FocusNode? txtBuscadorFocusNode;
-  TextEditingController? txtBuscadorController;
-  String? Function(BuildContext, String?)? txtBuscadorControllerValidator;
+  TextEditingController? txtBuscadorTextController;
+  String? Function(BuildContext, String?)? txtBuscadorTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -20,6 +20,6 @@ class PaginaVendedoresBusquedaModel
   void dispose() {
     unfocusNode.dispose();
     txtBuscadorFocusNode?.dispose();
-    txtBuscadorController?.dispose();
+    txtBuscadorTextController?.dispose();
   }
 }

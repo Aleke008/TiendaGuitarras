@@ -356,7 +356,12 @@ class _ChatRoomsWidgetState extends State<ChatRoomsWidget> {
                 ],
               ),
               StreamBuilder<List<UsersRecord>>(
-                stream: queryUsersRecord(),
+                stream: queryUsersRecord(
+                  queryBuilder: (usersRecord) => usersRecord.where(
+                    'uid',
+                    isNotEqualTo: currentUserUid,
+                  ),
+                ),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
@@ -472,7 +477,16 @@ class _ChatRoomsWidgetState extends State<ChatRoomsWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               child: Image.network(
-                                                'https://picsum.photos/seed/402/600',
+                                                valueOrDefault<String>(
+                                                  listViewUsersRecord
+                                                                  .alternatePhoto !=
+                                                              ''
+                                                      ? listViewUsersRecord
+                                                          .alternatePhoto
+                                                      : listViewUsersRecord
+                                                          .photoUrl,
+                                                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/tienda-virtual-de-guitarras-vdm5bb/assets/9s29aii367py/SIN.jpg',
+                                                ),
                                                 width: 55.0,
                                                 height: 55.0,
                                                 fit: BoxFit.cover,

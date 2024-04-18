@@ -109,8 +109,7 @@ class _ConfigInterfazWidgetState extends State<ConfigInterfazWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                      color: const Color(0xFFF2F2F2),
                                       fontSize: 22.0,
                                       letterSpacing: 0.0,
                                     ),
@@ -146,6 +145,7 @@ class _ConfigInterfazWidgetState extends State<ConfigInterfazWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
+                                          color: const Color(0xFF111111),
                                           fontSize: 20.0,
                                           letterSpacing: 0.0,
                                         ),
@@ -184,9 +184,12 @@ class _ConfigInterfazWidgetState extends State<ConfigInterfazWidget> {
                               onChanged: (newValue) async {
                                 setState(() => _model.switchValue = newValue);
                                 if (newValue) {
-                                  setDarkModeSetting(context, ThemeMode.dark);
-                                } else {
-                                  setDarkModeSetting(context, ThemeMode.light);
+                                  setDarkModeSetting(
+                                    context,
+                                    _model.switchValue!
+                                        ? ThemeMode.dark
+                                        : ThemeMode.light,
+                                  );
                                 }
                               },
                               activeColor: const Color(0xFF882E7F),

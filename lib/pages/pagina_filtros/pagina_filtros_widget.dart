@@ -27,10 +27,10 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
     super.initState();
     _model = createModel(context, () => PaginaFiltrosModel());
 
-    _model.txtMinController ??= TextEditingController();
+    _model.txtMinTextController ??= TextEditingController();
     _model.txtMinFocusNode ??= FocusNode();
 
-    _model.txtMaxController ??= TextEditingController();
+    _model.txtMaxTextController ??= TextEditingController();
     _model.txtMaxFocusNode ??= FocusNode();
   }
 
@@ -49,233 +49,7 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: SizedBox(
-          width: MediaQuery.sizeOf(context).width * 0.8,
-          child: Drawer(
-            elevation: 30.0,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                        child: FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 20.0,
-                          borderWidth: 1.0,
-                          buttonSize: 60.0,
-                          icon: const Icon(
-                            Icons.close,
-                            color: Color(0xFF882E7F),
-                            size: 45.0,
-                          ),
-                          onPressed: () async {
-                            if (scaffoldKey.currentState!.isDrawerOpen ||
-                                scaffoldKey.currentState!.isEndDrawerOpen) {
-                              Navigator.pop(context);
-                            }
-                          },
-                        ),
-                      ),
-                      Flexible(
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              80.0, 0.0, 0.0, 0.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.asset(
-                              'assets/images/logo.png',
-                              height: MediaQuery.sizeOf(context).height * 0.1,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                ListView(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const FaIcon(
-                          FontAwesomeIcons.home,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Inicio',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const FaIcon(
-                          FontAwesomeIcons.solidUser,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Mi perfil',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const FaIcon(
-                          FontAwesomeIcons.guitar,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Vender productos',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.favorite,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Lista Favoritos',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.chat_bubble_outline,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Mensajes',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.settings_sharp,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Configuración',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed('loginUsuarios');
-                        },
-                        child: ListTile(
-                          leading: const Icon(
-                            Icons.login_outlined,
-                            color: Color(0xFF882E7F),
-                            size: 30.0,
-                          ),
-                          title: Text(
-                            'Iniciar Sesión',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Open Sans',
-                                  fontSize: 26.0,
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          tileColor: const Color(0x00FFFFFF),
-                          dense: false,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
+        backgroundColor: FlutterFlowTheme.of(context).fondo2,
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
@@ -348,8 +122,7 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Readex Pro',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
+                                        color: const Color(0xFFF2F2F2),
                                         fontSize: 22.0,
                                         letterSpacing: 0.0,
                                       ),
@@ -361,31 +134,6 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                       ),
                     ),
                   ],
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                        child: Text(
-                          'Principales filtros:',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const Divider(
-                  thickness: 1.0,
-                  color: Color(0xFF882E7F),
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -413,7 +161,7 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               8.0, 0.0, 8.0, 0.0),
                           child: TextFormField(
-                            controller: _model.txtMinController,
+                            controller: _model.txtMinTextController,
                             focusNode: _model.txtMinFocusNode,
                             autofocus: true,
                             obscureText: false,
@@ -470,7 +218,7 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                   letterSpacing: 0.0,
                                 ),
                             keyboardType: TextInputType.number,
-                            validator: _model.txtMinControllerValidator
+                            validator: _model.txtMinTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -493,7 +241,7 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               8.0, 0.0, 8.0, 0.0),
                           child: TextFormField(
-                            controller: _model.txtMaxController,
+                            controller: _model.txtMaxTextController,
                             focusNode: _model.txtMaxFocusNode,
                             autofocus: true,
                             obscureText: false,
@@ -550,7 +298,7 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                   letterSpacing: 0.0,
                                 ),
                             keyboardType: TextInputType.number,
-                            validator: _model.txtMaxControllerValidator
+                            validator: _model.txtMaxTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -783,7 +531,7 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                           onChanged: (val) =>
                               setState(() => _model.dropDownValue1 = val),
                           width: 300.0,
-                          height: 50.0,
+                          height: 54.0,
                           searchHintTextStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
                                     fontFamily: 'Readex Pro',
@@ -800,8 +548,8 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                     fontSize: 17.0,
                                     letterSpacing: 0.0,
                                   ),
-                          hintText: 'Please select...',
-                          searchHintText: 'Search for an item...',
+                          hintText: 'Seleccionar orden precio...',
+                          searchHintText: '',
                           icon: const Icon(
                             Icons.keyboard_arrow_down_rounded,
                             color: Color(0xFF882E7F),
@@ -898,7 +646,7 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                     fontSize: 17.0,
                                     letterSpacing: 0.0,
                                   ),
-                              hintText: 'Please select...',
+                              hintText: 'Seleccionar categoría...',
                               searchHintText: 'Search for an item...',
                               icon: const Icon(
                                 Icons.keyboard_arrow_down_rounded,
@@ -1001,7 +749,7 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                     fontSize: 17.0,
                                     letterSpacing: 0.0,
                                   ),
-                              hintText: 'Please select...',
+                              hintText: 'Seleccionar marca...',
                               searchHintText: 'Search for an item...',
                               icon: const Icon(
                                 Icons.keyboard_arrow_down_rounded,
@@ -1083,18 +831,6 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                               options: const ['Nuevo', 'Usado'],
                               width: 300.0,
                               height: 50.0,
-                              searchHintTextStyle: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
-                              searchTextStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -1102,8 +838,7 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                     fontSize: 17.0,
                                     letterSpacing: 0.0,
                                   ),
-                              hintText: 'Please select...',
-                              searchHintText: 'Search for an item...',
+                              hintText: 'Seleccionar estado...',
                               icon: const Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 color: Color(0xFF882E7F),
@@ -1120,7 +855,7 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                   16.0, 0.0, 16.0, 4.0),
                               hidesUnderline: true,
                               isOverButton: true,
-                              isSearchable: true,
+                              isSearchable: false,
                               isMultiSelect: true,
                               onMultiSelectChanged: (val) =>
                                   setState(() => _model.dropDownValue2 = val),
@@ -1184,18 +919,6 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                               options: const ['Sí', 'No'],
                               width: 300.0,
                               height: 50.0,
-                              searchHintTextStyle: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
-                              searchTextStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -1203,8 +926,7 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                     fontSize: 17.0,
                                     letterSpacing: 0.0,
                                   ),
-                              hintText: 'Please select...',
-                              searchHintText: 'Search for an item...',
+                              hintText: 'Seleccionar oferta...',
                               icon: const Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 color: Color(0xFF882E7F),
@@ -1221,7 +943,7 @@ class _PaginaFiltrosWidgetState extends State<PaginaFiltrosWidget> {
                                   16.0, 0.0, 16.0, 4.0),
                               hidesUnderline: true,
                               isOverButton: true,
-                              isSearchable: true,
+                              isSearchable: false,
                               isMultiSelect: true,
                               onMultiSelectChanged: (val) =>
                                   setState(() => _model.dropDownValue3 = val),

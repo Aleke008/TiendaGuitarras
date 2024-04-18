@@ -7,15 +7,26 @@ class MiPerfilVendedorModel extends FlutterFlowModel<MiPerfilVendedorWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for DropDown widget.
-  String? dropDownValue1;
-  FormFieldController<String>? dropDownValueController1;
-  // State field(s) for DropDown widget.
-  String? dropDownValue2;
-  FormFieldController<String>? dropDownValueController2;
-  // State field(s) for DropDown widget.
-  String? dropDownValue3;
-  FormFieldController<String>? dropDownValueController3;
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
+
+  // State field(s) for ddProvincia widget.
+  String? ddProvinciaValue;
+  FormFieldController<String>? ddProvinciaValueController;
+  // State field(s) for ddCanton widget.
+  String? ddCantonValue;
+  FormFieldController<String>? ddCantonValueController;
+  // State field(s) for ddDistrito widget.
+  String? ddDistritoValue;
+  FormFieldController<String>? ddDistritoValueController;
+  // Stores action output result for [Custom Action - obtenerNombreProvincia] action in btnRegistrarse widget.
+  String? nombreProvincia;
+  // Stores action output result for [Custom Action - obtenerNombreCanton] action in btnRegistrarse widget.
+  String? nombreCanton;
+  // Stores action output result for [Custom Action - obtenerNombreDistrito] action in btnRegistrarse widget.
+  String? nombreDistrito;
 
   @override
   void initState(BuildContext context) {}

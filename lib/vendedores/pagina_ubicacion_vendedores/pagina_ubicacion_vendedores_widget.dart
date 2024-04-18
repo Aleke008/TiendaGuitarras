@@ -44,7 +44,7 @@ class _PaginaUbicacionVendedoresWidgetState
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).fondo2,
         body: SafeArea(
           top: true,
           child: Column(
@@ -115,8 +115,7 @@ class _PaginaUbicacionVendedoresWidgetState
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                      color: const Color(0xFFF2F2F2),
                                       fontSize: 22.0,
                                       letterSpacing: 0.0,
                                     ),
@@ -130,7 +129,7 @@ class _PaginaUbicacionVendedoresWidgetState
                 ],
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 10.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -145,93 +144,104 @@ class _PaginaUbicacionVendedoresWidgetState
                   ],
                 ),
               ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                      child: StreamBuilder<List<ProvinciaRecord>>(
-                        stream: queryProvinciaRecord(),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            20.0, 0.0, 20.0, 0.0),
+                        child: StreamBuilder<List<ProvinciaRecord>>(
+                          stream: queryProvinciaRecord(
+                            queryBuilder: (provinciaRecord) =>
+                                provinciaRecord.orderBy('idProvincia'),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
                                   ),
                                 ),
+                              );
+                            }
+                            List<ProvinciaRecord>
+                                ddProvinciaProvinciaRecordList = snapshot.data!;
+                            return FlutterFlowDropDown<String>(
+                              controller: _model.ddProvinciaValueController ??=
+                                  FormFieldController<String>(null),
+                              options: List<String>.from(
+                                  ddProvinciaProvinciaRecordList
+                                      .map((e) => e.idProvincia)
+                                      .toList()),
+                              optionLabels: ddProvinciaProvinciaRecordList
+                                  .map((e) => e.nombre)
+                                  .toList(),
+                              onChanged: (val) =>
+                                  setState(() => _model.ddProvinciaValue = val),
+                              width: 300.0,
+                              height: 50.0,
+                              searchHintTextStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                              searchTextStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 17.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                              hintText: 'Selecciona la provincia...',
+                              searchHintText: 'Busca tu provincia...',
+                              icon: const Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                color: Color(0xFF882E7F),
+                                size: 55.0,
                               ),
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 2.0,
+                              borderColor:
+                                  FlutterFlowTheme.of(context).alternate,
+                              borderWidth: 2.0,
+                              borderRadius: 8.0,
+                              margin: const EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 0.0, 16.0, 4.0),
+                              hidesUnderline: true,
+                              isOverButton: true,
+                              isSearchable: true,
+                              isMultiSelect: false,
                             );
-                          }
-                          List<ProvinciaRecord> dropDownProvinciaRecordList =
-                              snapshot.data!;
-                          return FlutterFlowDropDown<String>(
-                            controller: _model.dropDownValueController1 ??=
-                                FormFieldController<String>(null),
-                            options: dropDownProvinciaRecordList
-                                .map((e) => e.nombre)
-                                .toList(),
-                            onChanged: (val) =>
-                                setState(() => _model.dropDownValue1 = val),
-                            width: 300.0,
-                            height: 50.0,
-                            searchHintTextStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                            searchTextStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  fontSize: 17.0,
-                                  letterSpacing: 0.0,
-                                ),
-                            hintText: 'Please select...',
-                            searchHintText: 'Search for an item...',
-                            icon: const Icon(
-                              Icons.keyboard_arrow_down_rounded,
-                              color: Color(0xFF882E7F),
-                              size: 55.0,
-                            ),
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            elevation: 2.0,
-                            borderColor: FlutterFlowTheme.of(context).alternate,
-                            borderWidth: 2.0,
-                            borderRadius: 8.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 4.0),
-                            hidesUnderline: true,
-                            isOverButton: true,
-                            isSearchable: true,
-                            isMultiSelect: false,
-                          );
-                        },
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const Divider(
                 thickness: 1.0,
                 color: Color(0xFF882E7F),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 10.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -246,93 +256,110 @@ class _PaginaUbicacionVendedoresWidgetState
                   ],
                 ),
               ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                      child: StreamBuilder<List<CantonRecord>>(
-                        stream: queryCantonRecord(),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            20.0, 0.0, 20.0, 0.0),
+                        child: StreamBuilder<List<CantonRecord>>(
+                          stream: queryCantonRecord(
+                            queryBuilder: (cantonRecord) => cantonRecord
+                                .where(
+                                  'idProvincia',
+                                  isEqualTo: _model.ddProvinciaValue,
+                                )
+                                .orderBy('idCanton'),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
                                   ),
                                 ),
+                              );
+                            }
+                            List<CantonRecord> ddCantonCantonRecordList =
+                                snapshot.data!;
+                            return FlutterFlowDropDown<String>(
+                              controller: _model.ddCantonValueController ??=
+                                  FormFieldController<String>(null),
+                              options: List<String>.from(
+                                  ddCantonCantonRecordList
+                                      .map((e) => e.idCanton)
+                                      .toList()),
+                              optionLabels: ddCantonCantonRecordList
+                                  .map((e) => e.nombre)
+                                  .toList(),
+                              onChanged: (val) =>
+                                  setState(() => _model.ddCantonValue = val),
+                              width: 300.0,
+                              height: 50.0,
+                              searchHintTextStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                              searchTextStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 17.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                              hintText: 'Selecciona el cantón...',
+                              searchHintText: 'Busca tu cantón..',
+                              icon: const Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                color: Color(0xFF882E7F),
+                                size: 55.0,
                               ),
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 2.0,
+                              borderColor:
+                                  FlutterFlowTheme.of(context).alternate,
+                              borderWidth: 2.0,
+                              borderRadius: 8.0,
+                              margin: const EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 0.0, 16.0, 4.0),
+                              hidesUnderline: true,
+                              disabled: _model.ddProvinciaValue == null ||
+                                  _model.ddProvinciaValue == '',
+                              isOverButton: true,
+                              isSearchable: true,
+                              isMultiSelect: false,
                             );
-                          }
-                          List<CantonRecord> dropDownCantonRecordList =
-                              snapshot.data!;
-                          return FlutterFlowDropDown<String>(
-                            controller: _model.dropDownValueController2 ??=
-                                FormFieldController<String>(null),
-                            options: dropDownCantonRecordList
-                                .map((e) => e.nombre)
-                                .toList(),
-                            onChanged: (val) =>
-                                setState(() => _model.dropDownValue2 = val),
-                            width: 300.0,
-                            height: 50.0,
-                            searchHintTextStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                            searchTextStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  fontSize: 17.0,
-                                  letterSpacing: 0.0,
-                                ),
-                            hintText: 'Please select...',
-                            searchHintText: 'Search for an item...',
-                            icon: const Icon(
-                              Icons.keyboard_arrow_down_rounded,
-                              color: Color(0xFF882E7F),
-                              size: 55.0,
-                            ),
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            elevation: 2.0,
-                            borderColor: FlutterFlowTheme.of(context).alternate,
-                            borderWidth: 2.0,
-                            borderRadius: 8.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 4.0),
-                            hidesUnderline: true,
-                            isOverButton: true,
-                            isSearchable: true,
-                            isMultiSelect: false,
-                          );
-                        },
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const Divider(
                 thickness: 1.0,
                 color: Color(0xFF882E7F),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 10.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -347,86 +374,103 @@ class _PaginaUbicacionVendedoresWidgetState
                   ],
                 ),
               ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                      child: StreamBuilder<List<DistritoRecord>>(
-                        stream: queryDistritoRecord(),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            20.0, 0.0, 20.0, 0.0),
+                        child: StreamBuilder<List<DistritoRecord>>(
+                          stream: queryDistritoRecord(
+                            queryBuilder: (distritoRecord) => distritoRecord
+                                .where(
+                                  'idCanton',
+                                  isEqualTo: _model.ddCantonValue,
+                                )
+                                .orderBy('idDistrito'),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
                                   ),
                                 ),
+                              );
+                            }
+                            List<DistritoRecord> ddDistritoDistritoRecordList =
+                                snapshot.data!;
+                            return FlutterFlowDropDown<String>(
+                              controller: _model.ddDistritoValueController ??=
+                                  FormFieldController<String>(null),
+                              options: List<String>.from(
+                                  ddDistritoDistritoRecordList
+                                      .map((e) => e.idDistrito)
+                                      .toList()),
+                              optionLabels: ddDistritoDistritoRecordList
+                                  .map((e) => e.nombre)
+                                  .toList(),
+                              onChanged: (val) =>
+                                  setState(() => _model.ddDistritoValue = val),
+                              width: 300.0,
+                              height: 50.0,
+                              searchHintTextStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                              searchTextStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 17.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                              hintText: 'Selecciona el distrito...',
+                              searchHintText: 'Busca tu distrito...',
+                              icon: const Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                color: Color(0xFF882E7F),
+                                size: 55.0,
                               ),
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 2.0,
+                              borderColor:
+                                  FlutterFlowTheme.of(context).alternate,
+                              borderWidth: 2.0,
+                              borderRadius: 8.0,
+                              margin: const EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 0.0, 16.0, 4.0),
+                              hidesUnderline: true,
+                              disabled: _model.ddCantonValue == null ||
+                                  _model.ddCantonValue == '',
+                              isOverButton: true,
+                              isSearchable: true,
+                              isMultiSelect: false,
                             );
-                          }
-                          List<DistritoRecord> dropDownDistritoRecordList =
-                              snapshot.data!;
-                          return FlutterFlowDropDown<String>(
-                            controller: _model.dropDownValueController3 ??=
-                                FormFieldController<String>(null),
-                            options: dropDownDistritoRecordList
-                                .map((e) => e.nombre)
-                                .toList(),
-                            onChanged: (val) =>
-                                setState(() => _model.dropDownValue3 = val),
-                            width: 300.0,
-                            height: 50.0,
-                            searchHintTextStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                            searchTextStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  fontSize: 17.0,
-                                  letterSpacing: 0.0,
-                                ),
-                            hintText: 'Please select...',
-                            searchHintText: 'Search for an item...',
-                            icon: const Icon(
-                              Icons.keyboard_arrow_down_rounded,
-                              color: Color(0xFF882E7F),
-                              size: 55.0,
-                            ),
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            elevation: 2.0,
-                            borderColor: FlutterFlowTheme.of(context).alternate,
-                            borderWidth: 2.0,
-                            borderRadius: 8.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 4.0),
-                            hidesUnderline: true,
-                            isOverButton: true,
-                            isSearchable: true,
-                            isMultiSelect: false,
-                          );
-                        },
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const Divider(
                 thickness: 1.0,

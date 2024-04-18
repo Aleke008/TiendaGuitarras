@@ -2,12 +2,12 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'registro_vendedor_model.dart';
@@ -46,233 +46,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFF3F3F3),
-        drawer: SizedBox(
-          width: MediaQuery.sizeOf(context).width * 0.8,
-          child: Drawer(
-            elevation: 30.0,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                        child: FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 20.0,
-                          borderWidth: 1.0,
-                          buttonSize: 60.0,
-                          icon: const Icon(
-                            Icons.close,
-                            color: Color(0xFF882E7F),
-                            size: 45.0,
-                          ),
-                          onPressed: () async {
-                            if (scaffoldKey.currentState!.isDrawerOpen ||
-                                scaffoldKey.currentState!.isEndDrawerOpen) {
-                              Navigator.pop(context);
-                            }
-                          },
-                        ),
-                      ),
-                      Flexible(
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              80.0, 0.0, 0.0, 0.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.asset(
-                              'assets/images/logo.png',
-                              height: MediaQuery.sizeOf(context).height * 0.1,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                ListView(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed('buscarProductos');
-                        },
-                        child: ListTile(
-                          leading: const FaIcon(
-                            FontAwesomeIcons.home,
-                            color: Color(0xFF882E7F),
-                            size: 30.0,
-                          ),
-                          title: Text(
-                            'Inicio',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Open Sans',
-                                  fontSize: 26.0,
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          tileColor: const Color(0x00FFFFFF),
-                          dense: false,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const FaIcon(
-                          FontAwesomeIcons.solidUser,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Mi perfil',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const FaIcon(
-                          FontAwesomeIcons.guitar,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Vender productos',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.favorite,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Lista Favoritos',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.chat_bubble_outline,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Mensajes',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.settings_sharp,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Configuración',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.logout_outlined,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Cerrar Sesión',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
+        backgroundColor: FlutterFlowTheme.of(context).fondo2,
         body: SafeArea(
           top: true,
           child: Column(
@@ -297,8 +71,8 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                             children: [
                               Expanded(
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('btnVolver pressed ...');
+                                  onPressed: () async {
+                                    context.pushNamed('buscarProductos');
                                   },
                                   text: '',
                                   icon: const Icon(
@@ -343,8 +117,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                      color: const Color(0xFFF2F2F2),
                                       fontSize: 22.0,
                                       letterSpacing: 0.0,
                                     ),
@@ -435,31 +208,39 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 0.0, 0.0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.network(
-                                        valueOrDefault<String>(
-                                          _model.uploadedFileUrl,
-                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/tienda-virtual-de-guitarras-vdm5bb/assets/yttosfyw748v/sign_error.png',
-                                        ),
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                0.3,
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.15,
-                                        fit: BoxFit.cover,
-                                        errorBuilder:
-                                            (context, error, stackTrace) =>
-                                                Image.asset(
-                                          'assets/images/error_image.png',
+                                    child: AuthUserStreamWidget(
+                                      builder: (context) => ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        child: Image.network(
+                                          valueOrDefault<String>(
+                                            currentUserPhoto != ''
+                                                ? currentUserPhoto
+                                                : valueOrDefault(
+                                                    currentUserDocument
+                                                        ?.alternatePhoto,
+                                                    ''),
+                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/tienda-virtual-de-guitarras-vdm5bb/assets/9s29aii367py/SIN.jpg',
+                                          ),
                                           width:
                                               MediaQuery.sizeOf(context).width *
                                                   0.3,
                                           height: MediaQuery.sizeOf(context)
                                                   .height *
                                               0.15,
-                                          fit: BoxFit.cover,
+                                          fit: BoxFit.contain,
+                                          errorBuilder:
+                                              (context, error, stackTrace) =>
+                                                  Image.asset(
+                                            'assets/images/error_image.png',
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.3,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.15,
+                                            fit: BoxFit.contain,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -627,14 +408,13 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                   20.0, 5.0, 20.0, 5.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Expanded(
-                                    child: StreamBuilder<
-                                        List<ProvinciaPruebaRecord>>(
-                                      stream: queryProvinciaPruebaRecord(
-                                        queryBuilder: (provinciaPruebaRecord) =>
-                                            provinciaPruebaRecord
+                                    child: StreamBuilder<List<ProvinciaRecord>>(
+                                      stream: queryProvinciaRecord(
+                                        queryBuilder: (provinciaRecord) =>
+                                            provinciaRecord
                                                 .orderBy('idProvincia'),
                                       ),
                                       builder: (context, snapshot) {
@@ -655,21 +435,41 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                             ),
                                           );
                                         }
-                                        List<ProvinciaPruebaRecord>
-                                            ddProvinciaProvinciaPruebaRecordList =
+                                        List<ProvinciaRecord>
+                                            ddProvinciaProvinciaRecordList =
                                             snapshot.data!;
                                         return FlutterFlowDropDown<String>(
                                           controller: _model
                                                   .ddProvinciaValueController ??=
                                               FormFieldController<String>(null),
-                                          options:
-                                              ddProvinciaProvinciaPruebaRecordList
+                                          options: List<String>.from(
+                                              ddProvinciaProvinciaRecordList
+                                                  .map((e) => e.idProvincia)
+                                                  .toList()),
+                                          optionLabels:
+                                              ddProvinciaProvinciaRecordList
                                                   .map((e) => e.nombre)
                                                   .toList(),
                                           onChanged: (val) => setState(() =>
                                               _model.ddProvinciaValue = val),
-                                          width: 300.0,
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  0.5,
                                           height: 50.0,
+                                          searchHintTextStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          searchTextStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
@@ -677,7 +477,10 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                                     fontFamily: 'Readex Pro',
                                                     letterSpacing: 0.0,
                                                   ),
-                                          hintText: 'Selecciona la provincia',
+                                          hintText:
+                                              'Selecciona la provincia...',
+                                          searchHintText:
+                                              'Busca tu provincia...',
                                           icon: const Icon(
                                             Icons.keyboard_arrow_down_sharp,
                                             color: Color(0xFF882E7F),
@@ -695,7 +498,7 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                                   16.0, 4.0, 16.0, 4.0),
                                           hidesUnderline: true,
                                           isOverButton: false,
-                                          isSearchable: false,
+                                          isSearchable: true,
                                           isMultiSelect: false,
                                         );
                                       },
@@ -727,17 +530,22 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                   20.0, 5.0, 20.0, 5.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Expanded(
-                                    child:
-                                        StreamBuilder<List<CantonPruebaRecord>>(
-                                      stream: queryCantonPruebaRecord(
-                                        queryBuilder: (cantonPruebaRecord) =>
-                                            cantonPruebaRecord.where(
-                                          'provincia',
-                                          isEqualTo: _model.ddProvinciaValue,
-                                        ),
+                                    child: StreamBuilder<List<CantonRecord>>(
+                                      stream: queryCantonRecord(
+                                        queryBuilder: (cantonRecord) =>
+                                            cantonRecord
+                                                .where(
+                                                  'idProvincia',
+                                                  isEqualTo:
+                                                      valueOrDefault<String>(
+                                                    _model.ddProvinciaValue,
+                                                    '1',
+                                                  ),
+                                                )
+                                                .orderBy('idCanton'),
                                       ),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
@@ -757,21 +565,38 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                             ),
                                           );
                                         }
-                                        List<CantonPruebaRecord>
-                                            ddCantonCantonPruebaRecordList =
+                                        List<CantonRecord>
+                                            ddCantonCantonRecordList =
                                             snapshot.data!;
                                         return FlutterFlowDropDown<String>(
                                           controller: _model
                                                   .ddCantonValueController ??=
                                               FormFieldController<String>(null),
-                                          options:
-                                              ddCantonCantonPruebaRecordList
-                                                  .map((e) => e.nombre)
-                                                  .toList(),
+                                          options: List<String>.from(
+                                              ddCantonCantonRecordList
+                                                  .map((e) => e.idCanton)
+                                                  .toList()),
+                                          optionLabels: ddCantonCantonRecordList
+                                              .map((e) => e.nombre)
+                                              .toList(),
                                           onChanged: (val) => setState(
                                               () => _model.ddCantonValue = val),
                                           width: 300.0,
                                           height: 50.0,
+                                          searchHintTextStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          searchTextStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
@@ -779,7 +604,8 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                                     fontFamily: 'Readex Pro',
                                                     letterSpacing: 0.0,
                                                   ),
-                                          hintText: 'Selecciona el cantón',
+                                          hintText: 'Selecciona el cantón...',
+                                          searchHintText: 'Busca tu cantón..',
                                           icon: const Icon(
                                             Icons.keyboard_arrow_down_sharp,
                                             color: Color(0xFF882E7F),
@@ -796,8 +622,11 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 4.0, 16.0, 4.0),
                                           hidesUnderline: true,
+                                          disabled:
+                                              _model.ddProvinciaValue == null ||
+                                                  _model.ddProvinciaValue == '',
                                           isOverButton: false,
-                                          isSearchable: false,
+                                          isSearchable: true,
                                           isMultiSelect: false,
                                         );
                                       },
@@ -829,17 +658,19 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                   20.0, 5.0, 20.0, 5.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Expanded(
-                                    child: StreamBuilder<
-                                        List<DistritoPruebaRecord>>(
-                                      stream: queryDistritoPruebaRecord(
-                                        queryBuilder: (distritoPruebaRecord) =>
-                                            distritoPruebaRecord.where(
-                                          'canton',
-                                          isEqualTo: _model.ddCantonValue,
-                                        ),
+                                    child: StreamBuilder<List<DistritoRecord>>(
+                                      stream: queryDistritoRecord(
+                                        queryBuilder: (distritoRecord) =>
+                                            distritoRecord
+                                                .where(
+                                                  'idCanton',
+                                                  isEqualTo:
+                                                      _model.ddCantonValue,
+                                                )
+                                                .orderBy('idDistrito'),
                                       ),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
@@ -859,21 +690,39 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                             ),
                                           );
                                         }
-                                        List<DistritoPruebaRecord>
-                                            ddDistritoDistritoPruebaRecordList =
+                                        List<DistritoRecord>
+                                            ddDistritoDistritoRecordList =
                                             snapshot.data!;
                                         return FlutterFlowDropDown<String>(
                                           controller: _model
                                                   .ddDistritoValueController ??=
                                               FormFieldController<String>(null),
-                                          options:
-                                              ddDistritoDistritoPruebaRecordList
+                                          options: List<String>.from(
+                                              ddDistritoDistritoRecordList
+                                                  .map((e) => e.idDistrito)
+                                                  .toList()),
+                                          optionLabels:
+                                              ddDistritoDistritoRecordList
                                                   .map((e) => e.nombre)
                                                   .toList(),
                                           onChanged: (val) => setState(() =>
                                               _model.ddDistritoValue = val),
                                           width: 300.0,
                                           height: 50.0,
+                                          searchHintTextStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          searchTextStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
@@ -881,7 +730,9 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                                     fontFamily: 'Readex Pro',
                                                     letterSpacing: 0.0,
                                                   ),
-                                          hintText: 'Selecciona el distrito',
+                                          hintText: 'Selecciona el distrito...',
+                                          searchHintText:
+                                              'Busca tu distrito...',
                                           icon: const Icon(
                                             Icons.keyboard_arrow_down_sharp,
                                             color: Color(0xFF882E7F),
@@ -898,8 +749,11 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 4.0, 16.0, 4.0),
                                           hidesUnderline: true,
+                                          disabled:
+                                              _model.ddCantonValue == null ||
+                                                  _model.ddCantonValue == '',
                                           isOverButton: false,
-                                          isSearchable: false,
+                                          isSearchable: true,
                                           isMultiSelect: false,
                                         );
                                       },
@@ -912,50 +766,78 @@ class _RegistroVendedorWidgetState extends State<RegistroVendedorWidget> {
                               padding: const EdgeInsets.all(20.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  FFButtonWidget(
-                                    onPressed: () async {
-                                      await currentUserReference!
-                                          .update(createUsersRecordData(
-                                        photoUrl: _model.uploadedFileUrl,
-                                        provincia: _model.ddProvinciaValue,
-                                        canton: _model.ddCantonValue,
-                                        distrito: _model.ddDistritoValue,
-                                        rol: 'vendedor',
-                                      ));
-                                    },
-                                    text: 'Registrarse',
-                                    icon: const FaIcon(
-                                      FontAwesomeIcons.pen,
-                                      color: Color(0xFF882E7F),
-                                      size: 20.0,
-                                    ),
-                                    options: FFButtonOptions(
-                                      width: MediaQuery.sizeOf(context).width *
-                                          0.8,
-                                      height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 10.0, 0.0),
-                                      color: const Color(0xFFD49ED2),
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: Colors.white,
-                                            fontSize: 18.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                      elevation: 0.0,
-                                      borderSide: const BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
+                                  Expanded(
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        _model.nombreProvincia = await actions
+                                            .obtenerNombreProvincia(
+                                          _model.ddProvinciaValue,
+                                        );
+                                        _model.nombreCanton =
+                                            await actions.obtenerNombreCanton(
+                                          _model.ddCantonValue,
+                                        );
+                                        _model.nombreDistrito =
+                                            await actions.obtenerNombreDistrito(
+                                          _model.ddDistritoValue,
+                                        );
+
+                                        await currentUserReference!
+                                            .update(createUsersRecordData(
+                                          provincia: _model.ddProvinciaValue,
+                                          canton: _model.ddCantonValue,
+                                          distrito: _model.ddDistritoValue,
+                                          rol: 'vendedor',
+                                          updateTimeRol: getCurrentTimestamp,
+                                          nombreProvincia:
+                                              _model.nombreProvincia,
+                                          nombreCanton: _model.nombreCanton,
+                                          nombreDistrito: _model.nombreDistrito,
+                                          alternatePhoto:
+                                              _model.uploadedFileUrl,
+                                        ));
+
+                                        context.pushNamed(
+                                            'listaVentasConInformacion');
+
+                                        setState(() {});
+                                      },
+                                      text: 'Registrarse',
+                                      icon: const FaIcon(
+                                        FontAwesomeIcons.pen,
+                                        color: Color(0xFF882E7F),
+                                        size: 20.0,
                                       ),
-                                      borderRadius: BorderRadius.circular(10.0),
+                                      options: FFButtonOptions(
+                                        width: 300.0,
+                                        height: 40.0,
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 24.0, 0.0),
+                                        iconPadding:
+                                            const EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 10.0, 0.0),
+                                        color: const Color(0xFFD49ED2),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color: Colors.white,
+                                              fontSize: 18.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                        elevation: 0.0,
+                                        borderSide: const BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                      ),
                                     ),
                                   ),
                                 ],

@@ -2,6 +2,8 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'login_usuarios_model.dart';
@@ -24,10 +26,10 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
     super.initState();
     _model = createModel(context, () => LoginUsuariosModel());
 
-    _model.txtCorreoController ??= TextEditingController();
+    _model.txtCorreoTextController ??= TextEditingController();
     _model.txtCorreoFocusNode ??= FocusNode();
 
-    _model.txtContrasenaController ??= TextEditingController();
+    _model.txtContrasenaTextController ??= TextEditingController();
     _model.txtContrasenaFocusNode ??= FocusNode();
   }
 
@@ -46,7 +48,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFF3F3F3),
+        backgroundColor: FlutterFlowTheme.of(context).fondo2,
         body: SafeArea(
           top: true,
           child: Column(
@@ -73,8 +75,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
+                                  color: const Color(0xFFF2F2F2),
                                   fontSize: 22.0,
                                   letterSpacing: 0.0,
                                 ),
@@ -97,11 +98,27 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                       child: Image.asset(
                         'assets/images/logo.png',
                         width: MediaQuery.sizeOf(context).width * 0.8,
-                        height: MediaQuery.sizeOf(context).height * 0.25,
+                        height: MediaQuery.sizeOf(context).height * 0.15,
                         fit: BoxFit.cover,
                       ),
                     ),
                   ],
+                ),
+              ),
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(50.0, 0.0, 50.0, 0.0),
+                  child: SizedBox(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    height: MediaQuery.sizeOf(context).height * 0.1,
+                    child: custom_widgets.Box(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: MediaQuery.sizeOf(context).height * 0.1,
+                      word1: 'Music',
+                      word2: 'Sound',
+                      word3: 'Magic',
+                    ),
+                  ),
                 ),
               ),
               Padding(
@@ -115,7 +132,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                         child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           child: TextFormField(
-                            controller: _model.txtCorreoController,
+                            controller: _model.txtCorreoTextController,
                             focusNode: _model.txtCorreoFocusNode,
                             autofocus: true,
                             obscureText: false,
@@ -175,7 +192,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
-                            validator: _model.txtCorreoControllerValidator
+                            validator: _model.txtCorreoTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -195,7 +212,7 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                         child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           child: TextFormField(
-                            controller: _model.txtContrasenaController,
+                            controller: _model.txtContrasenaTextController,
                             focusNode: _model.txtContrasenaFocusNode,
                             autofocus: true,
                             obscureText: !_model.txtContrasenaVisibility,
@@ -269,7 +286,8 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
-                            validator: _model.txtContrasenaControllerValidator
+                            validator: _model
+                                .txtContrasenaTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -291,15 +309,19 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
 
                           final user = await authManager.signInWithEmail(
                             context,
-                            _model.txtCorreoController.text,
-                            _model.txtContrasenaController.text,
+                            _model.txtCorreoTextController.text,
+                            _model.txtContrasenaTextController.text,
                           );
                           if (user == null) {
                             return;
                           }
 
+                          await actions.cambiarEstadoEnLineaUsuario(
+                            currentUserUid,
+                          );
+
                           context.goNamedAuth(
-                              'paginaInformacionVendedor', context.mounted);
+                              'buscarProductos', context.mounted);
                         },
                         text: 'Iniciar sesión',
                         icon: const Icon(
@@ -402,9 +424,11 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                         if (user == null) {
                           return;
                         }
+                        await actions.cambiarEstadoEnLineaUsuario(
+                          currentUserUid,
+                        );
 
-                        context.goNamedAuth(
-                            'paginaInformacionVendedor', context.mounted);
+                        context.goNamedAuth('buscarProductos', context.mounted);
                       },
                       text: 'Continuar con Google',
                       icon: const FaIcon(
@@ -453,9 +477,12 @@ class _LoginUsuariosWidgetState extends State<LoginUsuariosWidget> {
                             if (user == null) {
                               return;
                             }
+                            await actions.cambiarEstadoEnLineaUsuario(
+                              currentUserUid,
+                            );
 
                             context.goNamedAuth(
-                                'paginaInformacionVendedor', context.mounted);
+                                'buscarProductos', context.mounted);
                           },
                           text: 'Continuar con Apple',
                           icon: const FaIcon(

@@ -8,13 +8,13 @@ class LoginUsuariosModel extends FlutterFlowModel<LoginUsuariosWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for txtCorreo widget.
   FocusNode? txtCorreoFocusNode;
-  TextEditingController? txtCorreoController;
-  String? Function(BuildContext, String?)? txtCorreoControllerValidator;
+  TextEditingController? txtCorreoTextController;
+  String? Function(BuildContext, String?)? txtCorreoTextControllerValidator;
   // State field(s) for txtContrasena widget.
   FocusNode? txtContrasenaFocusNode;
-  TextEditingController? txtContrasenaController;
+  TextEditingController? txtContrasenaTextController;
   late bool txtContrasenaVisibility;
-  String? Function(BuildContext, String?)? txtContrasenaControllerValidator;
+  String? Function(BuildContext, String?)? txtContrasenaTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
@@ -25,9 +25,9 @@ class LoginUsuariosModel extends FlutterFlowModel<LoginUsuariosWidget> {
   void dispose() {
     unfocusNode.dispose();
     txtCorreoFocusNode?.dispose();
-    txtCorreoController?.dispose();
+    txtCorreoTextController?.dispose();
 
     txtContrasenaFocusNode?.dispose();
-    txtContrasenaController?.dispose();
+    txtContrasenaTextController?.dispose();
   }
 }

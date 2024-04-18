@@ -1,10 +1,10 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'agregar_productos_imagenes_widget.dart'
-    show AgregarProductosImagenesWidget;
+import 'editar_productos_imagenes_widget.dart'
+    show EditarProductosImagenesWidget;
 import 'package:flutter/material.dart';
 
-class AgregarProductosImagenesModel
-    extends FlutterFlowModel<AgregarProductosImagenesWidget> {
+class EditarProductosImagenesModel
+    extends FlutterFlowModel<EditarProductosImagenesWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

@@ -73,20 +73,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? const PaginaInformacionVendedorWidget()
+          ? const BuscarProductosWidget()
           : const LoginUsuariosWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? const PaginaInformacionVendedorWidget()
+              ? const BuscarProductosWidget()
               : const LoginUsuariosWidget(),
-        ),
-        FFRoute(
-          name: 'paginaCerrar',
-          path: '/paginaCerrar',
-          builder: (context, params) => const PaginaCerrarWidget(),
         ),
         FFRoute(
           name: 'loginUsuarios',
@@ -97,11 +92,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'registerUsuarios',
           path: '/registerUsuarios',
           builder: (context, params) => const RegisterUsuariosWidget(),
-        ),
-        FFRoute(
-          name: 'miPerfilVendedor',
-          path: '/miPerfilVendedor',
-          builder: (context, params) => const MiPerfilVendedorWidget(),
         ),
         FFRoute(
           name: 'buscarProductos',
@@ -119,16 +109,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const PaginaUbicacionVendedoresWidget(),
         ),
         FFRoute(
-          name: 'paginaCalendarioFechaMax',
-          path: '/paginaCalendarioFechaMax',
-          builder: (context, params) => const PaginaCalendarioFechaMaxWidget(),
-        ),
-        FFRoute(
-          name: 'paginaCalendarioFechaMin',
-          path: '/paginaCalendarioFechaMin',
-          builder: (context, params) => const PaginaCalendarioFechaMinWidget(),
-        ),
-        FFRoute(
           name: 'paginaVendedoresBusqueda',
           path: '/paginaVendedoresBusqueda',
           builder: (context, params) => const PaginaVendedoresBusquedaWidget(),
@@ -141,12 +121,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'paginaInformacionVendedor',
           path: '/paginaInformacionVendedor',
-          builder: (context, params) => const PaginaInformacionVendedorWidget(),
+          builder: (context, params) => PaginaInformacionVendedorWidget(
+            refUsuario: params.getParam(
+              'refUsuario',
+              ParamType.DocumentReference,
+              false,
+              ['users'],
+            ),
+          ),
         ),
         FFRoute(
           name: 'paginaProductoDetalles',
           path: '/paginaProductoDetalles',
-          builder: (context, params) => const PaginaProductoDetallesWidget(),
+          builder: (context, params) => PaginaProductoDetallesWidget(
+            refProducto: params.getParam(
+              'refProducto',
+              ParamType.DocumentReference,
+              false,
+              ['listas', 'productos2'],
+            ),
+          ),
         ),
         FFRoute(
           name: 'miPerfil',
@@ -174,11 +168,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const RegistroVendedorWidget(),
         ),
         FFRoute(
-          name: 'listaVentasSinInformacion',
-          path: '/listaVentasSinInformacion',
-          builder: (context, params) => const ListaVentasSinInformacionWidget(),
-        ),
-        FFRoute(
           name: 'creacionVentasSinInformacion',
           path: '/creacionVentasSinInformacion',
           builder: (context, params) => const CreacionVentasSinInformacionWidget(),
@@ -204,22 +193,34 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'agregarProducto',
           path: '/agregarProducto',
-          builder: (context, params) => const AgregarProductoWidget(),
-        ),
-        FFRoute(
-          name: 'agregarProductosImagenes',
-          path: '/agregarProductosImagenes',
-          builder: (context, params) => const AgregarProductosImagenesWidget(),
-        ),
-        FFRoute(
-          name: 'listaVentaNuevoProductoAgregado',
-          path: '/listaVentaNuevoProductoAgregado',
-          builder: (context, params) => const ListaVentaNuevoProductoAgregadoWidget(),
+          asyncParams: {
+            'refAg': getDoc(['listas'], ListasRecord.fromSnapshot),
+          },
+          builder: (context, params) => AgregarProductoWidget(
+            refAg: params.getParam(
+              'refAg',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: 'editarProducto',
           path: '/editarProducto',
-          builder: (context, params) => const EditarProductoWidget(),
+          asyncParams: {
+            'refLista': getDoc(['listas'], ListasRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditarProductoWidget(
+            refProducto: params.getParam(
+              'refProducto',
+              ParamType.DocumentReference,
+              false,
+              ['listas', 'productos2'],
+            ),
+            refLista: params.getParam(
+              'refLista',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: 'listaProductosAgregados',
@@ -238,11 +239,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'configAplicacion',
           path: '/configAplicacion',
           builder: (context, params) => const ConfigAplicacionWidget(),
-        ),
-        FFRoute(
-          name: 'editarProductoClasificacion',
-          path: '/editarProductoClasificacion',
-          builder: (context, params) => const EditarProductoClasificacionWidget(),
         ),
         FFRoute(
           name: 'chatMensajes',
@@ -275,22 +271,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const MensajeSinInformacionWidget(),
         ),
         FFRoute(
-          name: 'editarImagenesProducto',
-          path: '/editarImagenesProducto',
-          builder: (context, params) => const EditarImagenesProductoWidget(),
-        ),
-        FFRoute(
-          name: 'listaProductoBorrado',
-          path: '/listaProductoBorrado',
-          builder: (context, params) => const ListaProductoBorradoWidget(),
-        ),
-        FFRoute(
-          name: 'listaFavoritosSinProductosVendedor',
-          path: '/listaFavoritosSinProductosVendedor',
-          builder: (context, params) =>
-              const ListaFavoritosSinProductosVendedorWidget(),
-        ),
-        FFRoute(
           name: 'listaFavoritosProductos',
           path: '/listaFavoritosProductos',
           builder: (context, params) => const ListaFavoritosProductosWidget(),
@@ -303,7 +283,191 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'agregarProductoClasificacion',
           path: '/agregarProductoClasificacion',
-          builder: (context, params) => const AgregarProductoClasificacionWidget(),
+          asyncParams: {
+            'refClas': getDoc(['listas'], ListasRecord.fromSnapshot),
+          },
+          builder: (context, params) => AgregarProductoClasificacionWidget(
+            refClas: params.getParam(
+              'refClas',
+              ParamType.Document,
+            ),
+            nombre: params.getParam(
+              'nombre',
+              ParamType.String,
+            ),
+            descripcion: params.getParam(
+              'descripcion',
+              ParamType.String,
+            ),
+            precio: params.getParam(
+              'precio',
+              ParamType.double,
+            ),
+            esOferta: params.getParam(
+              'esOferta',
+              ParamType.bool,
+            ),
+            precioOferta: params.getParam(
+              'precioOferta',
+              ParamType.double,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'agregarProductosImagenes',
+          path: '/agregarProductosImagenes',
+          asyncParams: {
+            'ref': getDoc(['listas'], ListasRecord.fromSnapshot),
+          },
+          builder: (context, params) => AgregarProductosImagenesWidget(
+            ref: params.getParam(
+              'ref',
+              ParamType.Document,
+            ),
+            nombre: params.getParam(
+              'nombre',
+              ParamType.String,
+            ),
+            descripcion: params.getParam(
+              'descripcion',
+              ParamType.String,
+            ),
+            precio: params.getParam(
+              'precio',
+              ParamType.double,
+            ),
+            esOferta: params.getParam(
+              'esOferta',
+              ParamType.bool,
+            ),
+            precioOferta: params.getParam(
+              'precioOferta',
+              ParamType.double,
+            ),
+            categoria: params.getParam(
+              'categoria',
+              ParamType.String,
+            ),
+            marca: params.getParam(
+              'marca',
+              ParamType.String,
+            ),
+            modelo: params.getParam(
+              'modelo',
+              ParamType.String,
+            ),
+            estado: params.getParam(
+              'estado',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'editarProductoClasificacion',
+          path: '/editarProductoClasificacion',
+          asyncParams: {
+            'refLista': getDoc(['listas'], ListasRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditarProductoClasificacionWidget(
+            refClas: params.getParam(
+              'refClas',
+              ParamType.DocumentReference,
+              false,
+              ['listas', 'productos2'],
+            ),
+            nombre: params.getParam(
+              'nombre',
+              ParamType.String,
+            ),
+            descripcion: params.getParam(
+              'descripcion',
+              ParamType.String,
+            ),
+            precio: params.getParam(
+              'precio',
+              ParamType.double,
+            ),
+            esOferta: params.getParam(
+              'esOferta',
+              ParamType.bool,
+            ),
+            precioOferta: params.getParam(
+              'precioOferta',
+              ParamType.double,
+            ),
+            enVenta: params.getParam(
+              'enVenta',
+              ParamType.bool,
+            ),
+            refLista: params.getParam(
+              'refLista',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'editarProductosImagenes',
+          path: '/editarProductosImagenes',
+          asyncParams: {
+            'refLista': getDoc(['listas'], ListasRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditarProductosImagenesWidget(
+            refClas: params.getParam(
+              'refClas',
+              ParamType.DocumentReference,
+              false,
+              ['listas', 'productos2'],
+            ),
+            nombre: params.getParam(
+              'nombre',
+              ParamType.String,
+            ),
+            descripcion: params.getParam(
+              'descripcion',
+              ParamType.String,
+            ),
+            precio: params.getParam(
+              'precio',
+              ParamType.double,
+            ),
+            esOferta: params.getParam(
+              'esOferta',
+              ParamType.bool,
+            ),
+            precioOferta: params.getParam(
+              'precioOferta',
+              ParamType.double,
+            ),
+            categoria: params.getParam(
+              'categoria',
+              ParamType.String,
+            ),
+            marca: params.getParam(
+              'marca',
+              ParamType.String,
+            ),
+            modelo: params.getParam(
+              'modelo',
+              ParamType.String,
+            ),
+            estado: params.getParam(
+              'estado',
+              ParamType.String,
+            ),
+            enVenta: params.getParam(
+              'enVenta',
+              ParamType.bool,
+            ),
+            refLista: params.getParam(
+              'refLista',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'miPerfilVendedor',
+          path: '/miPerfilVendedor',
+          builder: (context, params) => const MiPerfilVendedorWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -380,7 +544,7 @@ extension _GoRouterStateExtensions on GoRouterState {
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
-    ..addAll(queryParameters)
+    ..addAll(uri.queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -473,7 +637,7 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
             return '/loginUsuarios';
           }
           return null;
@@ -552,7 +716,7 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location = GoRouterState.of(context).uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;

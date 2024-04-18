@@ -9,15 +9,15 @@ class PaginaUbicacionVendedoresModel
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for DropDown widget.
-  String? dropDownValue1;
-  FormFieldController<String>? dropDownValueController1;
-  // State field(s) for DropDown widget.
-  String? dropDownValue2;
-  FormFieldController<String>? dropDownValueController2;
-  // State field(s) for DropDown widget.
-  String? dropDownValue3;
-  FormFieldController<String>? dropDownValueController3;
+  // State field(s) for ddProvincia widget.
+  String? ddProvinciaValue;
+  FormFieldController<String>? ddProvinciaValueController;
+  // State field(s) for ddCanton widget.
+  String? ddCantonValue;
+  FormFieldController<String>? ddCantonValueController;
+  // State field(s) for ddDistrito widget.
+  String? ddDistritoValue;
+  FormFieldController<String>? ddDistritoValueController;
 
   @override
   void initState(BuildContext context) {}

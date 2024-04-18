@@ -6,7 +6,6 @@ import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
-import '/flutter_flow/flutter_flow_util.dart';
 
 class CantonRecord extends FirestoreRecord {
   CantonRecord._(
@@ -17,8 +16,8 @@ class CantonRecord extends FirestoreRecord {
   }
 
   // "idCanton" field.
-  int? _idCanton;
-  int get idCanton => _idCanton ?? 0;
+  String? _idCanton;
+  String get idCanton => _idCanton ?? '';
   bool hasIdCanton() => _idCanton != null;
 
   // "nombre" field.
@@ -27,14 +26,14 @@ class CantonRecord extends FirestoreRecord {
   bool hasNombre() => _nombre != null;
 
   // "idProvincia" field.
-  int? _idProvincia;
-  int get idProvincia => _idProvincia ?? 0;
+  String? _idProvincia;
+  String get idProvincia => _idProvincia ?? '';
   bool hasIdProvincia() => _idProvincia != null;
 
   void _initializeFields() {
-    _idCanton = castToType<int>(snapshotData['idCanton']);
+    _idCanton = snapshotData['idCanton'] as String?;
     _nombre = snapshotData['nombre'] as String?;
-    _idProvincia = castToType<int>(snapshotData['idProvincia']);
+    _idProvincia = snapshotData['idProvincia'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -71,9 +70,9 @@ class CantonRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createCantonRecordData({
-  int? idCanton,
+  String? idCanton,
   String? nombre,
-  int? idProvincia,
+  String? idProvincia,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{

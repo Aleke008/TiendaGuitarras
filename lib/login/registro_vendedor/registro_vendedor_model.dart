@@ -21,6 +21,12 @@ class RegistroVendedorModel extends FlutterFlowModel<RegistroVendedorWidget> {
   // State field(s) for ddDistrito widget.
   String? ddDistritoValue;
   FormFieldController<String>? ddDistritoValueController;
+  // Stores action output result for [Custom Action - obtenerNombreProvincia] action in btnRegistrarse widget.
+  String? nombreProvincia;
+  // Stores action output result for [Custom Action - obtenerNombreCanton] action in btnRegistrarse widget.
+  String? nombreCanton;
+  // Stores action output result for [Custom Action - obtenerNombreDistrito] action in btnRegistrarse widget.
+  String? nombreDistrito;
 
   @override
   void initState(BuildContext context) {}

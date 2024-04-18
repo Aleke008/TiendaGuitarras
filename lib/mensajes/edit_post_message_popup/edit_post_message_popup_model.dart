@@ -8,9 +8,9 @@ class EditPostMessagePopupModel
 
   // State field(s) for inputMessageEditPost widget.
   FocusNode? inputMessageEditPostFocusNode;
-  TextEditingController? inputMessageEditPostController;
+  TextEditingController? inputMessageEditPostTextController;
   String? Function(BuildContext, String?)?
-      inputMessageEditPostControllerValidator;
+      inputMessageEditPostTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -18,6 +18,6 @@ class EditPostMessagePopupModel
   @override
   void dispose() {
     inputMessageEditPostFocusNode?.dispose();
-    inputMessageEditPostController?.dispose();
+    inputMessageEditPostTextController?.dispose();
   }
 }

@@ -110,8 +110,7 @@ class _ConfigAplicacionWidgetState extends State<ConfigAplicacionWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                      color: const Color(0xFFF2F2F2),
                                       fontSize: 22.0,
                                       letterSpacing: 0.0,
                                     ),
@@ -147,6 +146,7 @@ class _ConfigAplicacionWidgetState extends State<ConfigAplicacionWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
+                                          color: const Color(0xFF111111),
                                           fontSize: 20.0,
                                           letterSpacing: 0.0,
                                         ),
@@ -217,6 +217,7 @@ class _ConfigAplicacionWidgetState extends State<ConfigAplicacionWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
+                                          color: const Color(0xFF111111),
                                           fontSize: 20.0,
                                           letterSpacing: 0.0,
                                         ),

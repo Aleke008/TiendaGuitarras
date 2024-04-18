@@ -35,11 +35,23 @@ class ListasRecord extends FirestoreRecord {
   DateTime? get fechaCreacion => _fechaCreacion;
   bool hasFechaCreacion() => _fechaCreacion != null;
 
+  // "uidVendedor" field.
+  String? _uidVendedor;
+  String get uidVendedor => _uidVendedor ?? '';
+  bool hasUidVendedor() => _uidVendedor != null;
+
+  // "fechaActualizacion" field.
+  DateTime? _fechaActualizacion;
+  DateTime? get fechaActualizacion => _fechaActualizacion;
+  bool hasFechaActualizacion() => _fechaActualizacion != null;
+
   void _initializeFields() {
     _nombre = snapshotData['nombre'] as String?;
     _descripcion = snapshotData['descripcion'] as String?;
     _imagen = snapshotData['imagen'] as String?;
     _fechaCreacion = snapshotData['fechaCreacion'] as DateTime?;
+    _uidVendedor = snapshotData['uidVendedor'] as String?;
+    _fechaActualizacion = snapshotData['fechaActualizacion'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -80,6 +92,8 @@ Map<String, dynamic> createListasRecordData({
   String? descripcion,
   String? imagen,
   DateTime? fechaCreacion,
+  String? uidVendedor,
+  DateTime? fechaActualizacion,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -87,6 +101,8 @@ Map<String, dynamic> createListasRecordData({
       'descripcion': descripcion,
       'imagen': imagen,
       'fechaCreacion': fechaCreacion,
+      'uidVendedor': uidVendedor,
+      'fechaActualizacion': fechaActualizacion,
     }.withoutNulls,
   );
 
@@ -101,12 +117,20 @@ class ListasRecordDocumentEquality implements Equality<ListasRecord> {
     return e1?.nombre == e2?.nombre &&
         e1?.descripcion == e2?.descripcion &&
         e1?.imagen == e2?.imagen &&
-        e1?.fechaCreacion == e2?.fechaCreacion;
+        e1?.fechaCreacion == e2?.fechaCreacion &&
+        e1?.uidVendedor == e2?.uidVendedor &&
+        e1?.fechaActualizacion == e2?.fechaActualizacion;
   }
 
   @override
-  int hash(ListasRecord? e) => const ListEquality()
-      .hash([e?.nombre, e?.descripcion, e?.imagen, e?.fechaCreacion]);
+  int hash(ListasRecord? e) => const ListEquality().hash([
+        e?.nombre,
+        e?.descripcion,
+        e?.imagen,
+        e?.fechaCreacion,
+        e?.uidVendedor,
+        e?.fechaActualizacion
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is ListasRecord;

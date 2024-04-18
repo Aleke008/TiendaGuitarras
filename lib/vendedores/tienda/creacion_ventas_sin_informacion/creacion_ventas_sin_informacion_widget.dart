@@ -1,6 +1,6 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -29,10 +29,10 @@ class _CreacionVentasSinInformacionWidgetState
     super.initState();
     _model = createModel(context, () => CreacionVentasSinInformacionModel());
 
-    _model.txtNombreListaController ??= TextEditingController();
+    _model.txtNombreListaTextController ??= TextEditingController();
     _model.txtNombreListaFocusNode ??= FocusNode();
 
-    _model.txtDescripcionListaController ??= TextEditingController();
+    _model.txtDescripcionListaTextController ??= TextEditingController();
     _model.txtDescripcionListaFocusNode ??= FocusNode();
   }
 
@@ -52,232 +52,6 @@ class _CreacionVentasSinInformacionWidgetState
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF3F3F3),
-        drawer: SizedBox(
-          width: MediaQuery.sizeOf(context).width * 0.8,
-          child: Drawer(
-            elevation: 30.0,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                        child: FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 20.0,
-                          borderWidth: 1.0,
-                          buttonSize: 60.0,
-                          icon: const Icon(
-                            Icons.close,
-                            color: Color(0xFF882E7F),
-                            size: 45.0,
-                          ),
-                          onPressed: () async {
-                            if (scaffoldKey.currentState!.isDrawerOpen ||
-                                scaffoldKey.currentState!.isEndDrawerOpen) {
-                              Navigator.pop(context);
-                            }
-                          },
-                        ),
-                      ),
-                      Flexible(
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              80.0, 0.0, 0.0, 0.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.asset(
-                              'assets/images/logo.png',
-                              height: MediaQuery.sizeOf(context).height * 0.1,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                ListView(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed('buscarProductos');
-                        },
-                        child: ListTile(
-                          leading: const FaIcon(
-                            FontAwesomeIcons.home,
-                            color: Color(0xFF882E7F),
-                            size: 30.0,
-                          ),
-                          title: Text(
-                            'Inicio',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Open Sans',
-                                  fontSize: 26.0,
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          tileColor: const Color(0x00FFFFFF),
-                          dense: false,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const FaIcon(
-                          FontAwesomeIcons.solidUser,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Mi perfil',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const FaIcon(
-                          FontAwesomeIcons.guitar,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Vender productos',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.favorite,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Lista Favoritos',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.chat_bubble_outline,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Mensajes',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.settings_sharp,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Configuración',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.logout_outlined,
-                          color: Color(0xFF882E7F),
-                          size: 30.0,
-                        ),
-                        title: Text(
-                          'Cerrar Sesión',
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Open Sans',
-                                    fontSize: 26.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        tileColor: const Color(0x00FFFFFF),
-                        dense: false,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
         body: SafeArea(
           top: true,
           child: Column(
@@ -348,8 +122,7 @@ class _CreacionVentasSinInformacionWidgetState
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                      color: const Color(0xFFF2F2F2),
                                       fontSize: 22.0,
                                       letterSpacing: 0.0,
                                     ),
@@ -426,8 +199,8 @@ class _CreacionVentasSinInformacionWidgetState
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             8.0, 10.0, 8.0, 0.0),
                                         child: TextFormField(
-                                          controller:
-                                              _model.txtNombreListaController,
+                                          controller: _model
+                                              .txtNombreListaTextController,
                                           focusNode:
                                               _model.txtNombreListaFocusNode,
                                           onFieldSubmitted: (_) async {
@@ -435,10 +208,10 @@ class _CreacionVentasSinInformacionWidgetState
                                                 .doc()
                                                 .set(createListasRecordData(
                                                   nombre: _model
-                                                      .txtNombreListaController
+                                                      .txtNombreListaTextController
                                                       .text,
                                                   descripcion: _model
-                                                      .txtDescripcionListaController
+                                                      .txtDescripcionListaTextController
                                                       .text,
                                                   imagen:
                                                       _model.uploadedFileUrl,
@@ -511,7 +284,7 @@ class _CreacionVentasSinInformacionWidgetState
                                                 letterSpacing: 0.0,
                                               ),
                                           validator: _model
-                                              .txtNombreListaControllerValidator
+                                              .txtNombreListaTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -545,7 +318,7 @@ class _CreacionVentasSinInformacionWidgetState
                                             8.0, 10.0, 8.0, 0.0),
                                         child: TextFormField(
                                           controller: _model
-                                              .txtDescripcionListaController,
+                                              .txtDescripcionListaTextController,
                                           focusNode: _model
                                               .txtDescripcionListaFocusNode,
                                           autofocus: true,
@@ -614,7 +387,7 @@ class _CreacionVentasSinInformacionWidgetState
                                               ),
                                           maxLines: 5,
                                           validator: _model
-                                              .txtDescripcionListaControllerValidator
+                                              .txtDescripcionListaTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -659,7 +432,7 @@ class _CreacionVentasSinInformacionWidgetState
                                             child: Image.network(
                                               valueOrDefault<String>(
                                                 _model.uploadedFileUrl,
-                                                'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/tienda-virtual-de-guitarras-vdm5bb/assets/yttosfyw748v/sign_error.png',
+                                                'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/tienda-virtual-de-guitarras-vdm5bb/assets/9s29aii367py/SIN.jpg',
                                               ),
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
@@ -667,7 +440,7 @@ class _CreacionVentasSinInformacionWidgetState
                                               height: MediaQuery.sizeOf(context)
                                                       .height *
                                                   0.22,
-                                              fit: BoxFit.cover,
+                                              fit: BoxFit.contain,
                                               errorBuilder: (context, error,
                                                       stackTrace) =>
                                                   Image.asset(
@@ -680,7 +453,7 @@ class _CreacionVentasSinInformacionWidgetState
                                                     MediaQuery.sizeOf(context)
                                                             .height *
                                                         0.22,
-                                                fit: BoxFit.cover,
+                                                fit: BoxFit.contain,
                                               ),
                                             ),
                                           ),
@@ -837,15 +610,16 @@ class _CreacionVentasSinInformacionWidgetState
                                                   .doc()
                                                   .set(createListasRecordData(
                                                     nombre: _model
-                                                        .txtNombreListaController
+                                                        .txtNombreListaTextController
                                                         .text,
                                                     descripcion: _model
-                                                        .txtDescripcionListaController
+                                                        .txtDescripcionListaTextController
                                                         .text,
                                                     imagen:
                                                         _model.uploadedFileUrl,
                                                     fechaCreacion:
                                                         getCurrentTimestamp,
+                                                    uidVendedor: currentUserUid,
                                                   ));
 
                                               context.pushNamed(

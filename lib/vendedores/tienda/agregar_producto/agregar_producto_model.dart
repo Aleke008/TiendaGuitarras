@@ -9,24 +9,27 @@ class AgregarProductoModel extends FlutterFlowModel<AgregarProductoWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for txtNombreLista widget.
   FocusNode? txtNombreListaFocusNode;
-  TextEditingController? txtNombreListaController;
-  String? Function(BuildContext, String?)? txtNombreListaControllerValidator;
+  TextEditingController? txtNombreListaTextController;
+  String? Function(BuildContext, String?)?
+      txtNombreListaTextControllerValidator;
   // State field(s) for txtDescripcionLista widget.
   FocusNode? txtDescripcionListaFocusNode;
-  TextEditingController? txtDescripcionListaController;
+  TextEditingController? txtDescripcionListaTextController;
   String? Function(BuildContext, String?)?
-      txtDescripcionListaControllerValidator;
+      txtDescripcionListaTextControllerValidator;
   // State field(s) for txtPrecioLista widget.
   FocusNode? txtPrecioListaFocusNode;
-  TextEditingController? txtPrecioListaController;
-  String? Function(BuildContext, String?)? txtPrecioListaControllerValidator;
+  TextEditingController? txtPrecioListaTextController;
+  String? Function(BuildContext, String?)?
+      txtPrecioListaTextControllerValidator;
   // State field(s) for ddOferta widget.
   bool? ddOfertaValue;
   FormFieldController<bool>? ddOfertaValueController;
   // State field(s) for txtPrecioOferta widget.
   FocusNode? txtPrecioOfertaFocusNode;
-  TextEditingController? txtPrecioOfertaController;
-  String? Function(BuildContext, String?)? txtPrecioOfertaControllerValidator;
+  TextEditingController? txtPrecioOfertaTextController;
+  String? Function(BuildContext, String?)?
+      txtPrecioOfertaTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -35,15 +38,15 @@ class AgregarProductoModel extends FlutterFlowModel<AgregarProductoWidget> {
   void dispose() {
     unfocusNode.dispose();
     txtNombreListaFocusNode?.dispose();
-    txtNombreListaController?.dispose();
+    txtNombreListaTextController?.dispose();
 
     txtDescripcionListaFocusNode?.dispose();
-    txtDescripcionListaController?.dispose();
+    txtDescripcionListaTextController?.dispose();
 
     txtPrecioListaFocusNode?.dispose();
-    txtPrecioListaController?.dispose();
+    txtPrecioListaTextController?.dispose();
 
     txtPrecioOfertaFocusNode?.dispose();
-    txtPrecioOfertaController?.dispose();
+    txtPrecioOfertaTextController?.dispose();
   }
 }

@@ -1,6 +1,80 @@
 {
   "indexes": [
     {
+      "collectionGroup": "productos2",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "enVenta",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "fechaPublicacion",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "canton",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "idProvincia",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "idCanton",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "distrito",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "idCanton",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "idDistrito",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "rol",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "uid",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "productos2",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "uidVendedor",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "enVenta",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "fechaPublicacion",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "mensajes",
       "queryScope": "COLLECTION",
       "fields": [
@@ -25,6 +99,90 @@
         {
           "fieldPath": "created_time",
           "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "productos2",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "enVenta",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "likes",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "uidVendedor",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "likes",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "uid",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "productos2",
+      "fieldPath": "enVenta",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "productos2",
+      "fieldPath": "enVenta",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "productos2",
+      "fieldPath": "enVenta",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "productos2",
+      "fieldPath": "uidVendedor",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "productos2",
+      "fieldPath": "enVenta",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
         }
       ]
     }

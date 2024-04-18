@@ -89,8 +89,9 @@ class _EditPostMessagePopupWidgetState
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                       child: TextFormField(
-                        controller: _model.inputMessageEditPostController ??=
-                            TextEditingController(
+                        controller:
+                            _model.inputMessageEditPostTextController ??=
+                                TextEditingController(
                           text: containerEditorMessageMensajesRecord.mensaje,
                         ),
                         focusNode: _model.inputMessageEditPostFocusNode,
@@ -143,7 +144,7 @@ class _EditPostMessagePopupWidgetState
                               letterSpacing: 0.0,
                             ),
                         validator: _model
-                            .inputMessageEditPostControllerValidator
+                            .inputMessageEditPostTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -157,7 +158,8 @@ class _EditPostMessagePopupWidgetState
 
                         await widget.mensajesChatRef!
                             .update(createMensajesRecordData(
-                          mensaje: _model.inputMessageEditPostController.text,
+                          mensaje:
+                              _model.inputMessageEditPostTextController.text,
                           estado: false,
                         ));
                         // Cerrar pop up al actualizar mensaje

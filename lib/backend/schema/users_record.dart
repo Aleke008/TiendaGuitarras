@@ -70,6 +70,36 @@ class UsersRecord extends FirestoreRecord {
   String get estado => _estado ?? '';
   bool hasEstado() => _estado != null;
 
+  // "update_time_rol" field.
+  DateTime? _updateTimeRol;
+  DateTime? get updateTimeRol => _updateTimeRol;
+  bool hasUpdateTimeRol() => _updateTimeRol != null;
+
+  // "nombreProvincia" field.
+  String? _nombreProvincia;
+  String get nombreProvincia => _nombreProvincia ?? '';
+  bool hasNombreProvincia() => _nombreProvincia != null;
+
+  // "nombreCanton" field.
+  String? _nombreCanton;
+  String get nombreCanton => _nombreCanton ?? '';
+  bool hasNombreCanton() => _nombreCanton != null;
+
+  // "nombreDistrito" field.
+  String? _nombreDistrito;
+  String get nombreDistrito => _nombreDistrito ?? '';
+  bool hasNombreDistrito() => _nombreDistrito != null;
+
+  // "alternate_photo" field.
+  String? _alternatePhoto;
+  String get alternatePhoto => _alternatePhoto ?? '';
+  bool hasAlternatePhoto() => _alternatePhoto != null;
+
+  // "likes" field.
+  List<String>? _likes;
+  List<String> get likes => _likes ?? const [];
+  bool hasLikes() => _likes != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -82,6 +112,12 @@ class UsersRecord extends FirestoreRecord {
     _canton = snapshotData['canton'] as String?;
     _distrito = snapshotData['distrito'] as String?;
     _estado = snapshotData['estado'] as String?;
+    _updateTimeRol = snapshotData['update_time_rol'] as DateTime?;
+    _nombreProvincia = snapshotData['nombreProvincia'] as String?;
+    _nombreCanton = snapshotData['nombreCanton'] as String?;
+    _nombreDistrito = snapshotData['nombreDistrito'] as String?;
+    _alternatePhoto = snapshotData['alternate_photo'] as String?;
+    _likes = getDataList(snapshotData['likes']);
   }
 
   static CollectionReference get collection =>
@@ -129,6 +165,11 @@ Map<String, dynamic> createUsersRecordData({
   String? canton,
   String? distrito,
   String? estado,
+  DateTime? updateTimeRol,
+  String? nombreProvincia,
+  String? nombreCanton,
+  String? nombreDistrito,
+  String? alternatePhoto,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -143,6 +184,11 @@ Map<String, dynamic> createUsersRecordData({
       'canton': canton,
       'distrito': distrito,
       'estado': estado,
+      'update_time_rol': updateTimeRol,
+      'nombreProvincia': nombreProvincia,
+      'nombreCanton': nombreCanton,
+      'nombreDistrito': nombreDistrito,
+      'alternate_photo': alternatePhoto,
     }.withoutNulls,
   );
 
@@ -154,6 +200,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
 
   @override
   bool equals(UsersRecord? e1, UsersRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.email == e2?.email &&
         e1?.displayName == e2?.displayName &&
         e1?.photoUrl == e2?.photoUrl &&
@@ -164,7 +211,13 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.provincia == e2?.provincia &&
         e1?.canton == e2?.canton &&
         e1?.distrito == e2?.distrito &&
-        e1?.estado == e2?.estado;
+        e1?.estado == e2?.estado &&
+        e1?.updateTimeRol == e2?.updateTimeRol &&
+        e1?.nombreProvincia == e2?.nombreProvincia &&
+        e1?.nombreCanton == e2?.nombreCanton &&
+        e1?.nombreDistrito == e2?.nombreDistrito &&
+        e1?.alternatePhoto == e2?.alternatePhoto &&
+        listEquality.equals(e1?.likes, e2?.likes);
   }
 
   @override
@@ -179,7 +232,13 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.provincia,
         e?.canton,
         e?.distrito,
-        e?.estado
+        e?.estado,
+        e?.updateTimeRol,
+        e?.nombreProvincia,
+        e?.nombreCanton,
+        e?.nombreDistrito,
+        e?.alternatePhoto,
+        e?.likes
       ]);
 
   @override

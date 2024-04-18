@@ -78,27 +78,6 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    match /cantonPrueba/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if false;
-      allow delete: if false;
-    }
-
-    match /provinciaPrueba/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if false;
-      allow delete: if false;
-    }
-
-    match /distritoPrueba/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if false;
-      allow delete: if false;
-    }
-
     match /listas/{document} {
       allow create: if true;
       allow read: if true;
@@ -117,5 +96,12 @@ service cloud.firestore {
       allow read: if true;
     }
 
+
+    match /imagenes/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
   }
 }

@@ -10,13 +10,14 @@ class CreacionVentasSinInformacionModel
   final unfocusNode = FocusNode();
   // State field(s) for txtNombreLista widget.
   FocusNode? txtNombreListaFocusNode;
-  TextEditingController? txtNombreListaController;
-  String? Function(BuildContext, String?)? txtNombreListaControllerValidator;
+  TextEditingController? txtNombreListaTextController;
+  String? Function(BuildContext, String?)?
+      txtNombreListaTextControllerValidator;
   // State field(s) for txtDescripcionLista widget.
   FocusNode? txtDescripcionListaFocusNode;
-  TextEditingController? txtDescripcionListaController;
+  TextEditingController? txtDescripcionListaTextController;
   String? Function(BuildContext, String?)?
-      txtDescripcionListaControllerValidator;
+      txtDescripcionListaTextControllerValidator;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -29,9 +30,9 @@ class CreacionVentasSinInformacionModel
   void dispose() {
     unfocusNode.dispose();
     txtNombreListaFocusNode?.dispose();
-    txtNombreListaController?.dispose();
+    txtNombreListaTextController?.dispose();
 
     txtDescripcionListaFocusNode?.dispose();
-    txtDescripcionListaController?.dispose();
+    txtDescripcionListaTextController?.dispose();
   }
 }

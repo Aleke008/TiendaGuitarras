@@ -5,12 +5,18 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'editar_producto_model.dart';
 export 'editar_producto_model.dart';
 
 class EditarProductoWidget extends StatefulWidget {
-  const EditarProductoWidget({super.key});
+  const EditarProductoWidget({
+    super.key,
+    required this.refProducto,
+    required this.refLista,
+  });
+
+  final DocumentReference? refProducto;
+  final ListasRecord? refLista;
 
   @override
   State<EditarProductoWidget> createState() => _EditarProductoWidgetState();
@@ -26,21 +32,13 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
     super.initState();
     _model = createModel(context, () => EditarProductoModel());
 
-    _model.txtNombreListaController1 ??=
-        TextEditingController(text: 'Agregar nombre...');
-    _model.txtNombreListaFocusNode1 ??= FocusNode();
+    _model.txtNombreFocusNode ??= FocusNode();
 
-    _model.txtDescripcionListaController ??=
-        TextEditingController(text: 'Agregar descripción...');
     _model.txtDescripcionListaFocusNode ??= FocusNode();
 
-    _model.txtPrecioListaController ??=
-        TextEditingController(text: 'Monto precio...');
     _model.txtPrecioListaFocusNode ??= FocusNode();
 
-    _model.txtNombreListaController2 ??=
-        TextEditingController(text: 'Monto oferta precio...');
-    _model.txtNombreListaFocusNode2 ??= FocusNode();
+    _model.txtPrecioOfertaFocusNode ??= FocusNode();
   }
 
   @override
@@ -52,140 +50,123 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<ProductosRecord>>(
-      stream: queryProductosRecord(
-        singleRecord: true,
-      ),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Scaffold(
-            backgroundColor: const Color(0xFFF3F3F3),
-            body: Center(
-              child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
-                  ),
-                ),
-              ),
-            ),
-          );
-        }
-        List<ProductosRecord> editarProductoProductosRecordList =
-            snapshot.data!;
-        // Return an empty Container when the item does not exist.
-        if (snapshot.data!.isEmpty) {
-          return Container();
-        }
-        final editarProductoProductosRecord =
-            editarProductoProductosRecordList.isNotEmpty
-                ? editarProductoProductosRecordList.first
-                : null;
-        return GestureDetector(
-          onTap: () => _model.unfocusNode.canRequestFocus
-              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-              : FocusScope.of(context).unfocus(),
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: const Color(0xFFF3F3F3),
-            body: SafeArea(
-              top: true,
-              child: Column(
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: const Color(0xFFF3F3F3),
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          width: 100.0,
-                          height: MediaQuery.sizeOf(context).height * 0.09,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFD49ED2),
-                          ),
-                          child: Row(
+                  Expanded(
+                    child: Container(
+                      width: 100.0,
+                      height: MediaQuery.sizeOf(context).height * 0.09,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFD49ED2),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Column(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                    child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('btnVolver pressed ...');
-                                      },
-                                      text: '',
-                                      icon: const Icon(
-                                        Icons.clear,
-                                        color: Color(0xFF882E7F),
-                                        size: 50.0,
-                                      ),
-                                      options: FFButtonOptions(
-                                        height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: const Color(0x004B39EF),
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              color: Colors.white,
-                                              letterSpacing: 0.0,
-                                            ),
-                                        elevation: 0.0,
-                                        borderSide: const BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                    ),
+                              Expanded(
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    context.safePop();
+                                  },
+                                  text: '',
+                                  icon: const Icon(
+                                    Icons.clear,
+                                    color: Color(0xFF882E7F),
+                                    size: 50.0,
                                   ),
-                                ],
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Editar producto',
-                                    textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: const Color(0x004B39EF),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          fontSize: 22.0,
+                                          color: Colors.white,
                                           letterSpacing: 0.0,
                                         ),
+                                    elevation: 0.0,
+                                    borderSide: const BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                ],
+                                ),
                               ),
                             ],
                           ),
-                        ),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Editar producto',
+                                textAlign: TextAlign.start,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: const Color(0xFFF2F2F2),
+                                      fontSize: 22.0,
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Row(
+                ],
+              ),
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: StreamBuilder<Productos2Record>(
+                    stream: Productos2Record.getDocument(widget.refProducto!),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                FlutterFlowTheme.of(context).primary,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      final rowProductos2Record = snapshot.data!;
+                      return Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Expanded(
+                          Flexible(
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
                               height: MediaQuery.sizeOf(context).height * 1.0,
@@ -245,9 +226,13 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                                     8.0, 10.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller: _model
-                                                  .txtNombreListaController1,
-                                              focusNode: _model
-                                                  .txtNombreListaFocusNode1,
+                                                      .txtNombreTextController ??=
+                                                  TextEditingController(
+                                                text:
+                                                    rowProductos2Record.nombre,
+                                              ),
+                                              focusNode:
+                                                  _model.txtNombreFocusNode,
                                               autofocus: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -321,7 +306,7 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                               validator: _model
-                                                  .txtNombreListaController1Validator
+                                                  .txtNombreTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -357,7 +342,11 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                                     8.0, 10.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller: _model
-                                                  .txtDescripcionListaController,
+                                                      .txtDescripcionListaTextController ??=
+                                                  TextEditingController(
+                                                text: rowProductos2Record
+                                                    .descripcion,
+                                              ),
                                               focusNode: _model
                                                   .txtDescripcionListaFocusNode,
                                               autofocus: true,
@@ -434,7 +423,7 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                                       ),
                                               maxLines: 5,
                                               validator: _model
-                                                  .txtDescripcionListaControllerValidator
+                                                  .txtDescripcionListaTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -470,7 +459,11 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                                     8.0, 10.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller: _model
-                                                  .txtPrecioListaController,
+                                                      .txtPrecioListaTextController ??=
+                                                  TextEditingController(
+                                                text: rowProductos2Record.precio
+                                                    .toString(),
+                                              ),
                                               focusNode: _model
                                                   .txtPrecioListaFocusNode,
                                               autofocus: true,
@@ -546,7 +539,7 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                               validator: _model
-                                                  .txtPrecioListaControllerValidator
+                                                  .txtPrecioListaTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -580,19 +573,19 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 10.0, 8.0, 0.0),
-                                            child: FlutterFlowDropDown<String>(
+                                            child: FlutterFlowDropDown<bool>(
                                               controller: _model
-                                                      .txtNombreListaValueController ??=
-                                                  FormFieldController<String>(
-                                                _model.txtNombreListaValue ??=
-                                                    '',
+                                                      .ddOfertaValueController ??=
+                                                  FormFieldController<bool>(
+                                                _model.ddOfertaValue ??=
+                                                    rowProductos2Record
+                                                        .esOferta,
                                               ),
-                                              options: List<String>.from(
-                                                  ['Si', 'No']),
-                                              optionLabels: const ['Sí', 'No'],
+                                              options: List<bool>.from(
+                                                  [true, false]),
+                                              optionLabels: const ['Si', 'No'],
                                               onChanged: (val) => setState(() =>
-                                                  _model.txtNombreListaValue =
-                                                      val),
+                                                  _model.ddOfertaValue = val),
                                               width: 300.0,
                                               height: 56.0,
                                               textStyle:
@@ -603,7 +596,9 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                                             'Readex Pro',
                                                         letterSpacing: 0.0,
                                                       ),
-                                              hintText: 'Sí',
+                                              hintText: rowProductos2Record
+                                                  .esOferta
+                                                  .toString(),
                                               icon: Icon(
                                                 Icons
                                                     .keyboard_arrow_down_rounded,
@@ -631,103 +626,16 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                         ),
                                       ],
                                     ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  20.0, 10.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Precio oferta (colones):',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Open Sans',
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          child: Padding(
+                                    if (_model.ddOfertaValue == true)
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 10.0, 8.0, 0.0),
-                                            child: TextFormField(
-                                              controller: _model
-                                                  .txtNombreListaController2,
-                                              focusNode: _model
-                                                  .txtNombreListaFocusNode2,
-                                              autofocus: true,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: const BorderSide(
-                                                    color: Color(0xFF882E7F),
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedErrorBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                              ),
+                                                    20.0, 10.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Precio oferta (colones):',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -735,14 +643,116 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                                         fontFamily: 'Open Sans',
                                                         letterSpacing: 0.0,
                                                       ),
-                                              validator: _model
-                                                  .txtNombreListaController2Validator
-                                                  .asValidator(context),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
+                                        ],
+                                      ),
+                                    if (_model.ddOfertaValue == true)
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      8.0, 10.0, 8.0, 0.0),
+                                              child: TextFormField(
+                                                controller: _model
+                                                        .txtPrecioOfertaTextController ??=
+                                                    TextEditingController(
+                                                  text: rowProductos2Record
+                                                      .precioOferta
+                                                      .toString(),
+                                                ),
+                                                focusNode: _model
+                                                    .txtPrecioOfertaFocusNode,
+                                                autofocus: true,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  labelStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                  hintStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: const BorderSide(
+                                                      color: Color(0xFF882E7F),
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                validator: _model
+                                                    .txtPrecioOfertaTextControllerValidator
+                                                    .asValidator(context),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -751,7 +761,7 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 10.0, 0.0, 0.0),
                                           child: Text(
-                                            '¿Desea pausar la venta temporalmente?',
+                                            '¿Producto en venta?',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -770,15 +780,15 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 10.0, 8.0, 0.0),
-                                            child: FlutterFlowDropDown<String>(
+                                            child: FlutterFlowDropDown<bool>(
                                               controller: _model
                                                       .txtPausaVentaValueController ??=
-                                                  FormFieldController<String>(
+                                                  FormFieldController<bool>(
                                                 _model.txtPausaVentaValue ??=
-                                                    '',
+                                                    rowProductos2Record.enVenta,
                                               ),
-                                              options: List<String>.from(
-                                                  ['Si', 'No']),
+                                              options: List<bool>.from(
+                                                  [true, false]),
                                               optionLabels: const ['Si', 'No'],
                                               onChanged: (val) => setState(() =>
                                                   _model.txtPausaVentaValue =
@@ -793,7 +803,9 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                                             'Readex Pro',
                                                         letterSpacing: 0.0,
                                                       ),
-                                              hintText: 'Sí',
+                                              hintText: rowProductos2Record
+                                                  .enVenta
+                                                  .toString(),
                                               icon: Icon(
                                                 Icons
                                                     .keyboard_arrow_down_rounded,
@@ -830,14 +842,62 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 20.0, 0.0, 0.0),
                                           child: FFButtonWidget(
-                                            onPressed: () {
-                                              print(
-                                                  'btnContinuarEdit pressed ...');
+                                            onPressed: () async {
+                                              context.pushNamed(
+                                                'editarProductoClasificacion',
+                                                queryParameters: {
+                                                  'refClas': serializeParam(
+                                                    widget.refProducto,
+                                                    ParamType.DocumentReference,
+                                                  ),
+                                                  'nombre': serializeParam(
+                                                    _model
+                                                        .txtNombreTextController
+                                                        .text,
+                                                    ParamType.String,
+                                                  ),
+                                                  'descripcion': serializeParam(
+                                                    _model
+                                                        .txtDescripcionListaTextController
+                                                        .text,
+                                                    ParamType.String,
+                                                  ),
+                                                  'precio': serializeParam(
+                                                    double.tryParse(_model
+                                                        .txtPrecioListaTextController
+                                                        .text),
+                                                    ParamType.double,
+                                                  ),
+                                                  'esOferta': serializeParam(
+                                                    _model.ddOfertaValue,
+                                                    ParamType.bool,
+                                                  ),
+                                                  'precioOferta':
+                                                      serializeParam(
+                                                    double.tryParse(_model
+                                                        .txtPrecioOfertaTextController
+                                                        .text),
+                                                    ParamType.double,
+                                                  ),
+                                                  'enVenta': serializeParam(
+                                                    _model.txtPausaVentaValue,
+                                                    ParamType.bool,
+                                                  ),
+                                                  'refLista': serializeParam(
+                                                    widget.refLista,
+                                                    ParamType.Document,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'refLista': widget.refLista,
+                                                },
+                                              );
                                             },
                                             text: 'Continuar',
-                                            icon: const FaIcon(
-                                              FontAwesomeIcons.pen,
+                                            icon: const Icon(
+                                              Icons.arrow_forward_ios,
                                               color: Color(0xFF8A2F7C),
+                                              size: 15.0,
                                             ),
                                             options: FFButtonOptions(
                                               width: MediaQuery.sizeOf(context)
@@ -877,15 +937,15 @@ class _EditarProductoWidgetState extends State<EditarProductoWidget> {
                             ),
                           ),
                         ],
-                      ),
-                    ),
+                      );
+                    },
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

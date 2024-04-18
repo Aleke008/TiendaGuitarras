@@ -6,7 +6,6 @@ import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
-import '/flutter_flow/flutter_flow_util.dart';
 
 class ProvinciaRecord extends FirestoreRecord {
   ProvinciaRecord._(
@@ -17,8 +16,8 @@ class ProvinciaRecord extends FirestoreRecord {
   }
 
   // "idProvincia" field.
-  int? _idProvincia;
-  int get idProvincia => _idProvincia ?? 0;
+  String? _idProvincia;
+  String get idProvincia => _idProvincia ?? '';
   bool hasIdProvincia() => _idProvincia != null;
 
   // "nombre" field.
@@ -27,7 +26,7 @@ class ProvinciaRecord extends FirestoreRecord {
   bool hasNombre() => _nombre != null;
 
   void _initializeFields() {
-    _idProvincia = castToType<int>(snapshotData['idProvincia']);
+    _idProvincia = snapshotData['idProvincia'] as String?;
     _nombre = snapshotData['nombre'] as String?;
   }
 
@@ -66,7 +65,7 @@ class ProvinciaRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createProvinciaRecordData({
-  int? idProvincia,
+  String? idProvincia,
   String? nombre,
 }) {
   final firestoreData = mapToFirestore(

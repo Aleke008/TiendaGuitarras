@@ -50,6 +50,12 @@ class FFAppState extends ChangeNotifier {
   set MostrarListaCompleta(bool value) {
     _MostrarListaCompleta = value;
   }
+
+  String _direccionVendedor = '';
+  String get direccionVendedor => _direccionVendedor;
+  set direccionVendedor(String value) {
+    _direccionVendedor = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {
